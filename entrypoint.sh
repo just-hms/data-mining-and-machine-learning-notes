@@ -6,17 +6,14 @@ mkdir build -p
 
 cat $(ls docs/[0-9]-*) $(ls docs/[0-9][0-9]-*) > build/bundle.md
 
-{ echo -n '<!-- end-of-table-of-content -->\n\n'; cat build/bundle.md; } > build/tmp.md
-mv build/tmp.md build/bundle.md
+# convert to html
 
-# creiamo la toc
-./toc.sh build/bundle.md
 
-# convertiamo a html
+pandoc --toc --standalone  --mathjax -f markdown -t html build/bundle.md -o build/bundle.html --verbose --template=./template.html --metadata title="dm-ml"
+# 
 
-pandoc build/bundle.md -s -o build/bundle.html --mathjax --metadata title="DM-ML notes"
 
-# injectiamo il latex
+# inject latex?
 
-# convrtiamo a pdf
+# convrt to pdf
 
