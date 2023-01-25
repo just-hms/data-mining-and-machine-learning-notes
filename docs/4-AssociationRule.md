@@ -12,13 +12,13 @@ Finding such frequent patterns plays an essential role in mining associations, c
 
 We define:
 
-- __Itemset I__: A set of one or more items {I1, I2, \..., Im}.
+-   __Itemset I__: A set of one or more items {I1, I2, \..., Im}.
 
-- __k-itemset X__ = {x1, x2, \..., xk}, set of k items.
+-   __k-itemset X__ = {x1, x2, \..., xk}, set of k items.
 
-- __(absolute) support__, or, __support count of X__: the frequency or occurrence of an itemset X in the database of transactions, number of transactions in which the itemset appears.
+-   __(absolute) support__, or, __support count of X__: the frequency or occurrence of an itemset X in the database of transactions, number of transactions in which the itemset appears.
 
-- __(relative) support s__: fraction of transactions that contains X (i.e., the probability that a transaction contains X).
+-   __(relative) support s__: fraction of transactions that contains X (i.e., the probability that a transaction contains X).
 
     ![alt](../media/image150.png)
 
@@ -31,7 +31,6 @@ We define:
     To fix the minsup we need to consider that we are not interested in 1-itemset, we will choose a good number.
 
 ### Purpose of Frequent Pattern Analysis
-
 The aim of frequent pattern analysis is to mine itemset. Larger is the cardinality of the itemset and more interesting is what we can discover.
 
 The complexity is exponential, we need specific techniques to reduce complexity.
@@ -45,7 +44,6 @@ When we have a set of many items working on all possible combinations is hard.
 We must mine all the possible frequent patterns.
 
 ### Transactions
-
 A transaction T is a set of items such that: 
 
 $$
@@ -53,7 +51,6 @@ $$
 $$
 
 ### Association Rule
-
 An association rule is an implication of the form X $\Rightarrow$ Y, where
 - $X \subset I$
 - $Y \subset I$
@@ -62,7 +59,6 @@ An association rule is an implication of the form X $\Rightarrow$ Y, where
 The association rule means that there's an high probability that X will imply Y.
 
 #### Definitions
-
 __The relative support of X $\Rightarrow$ Y in the transaction database D__: percentage of transactions in D that contain $X \cup Y$ (i.e., the union of sets X and Y) 
 
 __Support:__ $Supp (X \Rightarrow Y) = P(X \cup Y) \rightarrow$ probability that a transaction contains $X \cup Y$
@@ -70,11 +66,9 @@ __Support:__ $Supp (X \Rightarrow Y) = P(X \cup Y) \rightarrow$ probability that
 __Confidence:__ $Conf (X \Rightarrow Y) = P(Y | X) = \frac{Supp(X \cup Y)}{Supp(X)} \rightarrow$ conditional probability that a transaction having X also contains Y and it is given by this ratio. 
 
 This ratio belongs to the interval \[0,1\], in fact it is a probability, and that's because:
-
 $$
     supp(X \cup Y) \Leftarrow supp(X)
 $$
-
 If $Conf(X \Rightarrow Y) = 1$, every time I have X I also have Y.
 
 __All the rules with confidence 1 are optimal for us.__
@@ -84,7 +78,6 @@ But a special case there is when Y is always present in the transaction it is no
 This is the reason why confidence is important, but we need to consider also the probability of Y.
 
 ### Implementation
-
 Each item has a boolean variable representing the presence or absence of that item.
 
 Each basket can be represented by a Boolean vector of values assigned to these variables.
@@ -126,9 +119,9 @@ The __confidence__ is different because obtained by dividing the support for the
 #### Process
 In general, association rule mining can be viewed as a two-step process:
 
-- __Find all frequent itemsets__: By definition, each of these itemsets will occur at least as frequently as a predetermined minimum support count, minsup, once fixed minsup.
+-   __Find all frequent itemsets__: By definition, each of these itemsets will occur at least as frequently as a predetermined minimum support count, minsup, once fixed minsup.
 
-- __Generate strong association rules from the frequent itemsets__: By definition, these rules must satisfy minimum support (automatically satisfied because we start from frequent itemsets) and minimum confidence.
+-   __Generate strong association rules from the frequent itemsets__: By definition, these rules must satisfy minimum support (automatically satisfied because we start from frequent itemsets) and minimum confidence.
 
 A long itemset contains a combinatorial number of sub-itemsets, e.g., we have 100 itemsets {a1, \..., a100}. The number of sub-itemset is:
 
@@ -144,9 +137,9 @@ A long itemset contains a huge number of sub\-items.
 
 __Solution__: Mine closed itemsets and max-itemsets instead
 
-- An itemset X is __closed__ in a dataset D if X is frequent and there exists no super-itemset $Y \supset X$, with the same support as X $\rightarrow$ this means that we can give the customer only 1 itemset specifying that it is closed.
+-   An itemset X is __closed__ in a dataset D if X is frequent and there exists no super-itemset $Y \supset X$, with the same support as X $\rightarrow$ this means that we can give the customer only 1 itemset specifying that it is closed.
 
-- An itemset X is a __max-itemset__ in a dataset D if X is frequent and there exists no frequent super-itemset $Y \supset X$, but we do not specify nothing about support.
+-   An itemset X is a __max-itemset__ in a dataset D if X is frequent and there exists no frequent super-itemset $Y \supset X$, but we do not specify nothing about support.
 
 If we have the max-itemset we have all the information we need.
 
@@ -160,13 +153,13 @@ Min\_sup = 1.
 
 - What is the set of closed itemset?
 
-    $<a_1$, \..., $a_{100}>$ closed with support 1
+    \<$a_1$, \..., $a_{100}$\> closed with support 1
 
-    $<a_1$, \..., $a_{50}>$ closed with support 2
+    \< $a_1$, \..., $a_{50}$\> closed with support 2
 
 - What is the set of max-itemset?
 
-    $<a_1$, \..., $a_{100}>$: 1
+    \<$a_1$, \..., $a_{100}$\>: 1
 
 Giving only the max-itemset we lose information, we cannot know that there exists the other itemset with support 2.
 
@@ -218,15 +211,15 @@ In fact, we are sure that this super-test is not frequent.
 
 Method:
 
-- Initially, scan DB once to get frequent 1-itemset, in this way for the apriori property if we discover than 1 item is not frequent, we can remove the item for the generation of the higher order itemset.
+-   Initially, scan DB once to get frequent 1-itemset, in this way for the apriori property if we discover than 1 item is not frequent, we can remove the item for the generation of the higher order itemset.
 
-- __Generate__ length (k+1) __candidate__ itemsets from length k __frequent__ itemsets.
+-   __Generate__ length (k+1) __candidate__ itemsets from length k __frequent__ itemsets.
 
 At the beginning we generate the two itemset by combining the 1-itemset.
 
-- __Test__ the candidates against DB, we check if they're frequent
+-   __Test__ the candidates against DB, we check if they're frequent
 
-- Terminate when no frequent or candidate set can be generated
+-   Terminate when no frequent or candidate set can be generated
 
 We stop certainly because with the increasing of number of items in the itemset, the support decreases.
 
@@ -264,32 +257,23 @@ The only combination that we are not able to discard is {B, C, E}, it has 2 as s
 
 ### Pseudo Code
 
-```py
+$C_k$: Candidate itemset of size k
 
-# C_k := Candidate itemset of size k
-# L_k := frequent itemset of size k
+$L_k$ : frequent itemset of size k
 
-def Apriori(frequent_items : any):
-    
-    k = 1
-    L[k] = frequent_items
+$L_1$ = {frequent items};
 
-    while True:
+for (k = 1; Lk != $\emptyset$; k++) do begin
 
-        C[k+1] = generate_candidates(L[k])
+> $C_{k+1}$ = candidates generated from Lk;
 
-        for transaction in database:
-            increment_count(C[k+1], transaction)
+> for each transaction t in database do increment the count of all candidates in $C_{k+1}$ that are contained in t
 
-        L[k+1] = filter_min_support(C[k+1])
+>$L_{k+1}$ = candidates in Ck+1 with min\_support
 
-        if IsEmpty(L[k+1]):
-            break
+end
 
-        k += 1
-
-    return L
-```
+return $\cup_k L_k$;
 
 This is a summarization of what we analyzed, starting from the set of frequent 1-itemset and generating candidate k-itemset until we have an empty set.
 
@@ -300,14 +284,13 @@ But how can we generate this candidate $C_{k+1}$ itemset?
 Let us look at how $L_{k-1} is used to find $L_k$ for k $\geq$ 2. A two-step process, consisting of join and prune actions.
 
 #### __The join step__:
-
 in order to find $L_k$, a set of candidate k- itemsets, denoted $C_k$, is generated by joining $L_{k-1}$ with itself.
 
-- The notation $l_i$\[j\] refers to the jth item in $l_i$ ($l_1$\[k-2\] refers to the second to the last item in $l$).
+-   The notation $l_i$\[j\] refers to the jth item in $l_i$ ($l_1$\[k-2\] refers to the second to the last item in $l$).
 
-- For efficient implementation, Apriori assumes that items within a transaction or itemset are sorted in lexicographic order.
+-   For efficient implementation, Apriori assumes that items within a transaction or itemset are sorted in lexicographic order.
 
-- For the (k-1)-itemset, $l_i$ , this means that the items are sorted such that $l_i$\[1\] $<$ $l_i$\[2\] $<$ \... $<$ $l_i$\[k-1\].
+-   For the (k-1)-itemset, $l_i$ , this means that the items are sorted such that $l_i$\[1\] $<$ $l_i$\[2\] $<$ \... $<$ $l_i$\[k-1\].
 
 We assume that in the transaction dataset the order is this lexicographic order that we impose. We generate the candidate items in this way from this order.
 
@@ -452,25 +435,25 @@ In this example, {I1, I4} = 1 \* 10 + 4 = 14 mod 7 = 0.
 
 A k-itemset whose corresponding hashing bucket count is below the threshold cannot be frequent
 
-- __Candidates__: I1, I2, I3, I4, I5, I6
+-   __Candidates__: I1, I2, I3, I4, I5, I6
 
-- __Hash entries__ : {I1I4, I3I5} , {I1I5} ,...
+-   __Hash entries__ : {I1I4, I3I5} , {I1I5} ,...
 
 I1I4 is not a candidate 2-itemset if the sum of count of {I1I4, I3I5} is below support threshold
 
 #### __Sampling for Frequent Patterns__
 
-- Select a sample of the original database
+-   Select a sample of the original database
 
-- Mine frequent patterns within sample using Apriori
+-   Mine frequent patterns within sample using Apriori
 
-    - Possibly use a lower support threshold
+    -   Possibly use a lower support threshold
 
-- Scan database once to verify frequent itemsets found in sample, only borders of closure of frequent patterns are checked
+-   Scan database once to verify frequent itemsets found in sample, only borders of closure of frequent patterns are checked
 
     Example: check abcd instead of ab, ac, \..., etc.
 
-- Scan database again to find missed frequent patterns using the concept of negative border. The negative border contains the "closest" itemsets that could be frequent. Given a collection S in P(R) of sets, closed with respect to the set inclusion relation, the negative border of S consists of the minimal itemsets X in R not in S.
+-   Scan database again to find missed frequent patterns using the concept of negative border. The negative border contains the "closest" itemsets that could be frequent. Given a collection S in P(R) of sets, closed with respect to the set inclusion relation, the negative border of S consists of the minimal itemsets X in R not in S.
 
 #### __DIC: Reduce Number of Scans__
 
@@ -483,6 +466,8 @@ Once all length-2 subsets of BCD are determined frequent, the counting of BCD be
 The idea is to anticipate the scanning of the DB for checking if we have 2-itemsets frequent. During the scan of the database we see that A and D are frequent and we also start to scan also the 2-itemset AD.
 
 ![alt](../media/image172.png)
+
+<!-- ![alt](../media/image173.png) -->
 
 -------------------------------------------------------------
 
@@ -500,19 +485,19 @@ We need to avoid to generate this large amount of candidate itemsets.
 
 Support counting is expensive
 
-- Subset checking (computationally expensive)
+-   Subset checking (computationally expensive)
 
-- Multiple Database scans (I/O)
+-   Multiple Database scans (I/O)
 
-- Breadth-first (i.e., level-wise) search: may need to generate a huge number of candidate sets
+-   Breadth-first (i.e., level-wise) search: may need to generate a huge number of candidate sets
 
 ## FPGrowth Approach: Mining Frequent Patterns Without Candidate Generation
 
 The FPGrowth Approach allows frequent itemset discovery without candidate itemset generation. It is a two step approach:
 
-- __Step 1__: Build a compact data structure called the FP-tree. It is built using only 2 scans over the data-set and it will be a summarization of the DB.
+-   __Step 1__: Build a compact data structure called the FP-tree. It is built using only 2 scans over the data-set and it will be a summarization of the DB.
 
-- __Step 2__: Extracts frequent itemsets directly from the FP-tree. We do not need to access the DB. If it is compact and can be stored in main memory we save a lot of effort.
+-   __Step 2__: Extracts frequent itemsets directly from the FP-tree. We do not need to access the DB. If it is compact and can be stored in main memory we save a lot of effort.
 
 It is a depth-first search algorithm.
 
@@ -526,11 +511,11 @@ We work with projections of the DB.
 
 ### FP-Tree Approach
 
-- First, it compresses the database representing frequent items into a frequent pattern tree, or FP-tree, which retains the itemset association information. It summarized the DB but without losing information.
+-   First, it compresses the database representing frequent items into a frequent pattern tree, or FP-tree, which retains the itemset association information. It summarized the DB but without losing information.
 
-- Then divides the compressed database into a set of conditional databases (a special kind of projected database), each associated with one frequent item or "pattern fragment," and mines each database separately. We split the problem in these databases starting from frequent items.
+-   Then divides the compressed database into a set of conditional databases (a special kind of projected database), each associated with one frequent item or "pattern fragment," and mines each database separately. We split the problem in these databases starting from frequent items.
 
-- For each "pattern fragment," only its associated data sets need to be examined. Therefore, this approach may substantially reduce the size of the data sets to be searched, along with the "growth" of patterns being examined.
+-   For each "pattern fragment," only its associated data sets need to be examined. Therefore, this approach may substantially reduce the size of the data sets to be searched, along with the "growth" of patterns being examined.
 
 #### __FP-Tree Construction__
 
@@ -538,11 +523,11 @@ We need to represent the DB with a FP-Tree, which is constructed using 2 passes 
 
 __Pass 1__:
 
-- Scan data and find support for each item.
+-   Scan data and find support for each item.
 
-- Discard infrequent items.
+-   Discard infrequent items.
 
-- Sort frequent items in decreasing order based on their support.
+-   Sort frequent items in decreasing order based on their support.
 
 We use this order when building the FP-Tree, so common prefixes can be shared.
 
@@ -552,13 +537,13 @@ __Pass 2__:
 
 We generate the FP-Tree. Nodes correspond to items and have a counter.
 
-- FP-Growth reads 1 transaction at a time and maps it to a path in the FP-Tree.
+-   FP-Growth reads 1 transaction at a time and maps it to a path in the FP-Tree.
 
-- Fixed order is used, so paths can overlap when transactions share items (when they have the same prefix ). In this case, when we add shared paths the counters are incremented
+-   Fixed order is used, so paths can overlap when transactions share items (when they have the same prefix ). In this case, when we add shared paths the counters are incremented
 
-- Pointers are maintained between nodes containing the same item, creating singly linked lists (dotted lines). The more paths that overlap, the higher the compression. FP- tree may fit in memory. It is fundamental because it avoids to have swapping.
+-   Pointers are maintained between nodes containing the same item, creating singly linked lists (dotted lines). The more paths that overlap, the higher the compression. FP- tree may fit in memory. It is fundamental because it avoids to have swapping.
 
-- Frequent itemsets are extracted from the FP-Tree.
+-   Frequent itemsets are extracted from the FP-Tree.
 
 #### __Step 1: FP-Tree Construction__
 
@@ -584,9 +569,9 @@ Thanks to the fact that a lot of paths share same nodes we get a more compact re
 
 The FP-Tree usually has a smaller size than the uncompressed data - typically many transactions share items (and hence prefixes).
 
-- Best case scenario: all transactions contain the same set of items: 1 path in the FP-tree
+-   Best case scenario: all transactions contain the same set of items: 1 path in the FP-tree
 
-- Worst case scenario: every transaction has a unique set of items (no items in common) In this case the size of the FP-tree is at least as large as the original data. The storage requirements for the FP-tree are higher - need to store the pointers between the nodes and the counters.
+-   Worst case scenario: every transaction has a unique set of items (no items in common) In this case the size of the FP-tree is at least as large as the original data. The storage requirements for the FP-tree are higher - need to store the pointers between the nodes and the counters.
 
 The size of the FP-tree depends on how the items are ordered. Ordering by decreasing support, in this way we have most frequent items close to the root, is typically used but it does not always lead to the smallest tree (it\'s a heuristic).
 
@@ -674,19 +659,19 @@ Frequent itemsets found (ordered by suffix and order in which they are found):
 
 ### __Advantages__ of FP-Growth:
 
-- only 2 passes over data-set, independently on the value of the minsup
+-   only 2 passes over data-set, independently on the value of the minsup
 
-- "compresses" data-set
+-   "compresses" data-set
 
-- no candidate generation
+-   no candidate generation
 
-- much faster than Apriori
+-   much faster than Apriori
 
 ### __Disadvantages__ of FP-Growth:
 
-- FP-Tree may not fit in memory, we are obligated to swap-in/swap-out, reducing also the advantage of compression
+-   FP-Tree may not fit in memory, we are obligated to swap-in/swap-out, reducing also the advantage of compression
 
-- FP-Tree is expensive to build
+-   FP-Tree is expensive to build
 
 Let\'s see another example.
 
@@ -718,9 +703,9 @@ This is a description of the __algorithm__.
 
 ### __Benefits__ for the FP-Tree Structure:
 
-- Completeness. It preserves complete information for frequent pattern mining. It never breaks a long pattern of any transaction.
+-   Completeness. It preserves complete information for frequent pattern mining. It never breaks a long pattern of any transaction.
 
-- Compactness. It reduces irrelevant info---infrequent items are gone. We have items in frequency descending order: the more frequently occurring, the more likely to be shared.It can never be larger than the original database (not count node-links and the count field)
+-   Compactness. It reduces irrelevant info---infrequent items are gone. We have items in frequency descending order: the more frequently occurring, the more likely to be shared.It can never be larger than the original database (not count node-links and the count field)
 
 ## __The Frequent Pattern Growth Mining Method__
 
@@ -728,11 +713,11 @@ When the database is large, it is sometimes unrealistic to construct a main memo
 
 We have an alternative.
 
-- first partition the database into a set of projected databases,
+-   first partition the database into a set of projected databases,
 
-- then construct an FP-tree and mine it in each projected database
+-   then construct an FP-tree and mine it in each projected database
 
-- This process can be recursively applied to any projected database if its FP-tree still cannot fit in main memory.
+-   This process can be recursively applied to any projected database if its FP-tree still cannot fit in main memory.
 
 A study of the FP-growth method performance shows that it is efficient and scalable for mining both long and short frequent patterns, and is about an order of magnitude faster than the Apriori algorithm.
 
@@ -752,19 +737,19 @@ We have this increase because some items were not really frequent with low value
 
 ### Divide-and-conquer:
 
-- Decompose both the mining task and DB according to the frequent patterns obtained so far
+-   Decompose both the mining task and DB according to the frequent patterns obtained so far
 
-- Lead to focused search of smaller databases
+-   Lead to focused search of smaller databases
 
 Other factors:
 
-- No candidate generation, no candidate test
+-   No candidate generation, no candidate test
 
-- Compressed database: FP-tree structure
+-   Compressed database: FP-tree structure
 
-- No repeated scan of entire database
+-   No repeated scan of entire database
 
-- Basic ops: counting local freq items and building sub FP-tree, no pattern search and matching
+-   Basic ops: counting local freq items and building sub FP-tree, no pattern search and matching
 
 A good open-source implementation and refinement of FPGrowth is FPGrowth+.
 
@@ -802,11 +787,11 @@ Fixed the minsup we obtain the same frequent patterns.
 
 Let's suppose we have 10000 customer transactions analyzed and we realize that:
 
-- 6000 include computer games
+-   6000 include computer games
 
-- 7500 include videos
+-   7500 include videos
 
-- 4000 include computer games and video
+-   4000 include computer games and video
 
 $$
     buys(X, "computer\ games") \Rightarrow buys(X, "videos")
@@ -887,25 +872,25 @@ are not good to indicate correlations.
 
 Over 20 interestingness measures have been proposed. The best metrics are:
 
-- __All\_confidence \[0,1\]__:
+-   __All\_confidence \[0,1\]__:
 
 $$
     All\_conf(A,B) = \frac{sup(A \cup B)}{max\{sup(A), sup(B)\}} = min\{P(A|B),P(B|A)\}
 $$
 
-- Max\_confidence \[0,1\]:
+-   Max\_confidence \[0,1\]:
 
 $$
     Max\_conf(A,B) = max \{P(A|B),P(B|A)\}
 $$
 
-- Kulczynski \[0,1\]:
+-   Kulczynski \[0,1\]:
 
 $$
     Kulc(A,B) = \frac{1}{2}(P(A|B)+P(B|A))
 $$
 
-- Cosine \[0,1\]:
+-   Cosine \[0,1\]:
 
 $$
     cosine(A,B) = \frac{P(A \cup B)}{\sqrt{P(A) \times P(B)}} = \frac{sup(A \cup B)}{\sqrt{sup(A) \times sup(B)}} = \sqrt{P(A|B) \times P(B|A)}
@@ -978,10 +963,10 @@ If IR is low and Kulc. indicates 0.5 we really have an intermediate situation, w
 
 Kulczynski and Imbalance Ratio (IR) together present a clear picture for all the three datasets D4 through D6
 
-- $D_4$ is balanced & neutral
+-   $D_4$ is balanced & neutral
 
-- $D_5$ is imbalanced & neutral
+-   $D_5$ is imbalanced & neutral
 
-- $D_6$ is very imbalanced & neutral
+-   $D_6$ is very imbalanced & neutral
 
 We can see in fact that when we have an imbalance ratio in Kulczynski we have that one probability tend to be equal to 1 and the other very low and the average is close to 0.5.

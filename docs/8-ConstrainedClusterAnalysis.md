@@ -48,12 +48,12 @@ E.g., specify the min number of objects in a cluster, the max diameter of a clus
 
     The minimum separation between clusters must be higher than delta.
 
--   $\epsilon-constraint$
+-   $\varepsilon-constraint$
 
     For any cluster $S_i, |S_j| > 1$, $∀p, s_p \in S_i, \exists s_q \in S_i:$ 
     
     $$
-        \epsilon \ge D(s_p,s_q), s_p \ne s_q
+        \varepsilon \ge D(s_p,s_q), s_p \ne s_q
     $$ 
     
     Takes in consideration the compactness of clusters.
@@ -69,9 +69,9 @@ Constraints on clusters can be converted to instance level constraints.
 
     ![alt](../media/image514.png)
 
--   $\epsilon-constraint$
+-   $\varepsilon-constraint$
 
-    For every point x, must link to at least one point y such that $D(x,y) \le \epsilon$, i.e. disjunction of ML constraints. 
+    For every point x, must link to at least one point y such that $D(x,y) \le \varepsilon$, i.e. disjunction of ML constraints. 
     
     Can be imposed to instances belonging to the same cluster.
 
