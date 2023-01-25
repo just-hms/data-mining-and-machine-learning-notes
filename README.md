@@ -1,1 +1,2 @@
-# data-mining-and-machine-learning-notes
+# Data mining an machine learning notes
+
