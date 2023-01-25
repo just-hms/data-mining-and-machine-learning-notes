@@ -662,7 +662,7 @@ The expected disagreement between the tree produced by Hoeffding tree algorithm 
 
 __Required memory__: $O(leaves * attributes * values * classes)$
 
-### __CVFDT__ (Concept adapting Very Fast Decision Tree learner
+### __CVFDT__ (Concept adapting Very Fast Decision Tree learner)
 
 It __extends VFDT but maintain VFDT's speed and accuracy also dealing with the concept drift__, not managed by VFDT because we decide to split a node if the number of instances guarantees that the decision we are taking is a good approximation of the one using all instances but nothing talks about concept drift, which is managed but alternative subtrees created when we receive instances.
 

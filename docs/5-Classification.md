@@ -855,7 +855,7 @@ We will have all information to compute the info gain, we summarize the informat
 
 We scan the DB but after that we can directly work on it.
 
-## BOAT (Bootstrapped Optimistic Algorithm for Tree Construction
+## BOAT (Bootstrapped Optimistic Algorithm for Tree Construction)
 
 Another approach is to use statistical technique called bootstrapping to create several smaller samples (subsets), each fits in memory.
 
