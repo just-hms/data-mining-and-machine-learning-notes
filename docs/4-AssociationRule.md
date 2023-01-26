@@ -12,9 +12,9 @@ Finding such frequent patterns plays an essential role in mining associations, c
 
 We define:
 
--   __Itemset I__: A set of one or more items {I1, I2, \..., Im}.
+-   __Itemset I__: A set of one or more items $\{I_1, I_2, ..., I_m\}$.
 
--   __k-itemset X__ = {x1, x2, \..., xk}, set of k items.
+-   __k-itemset X__ = $\{x_1, x_2, ..., x_k\}$, set of $k$ items.
 
 -   __(absolute) support__, or, __support count of X__: the frequency or occurrence of an itemset X in the database of transactions, number of transactions in which the itemset appears.
 
@@ -126,9 +126,11 @@ In general, association rule mining can be viewed as a two-step process:
 
 -   __Generate strong association rules from the frequent itemsets__: By definition, these rules must satisfy minimum support (automatically satisfied because we start from frequent itemsets) and minimum confidence.
 
-A long itemset contains a combinatorial number of sub-itemsets, e.g., we have 100 itemsets {a1, \..., a100}. The number of sub-itemset is:
+A long itemset contains a combinatorial number of sub-itemsets, e.g., we have 100 itemsets $\{a_1, ..., a_{100}\}$. The number of sub-itemset is:
 
-![](../media/image154.png)
+$$
+    \left( \dfrac[0pt]{100}{1} \right) + \left( \dfrac[0pt]{100}{2} \right) + ... + \left( \dfrac[0pt]{100}{100} \right) = 2^{100} - 1 \approx 1.27 \times 10^{30} \hspace{1cm} \left( \dfrac[0pt]{n}{k} \right) = \dfrac{n!}{k!(n-k)!}
+$$
 
 We need to find a solution to show all frequent patterns we can mine to users by summarizing.
 
@@ -172,7 +174,7 @@ For instance, from the set of closed frequent itemset, we can derive {$a_2$, $a_
 
 From the data set, we can only infer that {$a_2$, $a_{45}$ : 1}
 
-#### Worst-case scenario
+#### Computational Complexity
 
 Let C be the set of closed frequent itemsets for a data set D satisfying a minimum support threshold, min\_sup.
 
@@ -190,7 +192,7 @@ When minsup is low, there exist potentially an exponential number of frequent it
 
 Let's see the worst case complexity vs. the expected probability .
 
-Ex. Suppose Walmart has 104 kinds of products.The chance to pick up one product is 10-4.The chance to pick up a particular set of 10 products is \~10-40 because we consider independent products.
+Ex. Suppose Walmart has $10^4$ kinds of products.The chance to pick up one product is $10^{-4}$.The chance to pick up a particular set of 10 products is $\sim 10^{-40}$ because we consider independent products.
 
 We can see that with the increase of M in the transaction the probability to have this itemset frequent decreases.
 
