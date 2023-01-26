@@ -8,7 +8,7 @@ A bank manager wishes to locate four ATMs in the area in the figure on the left:
 
 |Obstacle view|Ignoring the obstacles|
 |-|-|
-|![alt](../media/image511.png)|![alt](../media/image512.png)|
+|![](../media/image511.png)|![](../media/image512.png)|
 
 
 But with C1 people in the other part of the river need to find a bridge to cross the river.
@@ -30,7 +30,7 @@ Specifies how a pair or a set of instances should be grouped in the cluster anal
 
 If we apply the clustering without taking in consideration constraints, the output is the third.
 
-![alt](../media/image513.png)
+![](../media/image513.png)
 
 If we impose constraints, like must-link constraints if some must belong to the same cluster and cannot link constraints if they cannot link together.
 
@@ -67,7 +67,7 @@ Constraints on clusters can be converted to instance level constraints.
     
     Can be imposed to instances belonging to the different cluster.
 
-    ![alt](../media/image514.png)
+    ![](../media/image514.png)
 
 -   $\varepsilon-constraint$
 
@@ -75,7 +75,7 @@ Constraints on clusters can be converted to instance level constraints.
     
     Can be imposed to instances belonging to the same cluster.
 
-    ![alt](../media/image515.png)
+    ![](../media/image515.png)
 
 Points inside clusters is connected with a point inside the cluster with a distance below epsilon.
 
@@ -110,7 +110,7 @@ Partition unlabeled data into clusters and use constraints to aid and bias clust
 
 These are possible constraints in the data set:
 
-![alt](../media/image516.png)
+![](../media/image516.png)
 
 These are not hard or soft, we need to establish it.
 
@@ -120,7 +120,7 @@ We can also use labeled data and create must-link exploiting the class, objects 
 
 We will have at the end:
 
-![alt](../media/image517.png)
+![](../media/image517.png)
 
 In this situation constraints are respected.
 
@@ -169,7 +169,7 @@ An object is assigned to the nearest center so that the assignment respects all 
 
 We create these super-instances and in terms of cannot-link we modify the center assignment to the nearest center assignment.
 
-![alt](../media/image518.png)
+![](../media/image518.png)
 
 We apply this approach when we have a set of unlabeled data but also a set of labeled data.
 
@@ -185,15 +185,15 @@ In 4 we replace subset of points with a super-point, that is an average of point
 
 In this way we respect must-link and adjust points to respect cannot-links.
 
-![alt](../media/image519.png)
+![](../media/image519.png)
 
 We just replace with an instance the two objects connected by a must-link and the cannot-link remains.
 
-![alt](../media/image520.png)
+![](../media/image520.png)
 
 We perform the execution of k-means using the cannot-link to move the membership of points to the cluster which is different than the cluster of the other point.
 
-![alt](../media/image521.png)
+![](../media/image521.png)
 
 ### __Handling Soft Constraints__
 
@@ -229,7 +229,7 @@ A point p is visible from another point q if the straightline joining p and q do
 
 We can create a __visibility graph__ to perform this type of clustering and it is the graph, VG = (V,E), such that each vertex of the obstacles has a corresponding node in V and two nodes, v1 and v2, in V are joined by an edge in E if and only if the corresponding vertices they represent are visible to each other. Let VG' = (V',E') be a visibility graph created from VG by adding two additional points, p and q, in V'. E' contains an edge joining two points in V' if the two points are mutually visible. The shortest path between two points, p and q, will be a subpath of VG'.
 
-![alt](../media/image522.png)
+![](../media/image522.png)
 
 We just consider all vertexes visible to each other, so that if we want to compute the shortest path we can create it just considering this graph.
 
@@ -237,7 +237,7 @@ To reduce the cost of distance computation between any two pairs of objects or p
 
 This can be done by first triangulating the region R into triangles, and then grouping nearby points in the same triangle into microclusters, using a method similar to BIRCH or DBSCAN. 
 
-![alt](../media/image523.png)
+![](../media/image523.png)
 
 By processing microclusters rather than individual points, the overall computation is reduced. After that, precomputation can be performed to build two kinds of join indices based on the computation of the shortest paths:
 
@@ -258,4 +258,4 @@ Here is the comparison of not taking obstacles into account and taking them.
 
 |__Not__ taking obstacles into account|Taking obstacles into account|
 |-|-|
-|![alt](../media/image524.png)|![alt](../media/image525.png)|
+|![](../media/image524.png)|![](../media/image525.png)|

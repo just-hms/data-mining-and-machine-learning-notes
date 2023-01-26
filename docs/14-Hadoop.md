@@ -28,7 +28,7 @@ The _parse()_ analyzes the collection and the _count()_ counts the occurrences o
 
 ||||
 |-|-|-|
-|![alt](../media/image736.png)|![alt](../media/image737.png)|![alt](../media/image738.png)|
+|![](../media/image736.png)|![](../media/image737.png)|![](../media/image738.png)|
 
 We can think they work in sequence, but we can speed-up the process with a __multi-thread solution__.
 
@@ -86,11 +86,11 @@ __REDUCE__ receives as input \<key, value\> pairs and __reduce it increasing the
 
 Runtime adds distribution + fault tolerance + replication + monitoring + load balancing to your base application
 
-![alt](../media/image739.png)
+![](../media/image739.png)
 
 In MAP we __split the data to supply multiple processors__, each map __reads the split of the data collection__ and __analyzes if the word is present__ and output \<word, 1\>.
 
-![alt](../media/image740.png)
+![](../media/image740.png)
 
 It goes in input to the reducers that increase the counter.
 
@@ -150,7 +150,7 @@ Hadoop is based on a simple data model, any data will fit.
 
 It has a __master-slave shared-nothing architecture__, used for the distributed file systems and distributed processing.
 
-![alt](../media/image741.png)
+![](../media/image741.png)
 
 In the __Master__ we have the __filesystem__ and, in the __slaves__, we have the __actual storage of data__.
 
@@ -159,7 +159,7 @@ In the slaves we have the __allocation for tasks__, the real executions of tasks
 The master has a __jobTracker__ and acts as a sort of synchronizer.
 It works well if slaves do not need to share anything.
 
-![alt](../media/image742.png)
+![](../media/image742.png)
 Hadoop framework consists of two main layers
 
 -   __Distributed File System__ (HDFS)
@@ -168,7 +168,7 @@ Hadoop framework consists of two main layers
 
 The environment is the following:
 
-![alt](../media/image743.png)
+![](../media/image743.png)
 
 While in local file systems we manage blocks of 2K size, in HDFS we manage 128M blocks.
 
@@ -209,7 +209,7 @@ DataNodes: __serves read__, __write requests__, __performs block creation, delet
 
 #### __HDFS Architecture__
 
-![alt](../media/image744.png)
+![](../media/image744.png)
 
 For each file, we have the __list of blocks__ and where they are stored.
 
@@ -332,7 +332,7 @@ When the client receives response from Namenode, it flushes its block in small p
 
 Thus data is pipelined from DataNode to the next.
 
-![alt](../media/image745.png)
+![](../media/image745.png)
 
 The client communicates with the namenode for the creation of the file.
 
@@ -380,7 +380,7 @@ It decomposes work submitted by a client into small, parallelized map and reduce
 
 It uses a __shared-nothing model__: remove any parallel execution interdependencies that could add unwanted synchronization points or state sharing. They could limit our parallel execution.
 
-![alt](../media/image746.png)
+![](../media/image746.png)
 
 The MapReduce master __divides the job in parts__, some for mappers and some for reducers. They schedule them for remote execution on the slave node.
 
@@ -390,7 +390,7 @@ __Map functions__: output key/value tuples
 
 __Reduce functions__: process the key/value tuples to produce the final output
 
-![alt](../media/image747.png)
+![](../media/image747.png)
 
 It __elaborates the original file/table__ and __process key/value pairs__.
 
@@ -398,23 +398,23 @@ The reducer __elaborates this list of key/value pairs__ and __produces a list of
 
 The power of MapReduce occurs in __between the map output and the reduce input__, in the __shuffle and sort phases__.
 
-![alt](../media/image748.png)
+![](../media/image748.png)
 
 The __shuffle+sort__ is managed using the map/reduce support and have the primary duties specified, determine the reducer for the output of the mappers and ensure that for a given reducer the input keys are sorted.
 
 The shuffle knows that the keyword cat is elaborated by _Reducer 1_ and so all outputs are organized to provide this keyword as input to _Reducer 1_, also merging possible values for the specific key(sort phase).
 
-![alt](../media/image749.png)
+![](../media/image749.png)
 
 Shuffle and sort in MapReduce:
 
-![alt](../media/image750.png)
+![](../media/image750.png)
 
 Map tasks and reducers tasks are __typically executed in different servers__.
 
 We need to have __similar mapper executions__, otherwise we have to wait for the longest one.
 
-![alt](../media/image751.png)
+![](../media/image751.png)
 
 ### __Physical Architecture__
 
@@ -456,7 +456,7 @@ The keys are __divided among all the Reduce tasks__: all key-value pairs with th
 
 The Reduce tasks work on __one key at a time__ and combine all the values associated with that key in the way defined by the code written in the Reduce function.
 
-![alt](../media/image752.png)
+![](../media/image752.png)
 
 #### __Map Tasks__
 
@@ -530,7 +530,7 @@ Anyway, it is __still necessary to do grouping and aggregation and to pass the r
 
 We have different chunks of the document for each mapper, we produce in output the words with the counter, we combine values considering the same word and with the partitioner and shuffle & sort, the single key is in input to the single reducer.
 
-![alt](../media/image756.png)
+![](../media/image756.png)
 
 The combiner helps us to __reduce the communication__, we combine output with the same key to count the number of occurrences so we can transmit to the reducer the key but already with a combination of values.
 
@@ -587,7 +587,7 @@ Given the information, a mapper can __compute the closest center point for each 
 
 The intermediate values are then composed of two parts: the __index__ of the closest center point and the __sample information__.
 
-![alt](../media/image757.png)
+![](../media/image757.png)
 
 The global variable centers, offset key and sample value are given in input.
 
@@ -611,7 +611,7 @@ It takes the output of the map function and make this aggregation for all values
 
 The procedure __does not require any communication__.
 
-![alt](../media/image758.png)
+![](../media/image758.png)
 
 Feature by feature we sum all values of objs belonging to the same cluster and we transmit also the number of objects we consider.
 
@@ -629,7 +629,7 @@ The reduce function:
 
 -   __computes the new centers__ which are used for the next iteration, dividing for the number of objects in the cluster
 
-![alt](../media/image759.png)
+![](../media/image759.png)
 
 The output is the __list of centers of the clusters__.
 
@@ -649,7 +649,7 @@ But we have __advantages__ in terms of __computational time__.
 
 __Speedup__: measures how much a parallel algorithm is faster than a corresponding sequential algorithm.
 
-![alt](../media/image760.png)
+![](../media/image760.png)
 
 With the increase of the number of nodes we are able to increase the speed-up, obtaining a __faster execution__ than the sequential one.
 
@@ -663,7 +663,7 @@ If the dataset is small the overhead weights more in terms of speed-up, because 
 
 Another metric is the __Scaleup__: holds the number of computers in the system constant and grows the size of the datasets by the factor $m$. Sizeup measures __how much longer it takes on a given system, when the dataset size is $m$-times larger than the original dataset__.
 
-![alt](../media/image761.png)
+![](../media/image761.png)
 
 We have a reduction in time when we increase the size of the dataset, and we have available a higher number of nodes.
 
@@ -681,9 +681,9 @@ The problem of finding frequent itemsets is converted to __constructing and sear
 
 We use map/reduce tasks in several steps.
 
-![alt](../media/image762.png)
+![](../media/image762.png)
 
-![alt](../media/image763.png)
+![](../media/image763.png)
 
 #### __Parrallel Counting__
 1. __Sharding__:
@@ -699,7 +699,7 @@ unknown for a huge DB.
 
     The result is stored in F-list.
 
-    ![alt](../media/image764.png)
+    ![](../media/image764.png)
 
 3. __Grouping Items__:
 
@@ -709,12 +709,11 @@ unknown for a huge DB.
     - __Mapper__ – Generating group-dependent transactions: Each mapper instance is fed with a shard of DB generated in Step 1. Before it processes transactions in the shard one by one, it reads the G-list. 
     
         With the mapper algorithm, it outputs one or more key-value pairs, where each key is a group-id and its corresponding value is a generated group-dependent transaction.
-    ![alt](../media/image765.png)
+    ![](../media/image765.png)
     - __Reducer__ – FP-Growth on group-dependent shards: When all mapper instances have finished their work, for each group-id, the MapReduce infrastructure automatically groups all corresponding group-dependent transactions into a shard of group-dependent transactions. 
     
         Each reducer instance is assigned to process one or more group-dependent shard one by one. For each shard, the reducer instance builds a local FP-tree and growth its conditional FP-trees recursively. During the recursive process, it may output discovered patterns.
-    ![alt](../media/image766.png)
+    ![](../media/image766.png)
 
 5. __Aggregating__
-![alt](../media/image767.png)
-
+![](../media/image767.png)

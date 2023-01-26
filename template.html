@@ -17,11 +17,8 @@
     $endif$
 
     <title>$if(title-prefix)$$title-prefix$ - $endif$$pagetitle$</title>
-    <style>
-        $styles.html()$
-    </style>
     $for(css)$
-    <link rel="stylesheet" href="$css$" />
+        <link rel="stylesheet" href="$css$" />
     $endfor$
     
     $if(math)$
@@ -44,7 +41,7 @@
         $endfor$
             
         $if(title)$
-            <header id="title-block-header">
+            <header id="title-block-header my-6">
                 <h1 class="title">$title$</h1>
                 $if(subtitle)$
                     <p class="subtitle">$subtitle$</p>
@@ -61,7 +58,7 @@
         $endif$
     
         $if(toc)$
-            <nav id="$idprefix$TOC" role="doc-toc">
+            <nav class="my-6" id="$idprefix$TOC" role="doc-toc">
                 $if(toc-title)$
                     <h2 id="$idprefix$toc-title">$toc-title$</h2>
                 $endif$
@@ -77,7 +74,7 @@
     </div>
 
     <!-- mine -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/startup.js" integrity="sha512-TVq6RFk599KMqPh7Ri0yEAxHbJ0dcxSSPgvMuzQUg0wu4z+X7z2PsibMbbzAq/AHloHdxMW0FdvKv9k4s8niuA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/startup.js" integrity="sha512-TVq6RFk599KMqPh7Ri0yEAxHbJ0dcxSSPgvMuzQUg0wu4z+X7z2PsibMbbzAq/AHloHdxMW0FdvKv9k4s8niuA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
 </body>
 </html>

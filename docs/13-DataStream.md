@@ -4,7 +4,7 @@ We have to analyze data in streaming.
 
 Data stream a potentially unbounded , ordered sequence of instances . A data stream $S$ may be shown as $S = \{ x_1 , x_2 , x_3 , ... , x_N \}$, where $x_i$ is $i$-th data instance, which is a $d$-dimensional feature vector and $N$ goes to infinity.
 
-![alt](../media/image700.png)
+![](../media/image700.png)
 
 We theoretically have an infinite quantity of data. We have a time order.
 
@@ -62,7 +62,7 @@ Application characteristics
 
 ## Computational Model
 
-![alt](../media/image701.png)
+![](../media/image701.png)
 
 The __SPE__ elaborate the data stream and produce an approximated answer.
 
@@ -107,19 +107,19 @@ There are __four types__ of concept drift: sudden, gradual, incremental and recu
 
 -   __Sudden concept drift__ : Between two consecutive instances, the change occurs at once , and after this time only instances of the new class are received
 
-    ![alt](../media/image702.png)
+    ![](../media/image702.png)
 
 -   __Gradual concept drift__ : The number of instances belonging to the previous class decreases gradually while the number of instances belonging to the new class increases over time. During a gradual concept drift, instances of both previous and new classes are visible. We have a period in which we have __instances of both classes__.
 
-    ![alt](../media/image703.png)
+    ![](../media/image703.png)
 
 -   __Incremental concept drift__ : Data instances belonging to the previous class evolves to a new class step by step. After the concept drift is completed, the previous class disappears. The instances that arrive during the concept drift are of transitional forms and they do not have to belong to either of the classes.
 
-    ![alt](../media/image704.png)
+    ![](../media/image704.png)
 
 -   __Recurring concept drift__ : The data instances change between two or more statistical characteristics several times. Neither of the classes disappears permanently but both of them arrive in turns.
 
-    ![alt](../media/image705.png)
+    ![](../media/image705.png)
 
     We have an oscillation between the two classes.
 
@@ -167,7 +167,7 @@ $$
 
 For example, we can use this exponential function where lambda is the decay rate. Higher decay rate in the function means a more rapid decrease in the value
 
-![alt](../media/image707.png)
+![](../media/image707.png)
 
 We have to use data structure that allow us to store information we need, to generate for example clustering without losing information or losing few of them.
 
@@ -194,7 +194,7 @@ $$
     m = \left\lfloor \dfrac{i}{w} \right\rfloor
 $$
 
-![alt](../media/image710.png)
+![](../media/image710.png)
 
 #### __Sliding window model__
 
@@ -210,7 +210,7 @@ $$
     \Large{W_m = [x_m, ..., x_{(m+w-1)}]}
 $$
 
-![alt](../media/image712.png)
+![](../media/image712.png)
 
 These are data structure model to preprocess the data.
 
@@ -222,7 +222,7 @@ _BIRCH_ is an example of algorithm that can be used to manage data streams.
 
 It has a data structure to summarize information relative to the data.
 
-![alt](../media/image713.png)
+![](../media/image713.png)
 
 We have these 5 kinds of approaches.
 
@@ -238,7 +238,7 @@ Therefore, clustering, being unsupervised is __one of the most suitable data min
 
 We need to update clusters when we receive data in streaming.
 
-![alt](../media/image714.png)
+![](../media/image714.png)
 
 We just use a number of instances at the beginning for initialization, and this is the parameter $l$.
 
@@ -254,7 +254,7 @@ The function _determineCentroids()_ finds $k$ and determines candidate centroids
 
 It estimates the __probability density function__ (PDF) of the data for each feature and determine the directional changes of the PDF curves: each change identifies a new region. The region can be defined as the area between two consecutive directional changes of the PDF curve.
 
-![alt](../media/image715.png)
+![](../media/image715.png)
 
 We use this function and we just determine the variation between two different regions in the PDF function.
 
@@ -310,7 +310,7 @@ For __Data synopsis, core mini clusters are used__: they are __specialized featu
 
 #### __Online Phase__:
 
-![alt](../media/image717.png)
+![](../media/image717.png)
 
 Parameters affect the final result.
 
@@ -320,7 +320,7 @@ Instances are located in specific cells while arriving, at the beginning not den
 
 #### __Offline Phase__:
 
-![alt](../media/image718.png)
+![](../media/image718.png)
 
 It is similar to _DBSCAN_ working on dense core mini-clusters.
 
@@ -366,7 +366,7 @@ Density based algorithm designed for clustering data streams with concept drifts
 
 __Damped window model__ is employed with a __linear decay function__ instead of an exponential one
 
-![alt](../media/image719.png)
+![](../media/image719.png)
 
 Reducing by lambda is the decay which in fact is linear.
 
@@ -404,7 +404,7 @@ Threshold values of major and critical micro clusters are global parameters in t
 
 #### __Online phase__
 
-![alt](../media/image720.png)
+![](../media/image720.png)
 
 In initialization we can work with any kind of algorithm, because we work with static data instances.
 
@@ -414,7 +414,7 @@ The pruning period depending on the decay rate
 
 #### __Offline phase__
 
-![alt](../media/image721.png)
+![](../media/image721.png)
 
 At the end we create clusters starting from the major micro-cluster and adding other micro-clusters.
 
@@ -447,14 +447,18 @@ $$
     \large{S_i = \left(\dfrac{1}{|C_i|} \sum_{x \in C_i}{D^p}(x,v_i) \right)^{\dfrac{1}{p}}, p > 0 \hspace{1cm}D_{ij} = \left(\sum_{l = 1}^{d}{|v_{il}-v_{jl}|^t} \right)^{\dfrac{1}{d}}, t > 1}
 $$
 Where:
+
 - $S_i \rightarrow$ Dispersion
+
 - $C_i \rightarrow$ Number of objects in cluster $C_i$
+
 - $v_i \rightarrow$ Centroid of cluster $C_i$
+
 - $D_{ij} \rightarrow$ Separation 
 
 We take again in consideration __compactness and separation__.
 
-![alt](../media/image723.png)
+![](../media/image723.png)
 
 We exploit DBI to determine the best cluster to add these instances.
 
@@ -488,19 +492,19 @@ In the __offline phase__, micro-clusters are maintained in a graph structure as 
 
 Main contributions of I-HASTREAM are to perform the final clustering on a minimum spanning tree and to incrementally update the minimum spanning tree according to the changes in the microclusters, instead of generating it from scratch. Both contributions are related to the offline phase.
 
-![alt](../media/image724.png)
+![](../media/image724.png)
 
 Because no algorithmic details are specified about the online phase, the __analysis of the complexity of _I-HASTREAM_ was not possible__.
 
 ### __Comparison__
 
-![alt](../media/image725.png)
+![](../media/image725.png)
 
 Most of them use a damped window method, so with a decay.
 
 Some exploits only online phase, others exploit both.
 
-![alt](../media/image726.png)
+![](../media/image726.png)
 
 They can adapt to concept drift.
 
@@ -641,14 +645,14 @@ We accumulate instances in the leaf and we have to decide if they can classify c
 
 The Hoeffding Bound tells us when we accumulate a sufficient number of instances to take that decision.
 
-![alt](../media/image733.png)
+![](../media/image733.png)
 
-![alt](../media/image734.png)
+![](../media/image734.png)
 
 
 We update the decision tree using each instance and just update the label of the leaves.
 
-![alt](../media/image735.png)
+![](../media/image735.png)
 
 We select $X_a$ as the attribute to split.
 

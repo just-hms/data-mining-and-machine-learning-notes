@@ -12,7 +12,7 @@ It should be used different minsup's depending on the level we consider.
 
 In higher levels we could use an higher min\_sup.
 
-![alt](../media/image592.png)
+![](../media/image592.png)
 
 Flexible min-support thresholds are also useful for other thigs.
 
@@ -50,7 +50,7 @@ We can have also multi-dimensional rules, that consider \>= 2 dimensions or pred
 
 Inter-dimensional association rules (no repeated predicates): age(X,"19-25") & occupation(X,"student") -\> buys(X, "coke")
 
-‎hybrid-dimensional association rules (repeated predicates): age(X,"19-25") & buys(X, "popcorn") -\> buys(X, "coke")
+hybrid-dimensional association rules (repeated predicates): age(X,"19-25") & buys(X, "popcorn") -\> buys(X, "coke")
 
 -   
 
@@ -90,7 +90,7 @@ The cells of an n-dimensional cuboid correspond to the predicate sets
 
 Mining from data cubes can be much faster
 
-![alt](../media/image593.png)
+![](../media/image593.png)
 
 **Quantitative Association Rules Based on Statistical Inference Theory**
 
@@ -155,17 +155,17 @@ We try to define negative correlated patterns.
 
 > If X and Y are strongly negatively correlated, then
 >
-> ![alt](../media/image594.png)
+> ![](../media/image594.png)
 >
 > Also this definition suffers from the null-variant problem.
 >
 > Let's consider 200 transactions:
 >
-> ![alt](../media/image595.png)
+> ![](../media/image595.png)
 >
 > Considering 10\^6 transactions:
 >
-> ![alt](../media/image596.png)
+> ![](../media/image596.png)
 
 -   Definition 3 (Kulczynski measure-based)
 
@@ -173,9 +173,9 @@ We try to define negative correlated patterns.
 >
 > Ex. For the same needle package problem, when no matter there are 200 or 105 transactions, if min\_sup = 0.01% and є = 0.02, we have
 >
-> ![alt](../media/image597.png)
+> ![](../media/image597.png)
 >
-> ![alt](../media/image598.png)
+> ![](../media/image598.png)
 
 **Constraint-Based Frequent Pattern Mining**
 
@@ -219,7 +219,7 @@ Fixing the metarule we are looking for association rules with two predicates in 
 
 In general, it can be in the form of P1 \^ P2 \^ \... \^ Pl =\> Q1 \^ Q2 \^ \... \^ Qr
 
-![alt](../media/image599.png)Dimension/level constraints and interestingness constraints can be applied after mining to filter out discovered rules, although it is generally more efficient and less expensive to use them during mining to help prune the search space.
+![](../media/image599.png)Dimension/level constraints and interestingness constraints can be applied after mining to filter out discovered rules, although it is generally more efficient and less expensive to use them during mining to help prune the search space.
 
 We can use them to improve the performance of our analysis.
 
@@ -265,7 +265,7 @@ In other words, anti-monotonicity: If an itemset S violates the constraint, so d
 
 Ex. 1. sum(I.price) \<= v is anti-monotone, because adding other elements we cannot reduce the sum
 
-![alt](../media/image600.png)Ex. 2. range(I.profit) \<= 15 is anti-monotone, considering in the itemset items in which the range is higher we cannot reduce the range adding items in the itermset.
+![](../media/image600.png)Ex. 2. range(I.profit) \<= 15 is anti-monotone, considering in the itemset items in which the range is higher we cannot reduce the range adding items in the itermset.
 
 Itemset ab violates C, the range is 40 and violates the constraint on the range. So does every superset of ab.
 
@@ -279,7 +279,7 @@ This imply that we need time to generate a very high number of patterns and then
 
 With the reasoning we've seen we avoid to generate patterns not able to satisfy constraints, we reduce the computational time.
 
-![alt](../media/image601.png)**Pattern Space Pruning with Monotonicity Constraints**
+![](../media/image601.png)**Pattern Space Pruning with Monotonicity Constraints**
 
 A constraint C is monotone if the pattern satisfies C, we do not need to check C in subsequent mining.
 
@@ -321,11 +321,11 @@ Optimization: If C is succinct, C is pre-counting pushable
 
 Example of the Apriori Algorithm:
 
-![alt](../media/image602.png)
+![](../media/image602.png)
 
 In front of constraints, we use the Naive Algorithm: Apriori + Constraint:
 
-![alt](../media/image603.png)
+![](../media/image603.png)
 
 We have the possibility to verify that for an itemset this is not verified.
 
@@ -333,7 +333,7 @@ We reduce the computational time terminating the execution of Apriori algorithm 
 
 The same using succinct.
 
-![alt](../media/image604.png)
+![](../media/image604.png)
 
 We can use convertible constraint.
 
@@ -341,7 +341,7 @@ We can use convertible constraint.
 
 The idea is to convert tough constraints into anti- monotone or monotone by properly ordering items.
 
-![alt](../media/image605.png)Examine C: avg(S.profit) \>= 2
+![](../media/image605.png)Examine C: avg(S.profit) \>= 2
 
 Order items in value-descending order \<a, f, g, d, b, h, c, e\>
 
@@ -375,7 +375,7 @@ Since adf satisfies C, Apriori needs df to assemble adf, df cannot be pruned
 
 But it can be pushed into frequent-pattern growth framework!
 
-![alt](../media/image606.png)
+![](../media/image606.png)
 
 C: avg(X) \>= 25, min\_sup=2 are the constraints we want to satisfy.
 
@@ -403,7 +403,7 @@ If there exists conflict on order of items, we try to satisfy one constraint fir
 
 What Constraints Are Convertible?
 
-![alt](../media/image607.png)
+![](../media/image607.png)
 
 If one constraint is convertible anti-monotone and monotone, it is defined as strongly convertible.
 
@@ -415,7 +415,7 @@ This means that we can avoid to consider t for verifying the pattern, the supers
 
 The key for data anti-motone is recursive data reduction.
 
-![alt](../media/image608.png)
+![](../media/image608.png)
 
 Ex. 1 sum(I.Price) \>= v is data anti-monotone
 
@@ -449,17 +449,17 @@ We reduce the number of transactions we observe for verifying the frequency in t
 
 We determine it considering if the transaction can help us to satisfy constrains.
 
-![alt](../media/image609.png)
+![](../media/image609.png)
 
 I cannot perform data space pruning at the beginning, but we have to perform during the execution of apriori algorithm. We can eliminate items because not frequent.
 
 This is a list of constraint-based mining:
 
-![alt](../media/image610.png)
+![](../media/image610.png)
 
 A classification of constraints:
 
-![alt](../media/image611.png)
+![](../media/image611.png)
 
 **Mining High-Dimensional Data and Colossal Patterns**
 
@@ -479,13 +479,13 @@ No matter using breadth-first search (e.g., Apriori) or depth-first search (FPgr
 
 Thus, the downward closure property leads to explosion!
 
-![alt](../media/image612.png)
+![](../media/image612.png)
 
 Closed/maximal patterns may partially alleviate the problem but not really solve it: We often need to mine scattered large patterns!
 
 Let the minimum support threshold σ= 20
 
-![alt](../media/image613.png)
+![](../media/image613.png)
 
 If we want only to represent the output in any case, we have an explotion of possible output, all possible combination are frequent pattern.
 
@@ -495,7 +495,7 @@ It is often the case that only a small number of patterns are colossal, i.e., of
 
 Colossal patterns are usually attached with greater importance than those of small pattern sizes.
 
-![alt](../media/image614.png)
+![](../media/image614.png)
 
 We have no hope for completeness.
 
@@ -515,9 +515,9 @@ The key is to develop a mechanism that may quickly reach colossal patterns and d
 
 The risk is that we cannot find them all, we must find a trade-off between computation and optimal results.
 
-![alt](../media/image615.png)
+![](../media/image615.png)
 
-Let the min-support threshold σ= 20. Then there are ![alt](../media/image616.png) closed/maximal frequent patterns of size 20
+Let the min-support threshold σ= 20. Then there are ![](../media/image616.png) closed/maximal frequent patterns of size 20
 
 However, there is only one with size greater than 20, (it is the colossal): It is α= {41,42,\...,79} of size 39.
 
@@ -543,11 +543,11 @@ We don't add one item each item, but we combine itemsets using shortcuts to prod
 
 These shortcuts will direct the search down the tree much more rapidly towards the colossal patterns.
 
-![alt](../media/image617.png)
+![](../media/image617.png)
 
 We have to understand how to combine them correctly to go towards colossal patterns.
 
-![alt](../media/image618.png)
+![](../media/image618.png)
 
 When we eliminate items in the colossal pattern we can assume the support of the subitemset we created is very close to the support of the colossal pattern.
 
@@ -559,7 +559,7 @@ We go towards the subpatterns of the colossal pattern with support similar to th
 
 Intuitively, for a frequent pattern α, a subpattern β is a τ-core pattern of α if β shares a similar support set with α, i.e.,
 
-![alt](../media/image619.png)
+![](../media/image619.png)
 
 where \|Dα\| is the number of patterns containing α and τ is called the core ratio
 
@@ -579,25 +579,25 @@ A pattern α is (d, τ)-robust if d is the maximum number of items that can be r
 
 For a (d,τ)-robust pattern α, it has
 
-![alt](../media/image620.png)(2\^d) core patterns
+![](../media/image620.png)(2\^d) core patterns
 
 Colossal patterns tend to have a large number of core patterns
 
 Pattern distance: For patterns α and β, the pattern distance of α and β is defined to be
 
-![alt](../media/image621.png)
+![](../media/image621.png)
 
  If two patterns α and β are both core patterns of a same pattern, they would be bounded by a "ball" of a radius specified by their core ratio τ
 
-![alt](../media/image622.png)
+![](../media/image622.png)
 
 The distance between alpha and beta will be lower than that.
 
 Once we identify one core pattern, we will be able to find all the other core patterns by a bounding ball of radius r(τ).
 
-![alt](../media/image623.png)
+![](../media/image623.png)
 
-![alt](../media/image624.png)
+![](../media/image624.png)
 
 The last thing is quite natural because to achieve these patterns we have to achieve an high number of core patterns.
 
@@ -613,7 +613,7 @@ Due to their robustness, colossal patterns correspond to dense balls
 
 A random draw in the pattern space will hit somewhere in the ball with high probability
 
-![alt](../media/image625.png)
+![](../media/image625.png)
 
 In the previous example, the probability of drawing a descendant of abcef is 0.9.
 
@@ -641,11 +641,11 @@ Then, perform a certain number of iterations (Iterative Pattern Fusion):
 
 Termination: when the current pool contains no more than K patterns at the beginning of an iteration
 
-![alt](../media/image626.png)
+![](../media/image626.png)
 
 We start with the set of patterns empty.
 
-![alt](../media/image627.png)
+![](../media/image627.png)
 
 We aggregate in (9) what we found in the core list.
 
@@ -679,13 +679,13 @@ We can compress patterns.
 
 We introduce the pattern distance measure:
 
-![alt](../media/image628.png)
+![](../media/image628.png)
 
 δ-clustering is used to do that. We have that for each pattern P, find all patterns S which can be expressed by(that is, O(S) ⊂ O(P)) and their distance to P are within δ (δ-cover).
 
 All patterns in the cluster can be represented by P
 
-![alt](../media/image629.png)
+![](../media/image629.png)
 
 Returning closed frequent pattern, we have to report P1, P2, P3, P4, P5 because support is different. This definition has no kind of compression.
 
@@ -709,7 +709,7 @@ Desired patterns must be characterized by high significance & low redundancy.
 
 We propose to exploit the MMS (Maximal Marginal Significance) for measuring the combined significance of a pattern set.
 
-![alt](../media/image630.png)
+![](../media/image630.png)
 
 The significance of (a) is represented by white-black colors.
 

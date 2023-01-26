@@ -11,6 +11,7 @@ This is an __unsupervised learning approach__: no predefined classes
 ## Typical applications:
 
 - As a stand-alone tool to get insight into data distribution
+
 - As a preprocessing step for other algorithms, like k-nearest neighbors
 
 ### Possible applications are:
@@ -137,7 +138,7 @@ The definitions of __distance__ functions are usually rather different for inter
 
 ### Recap
 
-![alt](../media/image329.png)
+![](../media/image329.png)
 
 - Partitioning methods have prefix shape of clusters beacuse they have to fix a distance to use. In k-means it is spherical because we use euclidian distance.
 
@@ -167,12 +168,12 @@ Before applying any clustering method on your data, it's important to evaluate w
 
 If we apply k-means to the left example, we produce two clusters also if natural clusters are not present.
 
-![alt](../media/image330.png)
+![](../media/image330.png)
 
 Clustering tendency assessment determines whether a given data set has a non-random structure, which may lead to meaningful clusters.
 
 
-# Hopkins statistic
+## Hopkins statistic
 
 The intuition is to understand if our dataset is uniformly distributed in a data space. In this case clusters we discover are clusters without any meaning.
 
@@ -180,7 +181,7 @@ __Hopkins statistic__ tests the spatial randomness of a variable as distributed 
 
 > In other words, it tests the spatial randomness of the data.
 
-## Algorithm
+### Algorithm
 
 Given a dataset $D$ which is regarded as a sample of a random variable $X$, we want to determine how far away $X$ is from being uniformly distributed in the data space.
 
@@ -214,7 +215,7 @@ It works in this way:
 
     ex:
 
-    ![alt](../media/image333.png)
+    ![](../media/image333.png)
 
     In the first case we compute the distance between the points we selected and the points in $D$, in the second case the fictitious point and the closest point in $D$.
 
@@ -229,7 +230,7 @@ It works in this way:
 
     Picking up samples from the distribution of data and the space approximately gives similar points.
 
-## Considerations
+### Considerations
 
 In presence of clustering tendency, then the first term at the denominator would be smaller than the second and then $H$ will increase.
 
@@ -249,7 +250,7 @@ The Hopkins statistic is computed for several random selection of points and the
 
 > Before applying clustering algorithms, we should understand if exists clustering tendency or we could find non-natural clusters.
 
-# Partitioning Methods
+## Partitioning Methods
 
 First group of clustering algorithms are partitioning algorithms.
 
@@ -265,7 +266,7 @@ We have the difference between each point belonging to a cluster and the represe
 
 We tend to minimize this difference for all point belonging to the different clusters.
 
-## Fixed $k$
+### Fixed $k$
 
 Given $k$ find a partition of $k$ clusters that optimizes the chosen partitioning criterion.
 
@@ -285,11 +286,11 @@ Heuristic methods are `k-means` and `k-medoids` algorithms.
 
 - __k-medoids or PAM__ (Partition around medoids) : Each cluster is represented by one of the objects in the cluster. In this approach we can have different types of features.
 
-## K-means clustering method
+### K-means clustering method
 
 The centroid is defined as the mean value of the points within the cluster.
 
-### pseudocode
+#### pseudocode
 
 ```py
 
@@ -316,21 +317,21 @@ def kmeans(data, k):
 > We will converge to have optimal clusters because we move objects in clusters and recompute means.
 
 
-### Example
+#### Example
 
-![alt](../media/image337.png)
+![](../media/image337.png)
 
 - Let's suppose K = 2, we re-assing each object to clusters by computing distance between each object and the center of the cluster and re-assing each object and then update cluster centroids.
 
 - We can also have other termination conditions, for example if the center moves from one iteration to another and so on.
 
-### Consideations
+#### Consideations
 
 - This approach, as we can see, is really sensitive to the initialization phase. We have the risk to fall in a local minimum instead of a maximum.
 
 - These clusters are clusters with spherical shape. The reason is that in k-means we assess the similarity between each point and the center of the cluster using the euclidian distance.
 
-#### Strengths
+##### Strengths
 
 - __Efficient__: $O(tkn)$ where
  
@@ -348,7 +349,7 @@ Comment: Often terminates at a local optimal.
 
 In fact, we can use k-means several times using different initializations and use the result of the execution that achieve the minimum value of the cost function.
 
-#### Weakness
+##### Weakness
 
 - Applicable only to objects in a __continuous n-dimensional space__. 
 
@@ -382,7 +383,7 @@ In fact, we can use k-means several times using different initializations and us
 
     it derives from the use of euclidian distance but also with other types of distances. We can determine only convex shapes, in particular with the euclidian we have a spheric shape.
 
-### k-means variants
+#### k-means variants
 
 Most of the variants of the k-means differ in:
 
@@ -398,17 +399,17 @@ We will use new dissimilarity measures to deal with categorical objects and a fr
 
 We can also use a mixture of categorical and numerical data, the `k-prototype method`.
 
-### What Is the Problem of the K-Means method ?
+#### What Is the Problem of the K-Means method ?
 
 > The k-means method is sensitive to outliers!
 
 the k-medoids solve this problem by choosing the most centrally located object in a cluster. Ex:
 
-![alt](../media/image338.png)
+![](../media/image338.png)
 
-## K-medoids
+### K-medoids
 
-### The idea
+#### The idea
 
 - Initial representatives are chosen randomly
 
@@ -421,15 +422,15 @@ the k-medoids solve this problem by choosing the most centrally located object i
 
 > The cost function is the difference in absolute error-value if a current representative object is replaced by a non- representative object
 
-### PAM (typical K-Medoids Algorithm)
+#### PAM (typical K-Medoids Algorithm)
 
-![alt](../media/image339.png)
+![](../media/image339.png)
 
 We assume we want to determine $k = 2$ clusters, choose arbitrarily k-object as medoids, and assign each remaining object to the nearest medoid.
 
 We select a non-medoid object and compute the total cost of swapping, if it improves the quality of the cluster (reduce the cost function) we will accept swapping, otherwise we will select another non-medoid object.
 
-![alt](../media/image340.png)
+![](../media/image340.png)
 
 We ask if we can replace the medoid $8$ with another medoid to decrease the cost function.
 
@@ -437,10 +438,12 @@ First, we compute the cost function for the current situation we have, for medoi
 
 
 $$
-    E = \sum_{i=1}^{k}{\sum_{p\in C_i}{|p-o_i|}} =  |o_1-o_2| + |o_3-o_2| + |o_4-o_2| \\ 
-    
-    + \ |o_5-o_8| + |o_6-o_8| + |o_7-o_8| + |o_9-o_8| + |o_{10}-o_8| = \\ \ \\
-
+    E = \sum_{i=1}^{k}{\sum_{p\in C_i}{|p-o_i|}} =  |o_1-o_2| + |o_3-o_2| + |o_4-o_2|
+$$
+$$
+    + \ |o_5-o_8| + |o_6-o_8| + |o_7-o_8| + |o_9-o_8| + |o_{10}-o_8| =
+$$
+$$
     = (3+4+4) + (3+1+1+2+2) = 20
 $$
 
@@ -449,14 +452,17 @@ We extract randomly the object 7 to replace object 8.
 We must be sure that this gives benefits.
 
 $$
-    S = newE - E = 22 - 20 = 2 \\ \ \\
+    S = newE - E = 22 - 20 = 2
+$$
+
+$$
 
     S > 0 \implies \text{no replacement} 
 $$
 
-## 4 different cases
+### 4 different cases
 
-![alt](../media/image344.png)
+![](../media/image344.png)
 
 Let's assume we have the two classes at the beginning.
 
@@ -464,7 +470,7 @@ If we change the representative for the cluster 2, from that B to the other, the
 
 In the second case, B is replaced from another B and the cluster changes, and P that initially was in cluster 2, will belong to cluster 1, just because is closer to medoid A than medoid 2.
 
-![alt](../media/image345.png)
+![](../media/image345.png)
 
 In this other case we have just a change in B but P remains.
 
@@ -474,7 +480,7 @@ The cluster can change because the point can be attracted by another cluster.
 
 Partitioning Around Medoids (PAM) approach has this pseudo-code:
 
-### Current PAM pseudocde
+#### Current PAM pseudocde
 
 ```py
 
@@ -517,10 +523,10 @@ def PAM(data, k):
         medoids = new_medoidss
 ```
 
-### Original PAM pseudocde
+#### Original PAM pseudocde
 
-![alt](../media/image347.png)
-![alt](../media/image348.png)
+![](../media/image347.png)
+![](../media/image348.png)
 
 This version constructs the initial medoid $m_1$ as the minimum of the distance of each object on the dataset and the medoid we are considering.
 
@@ -532,7 +538,7 @@ When the number of objects is high, this algorithm is not applicable.
 
 The original PAM is computationally very heavy.
 
-### PAM vs K-means
+#### PAM vs K-means
 
 - Pam is more robust than k-means in the presence of noise and outliers because a medoid is less influenced by outliers or other extreme values than a mean.
 
@@ -541,7 +547,7 @@ The original PAM is computationally very heavy.
 In the literature were proposed approaches to have efficiency improvement on PAM.
 
 
-## CLARA
+### CLARA
 
 __CLARA__ draw a sample of the dataset and applies PAM on the sample to find the medoids.
 
@@ -559,9 +565,9 @@ To improve the approximation, multiple samples are drawn and the best clustering
 
 We start from the overall dataset, generate samples and apply PAM on each sample and then we just the best clustering we have from the different outputs
 
-![alt](../media/image349.png)
+![](../media/image349.png)
 
-### Idea
+#### Idea
 
 For $i$ from 1 to $R$, repeat the following steps
 
@@ -571,17 +577,17 @@ For $i$ from 1 to $R$, repeat the following steps
 
 3. Calculate the average dissimilarity ON THE ENTIRE DATASET of the clustering obtained in the previous step. If this value is less than the current minimum, use this value as the current minimum, and retain the k medoids found in Step (b) as the best set of medoids obtained so far.
 
-### Strength:
+#### Strength:
 
 - deals with larger data sets than PAM, the complexity is squared but with the size of the sample and linear with the total number of objects. It is $O(ks^2 + k(n-k))$, where s is the size of the sample, k the number of clusters and n the number of objects.
 
-### Weakness:
+#### Weakness:
 
 - Efficiency depends on the sample size
 
 - A good clustering based on samples will not necessarily represent a good clustering of the whole data set if the sample is biased
 
-## CLARANS
+### CLARANS
 
 To improve its quality was proposed `CLARANS` (A Clustering Algorithm based on Randomized Search).
 
@@ -589,7 +595,7 @@ The clustering process can be presented as searching a graph where every node is
 
 Two nodes are neighbors if their sets differ by only one medoid.
 
-![alt](../media/image350.png)
+![](../media/image350.png)
 
 Each node is associated with a cost that is defined to be the total dissimilarity between every object and the medoid of its cluster.
 
@@ -614,7 +620,7 @@ It is more efficient and scalable than both PAM and CLARA; returns higher qualit
 
 Complexity is $O(n)$
 
-![alt](../media/image351.png)
+![](../media/image351.png)
 
 We must fix numlocal and maxneighbor.
 
@@ -622,19 +628,19 @@ Each node in $G_{n,k}$ is represented by a set of k objects
 
 Two nodes are neighbors if their sets differ by only one object. More formally, two nodes $S_1=\{O_{m1}, \dots, O_{mk}\}$ and $S_2 = \{O_{w1},\dots, O_{wk}\}$ are neighbors if and only if the cardinality of the intersection of $S_1, S_2$ is $k-1$.
 
-## Differences between `CLARA` and `CLARANS`
+### Differences between `CLARA` and `CLARANS`
 
-![alt](../media/image352.png)
+![](../media/image352.png)
 
 In CLARA we draw a sample of nodes at the beginning of the source, neighbors are from chosen sample and we are confining this way the area.
 
-![alt](../media/image353.png)
+![](../media/image353.png)
 
 Here we work with all original dataset.
 
 In conclusion, the clustering process can be presented as searching a graph where every node is a potential solution, that is, a set of k medoids. Two nodes are neighbors in the graph if their sets differ by only one object.
 
-## Conclusions on K-medois methods
+### Conclusions on K-medois methods
 
 - `PAM` examines all the neighbors of the current node in its search for a minimum cost
 
@@ -646,7 +652,7 @@ In conclusion, the clustering process can be presented as searching a graph wher
 
 > `k` must be fixed and only convex shapes can be found.
 
-# Hierarchical methods
+## Hierarchical methods
 
 In these approaches we determine a hierarchy of clusters. Some clusters are included in clusters at higher level.
 
@@ -658,7 +664,7 @@ We have two approaches to generate hierarchies:
 
 - __divisive approach__ that starts with all objects in one cluster and tries to split clusters in sub-clusters. At each level it splits clusters creating this hierarchy.
 
-![alt](../media/image354.png)
+![](../media/image354.png)
 
 We don't have the view we have before, we have a tridimensional view, at each level we have different partitions.
 
@@ -666,13 +672,13 @@ We will cut the hierarchy at some level and exploit the partition I have at some
 
 In some applications we can exploit the relation between a cluster and its descendent. We use the hierarchy because the cluster is a generalization of what I can have at the lower levels.
 
-### Strategies for joining/dividing clusters
+#### Strategies for joining/dividing clusters
 
-![alt](../media/image355.png)
+![](../media/image355.png)
 
 In `Diana` if we realize that we realize that some objects are far away from others, we probably must split.
 
-#### Connectivity matrix
+##### Connectivity matrix
 
 Hierarchical clustering frequently deals with the matrix of distances (dissimilarities) or similarities between training samples, and not with the matrix of objects.
 
@@ -683,7 +689,7 @@ It is sometimes called connectivity matrix.
 To merge or split subsets of points rather than individual points, the distance between individual points must be generalized to the distance between subsets.
 
 
-#### Linkage metrics
+##### Linkage metrics
 
 I cannot reason on distance between objects, but we have to generalize the concept of distance defining distance between clusters.
 
@@ -708,7 +714,7 @@ $$
 
     This rule will, in a sense, string objects together to form clusters, and the resulting clusters tend to represent long chains.
 
-    ![alt](../media/image357.png)
+    ![](../media/image357.png)
 
     I must compute the distance between each object of the first and second cluster and select the minimum distance. It corresponds to the distance of nearest neighbors.
 
@@ -716,20 +722,20 @@ $$
 
     This method usually performs quite well in cases when the objects form naturally distinct \"clumps.\" If the clusters tend to be somehow elongated or of a \"chain\" type nature, then this method is inappropriate.
 
-    ![alt](../media/image358.png)
+    ![](../media/image358.png)
 
     I must compute the distance between each object of the first and second cluster and select the largest distance.
 
 - __Pair-group average__. The distance between two clusters is calculated as the average distance between all pairs of objects in the two different clusters. This method is also very efficient when the objects form natural distinct \"clumps,\" however, it performs equally well with elongated, \"chain\" type.
 
-    ![alt](../media/image359.png)
+    ![](../media/image359.png)
 
 
-### Considerations
+#### Considerations
 
 These metrics correspond to this type of scenario.
 
-![alt](../media/image360.png)
+![](../media/image360.png)
 
 - In case of single link, we just put these two clusters together.
 
@@ -737,7 +743,7 @@ These metrics correspond to this type of scenario.
 
 If we change linkage metrics, we change results we have in case of hierarchies.
 
-### Represent the output
+#### Represent the output
 
 To represent the output, we use a tree structure.
 
@@ -747,7 +753,7 @@ It represents at each level the merging of clusters.
 
 A clustering of the data objects is obtained by cutting the dendogram at the desired level, then each connected component forms a cluster
 
-![alt](../media/image361.png)
+![](../media/image361.png)
 
 If we cut the dendogram at level 2 the partition we obtain:
 
@@ -761,7 +767,7 @@ clusters = [
 
 It allows us to have this relation from course clusters and fine clusters in the hierarchy.
 
-### Measures for distance between clusters 
+#### Measures for distance between clusters 
 
 - __minimum distance__
 
@@ -787,7 +793,7 @@ It allows us to have this relation from course clusters and fine clusters in the
         dist_{min}(C_i, C_j) = \frac{1}{n_i n_j} \sum_{p \in C, p' \in C_J}{|p-p'|}
     $$
 
-## Algorithms
+### Algorithms
 
 - __Nearest-neighbor clustering algorithm__ 
     
@@ -807,7 +813,7 @@ It allows us to have this relation from course clusters and fine clusters in the
 
     By viewing data points as nodes of a graph, with edges linking nodes, we can think of each cluster as a complete subgraph, that is, with edges connecting all the nodes in the clusters. It tends to minimize the increase in diameter of the clusters at each iteration.High quality in case of clusters compact and of approximately equal size.
 
-### Considearations
+#### Considearations
 
 When we use single link we don't care about the diameter of clusters (maximum distance between objects), we just merge them considering the nearest neighbors.
 
@@ -817,11 +823,11 @@ This is the real difference between the two approaches.
 
 If we use different types of linkage metrics, we will have different dendograms.
 
-### Example
+#### Example
 
 We want to apply a hierarchical clustering approach using two different linkage metrics: single-linkage (b), complete-linkage(c)
 
-![alt](../media/image363.png)
+![](../media/image363.png)
 
 
 1. __Single linkage__ 
@@ -858,7 +864,7 @@ We want to apply a hierarchical clustering approach using two different linkage 
 
     - There are differences between the two dendrograms, due to the different kind of linkage metrics we are using. The process is the same.
 
-## AGNES (Agglomerative Nesting)
+### AGNES (Agglomerative Nesting)
 
 In this strategy we start from one point for each cluster and we agglomerate.
 
@@ -874,13 +880,13 @@ We can enforce a stopping condition, for example the maximum number of objects i
 
 __Single-linkage approach__: each cluster is represented by all of the objects in the cluster, and the similarity between two clusters is measured by the similarity of the closest pair of data points belonging to different clusters.
 
-![alt](../media/image364.png)
+![](../media/image364.png)
 
-### Example using single-linkage approach
+#### Example using single-linkage approach
 
 Let's consider $5$ objects and in particular the dissimilarity metric.
 
-#### steps
+##### steps
 
 Each value represents the distance between the object in the row and in the column.
 
@@ -938,11 +944,11 @@ We start from one object for each cluster, so if we have to merge clusters we ha
     $$
 
 
-## DIANA (Divisive Analysis)
+### DIANA (Divisive Analysis)
 
 `DIANA` uses the inverse order of `AGNES`. We start from all objects inside the cluster and we terminate when we have one object for each cluster.
 
-![alt](../media/image368.png)
+![](../media/image368.png)
 
 - The algorithm constructs a hierarchy of clusters, starting with one large cluster containing all $n$ samples. Clusters are divided until each cluster contains only a single sample.
 
@@ -958,7 +964,7 @@ We start from one object for each cluster, so if we have to merge clusters we ha
     
     We have to compute the distance between this new cluster and the cluster we had before and we move points to the new cluster if the distance is smaller with it then the old cluster. The result is a division of the selected cluster into two new clusters.
 
-### The algorithm
+#### The algorithm
 
 1. We start from objects in one single cluster. Find the object, which has the highest average dissimilarity to all other objects. 
     
@@ -983,18 +989,18 @@ We start from one object for each cluster, so if we have to merge clusters we ha
 
 6. Repeat Step 5 until all clusters contain only a single object.
 
-### Considerations
+#### Considerations
 
 - When we split the initial cluster, we have to decide which is the cluster to which we have to work to generate the splinter group. 
 We select one cluster among all available, and it will be the cluster with the largest diameter.
 
 - The diameter is the largest dissimilarity between any two objects belonging to the cluster.
 
-### Example
+#### Example
 
 Let's suppose to have $8$ data objects and that each object is described by only one attribute.
 
-![alt](../media/image369.png)
+![](../media/image369.png)
 
 We generate. starting from the dataset, the dissimilarity matrix.
 
@@ -1004,7 +1010,7 @@ Let's assume all objects are contained in the same cluster.
 
 We want to decide how to split this cluster.
 
-![alt](../media/image370.png)
+![](../media/image370.png)
 
 The mean for each row is the mean of distances between the object in the row and all others.
 
@@ -1012,13 +1018,13 @@ If it's very high, this is quite different from the other objects.
 
 We compute this mean from all objects and we start the splinter group with objects with the highest mean dissimilarity.
 
-![alt](../media/image371.png)
+![](../media/image371.png)
 
 All other points remain in the old cluster.
 
 Now we have to decide if objects belonging to the old cluster have to remain there or pass to the new cluster, established by the dissimilarity between each point and the other points in the cluster and the points in the new cluster we found.
 
-![alt](../media/image372.png)
+![](../media/image372.png)
 
 We obtain that the maximum mean distance for A1 is obtained by X2, so we compute how much is dissimilar from A1 and B1.
 
@@ -1026,17 +1032,17 @@ The mean dissimilarity between X2 and B1 is lower, so we can decide that X2 is c
 
 Now we consider the most dissimilar in A2, X3, and compute the distance between it and the new cluster.
 
-![alt](../media/image373.png)
+![](../media/image373.png)
 
 Again, we conclude that X3 has to be moved to the new cluster.
 
-![alt](../media/image374.png)
+![](../media/image374.png)
 
 X5 remains in the old cluster.
 
 We have two clusters now, to choose which cluster to divide:
 
-![alt](../media/image375.png)
+![](../media/image375.png)
 
 We have to choose the cluster by considering the diameter, the maximum distance between objects belonging to the same cluster.
 
@@ -1044,29 +1050,29 @@ Diam B4\>diam A4, thus we are going to divide the cluster B4
 
 The most dissimilar point is X4 and so we start a new splinter group with it.
 
-![alt](../media/image376.png)
+![](../media/image376.png)
 
 We need to consider if other points can belong to the splinter group.
 
 In B5 the most dissimilar point is X3, we compute the mean dissimilarity.
 
-![alt](../media/image377.png)
+![](../media/image377.png)
 
-![alt](../media/image378.png)
+![](../media/image378.png)
 
 We repeat until we get one cluster for each object.
 
-![alt](../media/image379.png)
+![](../media/image379.png)
 
 If we store at each step the partition, we generate we get the dendogram.
 
-### weaknessesof hierarchical clustering
+#### weaknessesof hierarchical clustering
 
 - Can never undo what was done previously
 
 - Do not scale well: time complexity of at least $O(n^2)$, where $n$ is the number of total objects, each time we split we have to reconsider if we have to move objects between clusters.
 
-### Major strengths
+#### Major strengths
 
 - It's nice that you get a hierarchy instead of an amorphous collection of groups
 
@@ -1074,7 +1080,7 @@ If we store at each step the partition, we generate we get the dendogram.
 
 - In general, give better quality clusters than k‐means' like methods. The shape of clusters is convex
 
-### Conslusions
+#### Conslusions
 
 To manage the complexity of this algorithm, several approaches to reduce it have been proposed.
 
@@ -1083,11 +1089,11 @@ To manage the complexity of this algorithm, several approaches to reduce it have
 - `CHAMELEON` (1999): hierarchical clustering using dynamic modeling
 
 
-## BIRCH: Balanced Iterative Reducing and Clustering Using Hierarchies
+### BIRCH: Balanced Iterative Reducing and Clustering Using Hierarchies
 
 This is an agglomerative clustering designed for clustering a large amount of numerical data. 
 
-### What does BIRCH algorithm try to solve?
+#### What does BIRCH algorithm try to solve?
 
 - Most of the existing algorithms DO NOT consider the case that datasets can be too large to fit in main memory, we try to work with a description of the dataset in the main memory
 
@@ -1099,7 +1105,7 @@ The complexity of `BIRCH` is $O(n)$ where $n$ is the number of objects to be clu
 
 __BIRCH works with sequence of objects.__
 
-### Idea
+#### Idea
 
 At the beginning we are at the first object; we receive the second and if the cluster of the first is too large adding the object 2 we split the cluster.
 
@@ -1107,29 +1113,29 @@ Being too large means fixing the diameter of the cluster, and if it is larger, w
 
 This decision of splitting or not is taken by considering the diameter of the cluster obtained by adding the new object.
 
-![alt](../media/image380.png)
+![](../media/image380.png)
 
 In our data structure we have a data structure where an entry identifies the first cluster and another identify the second,
 
-![alt](../media/image381.png)
+![](../media/image381.png)
 
 When we analyze the third object, we must decide if it has to be included in the first or second cluster.
 
 It is closer to object 1 than 2, we try to add it to cluster 1, if it becomes too large by adding it we split the cluster.
 
-![alt](../media/image382.png)
+![](../media/image382.png)
 
 We add another entry that identify the new cluster we added.
 
-![alt](../media/image383.png)
+![](../media/image383.png)
 
 Analyzing the fourth we discover it is closest to the entry 3.
 
-![alt](../media/image384.png)
+![](../media/image384.png)
 
 For entry 3 we have a cluster with two elements, the cluster 2 remains compact when adding it.
 
-![alt](../media/image385.png)
+![](../media/image385.png)
 
 Cluster 3 becomes too larger, and we split it.
 
@@ -1139,11 +1145,11 @@ We create two leaf-node, one for cluster 1 and 3 and the other with cluster 2 an
 
 Entry 1 will contain links to entry 1.1 and entry 1.2 and entry 2 will have links to entry 2.1 and entry 2.2.
 
-![alt](../media/image386.png)
+![](../media/image386.png)
 
 When we receive object 6, it is closest to entry 1.2 and we verify that the diameter of cluster 3 can be acceptable.
 
-![alt](../media/image387.png)
+![](../media/image387.png)
 
 We generate clusters but also a tree that helps us to store all information we need to manage clusters. Each node contains a description named Clustering Feature that consists of three numbers, ($CF = (N,LS,SS)$).They store the summary of the statistics for a given cluster: the 0-th, 1st and 2nd moments of the cluster from the statistical point of view.
 
@@ -1166,9 +1172,9 @@ The three values we store are:
     $$
 
 
-### Example
+#### Example
 
-![alt](../media/image390.png)
+![](../media/image390.png)
 
 Cluster 1 is characterized by CF1, 3 because 3 are the points contained on each cluster, the linear sum of the first feature of points, and the second features' sum.
 
@@ -1216,7 +1222,7 @@ Leaf nodes are connected via prev and next pointers just to create this data str
 
 A CF-tree is a height-balanced tree that stores the clustering features CFs for a hierarchical clustering,
 
-![alt](../media/image394.png)
+![](../media/image394.png)
 
 At each level we have the description of cluster including the clusters at the subsequent level, and that's why it's hierarchical. $Cf1$ is a description of a cluster that contains all clusters identified by the CF you have in the descendants.
 
@@ -1236,7 +1242,7 @@ CF entry in parent corresponds to the sum of CF entries of a child of that entry
 
 Splitting and splitting we have that the clusters in the same leaf-node are close to each other.
 
-![alt](../media/image395.png)
+![](../media/image395.png)
 
 A Leaf node represents a cluster.
 
@@ -1248,7 +1254,7 @@ When one item is inserted into a cluster at the leaf node, the restriction `T` m
 
 The `BIRCH` algorithm incrementally construct a `CF tree`, a hierarchical data structure for multiphase clustering.
 
-### Steps
+#### Steps
 
 - __Phase 1__: scan DB to build an initial in‐memory CF tree
 
@@ -1274,9 +1280,9 @@ The `BIRCH` algorithm incrementally construct a `CF tree`, a hierarchical data s
 
 These 2 phases are the main one, but if we analyze more the `BIRCH` algorithm we have phases to manage trees not included in the main memory.
 
-![alt](../media/image396.png)
+![](../media/image396.png)
 
-### Summary
+#### Summary
 
 - __Phase 1__: Choose an initial value for threshold, start inserting the data points one by one into the tree as per the insertion algorithm.If, in the middle of the above step, the size of the CF tree exceeds the size of the available memory, increase the value of threshold.Convert the partially built tree into a new tree.
 
@@ -1300,12 +1306,13 @@ These 2 phases are the main one, but if we analyze more the `BIRCH` algorithm we
 
 - __Phase 4__: Scan the entire dataset to label the data points and we can do outlier handling.
 
-### Strengths
+#### Strengths
 
 - finds a good clustering with a single scan and improves the quality with a few additional scans
+
 - Complexity is $O(n)$
 
-### Weakness
+#### Weakness
 
 - Handles only numeric data, and sensitive to the order of the data record. because we must calculate sum and mean.
 
@@ -1315,13 +1322,13 @@ These 2 phases are the main one, but if we analyze more the `BIRCH` algorithm we
 
 - Clusters tend to be spherical given the radius and diameter measures. Again, we can discover convex clusters, this is a limitation.
 
-## CHAMELEON
+### CHAMELEON
 
 This clustering algorithm takes in consideration different zones in the space in which we have different densities, by building this sparse graph, obtained by data objects.
 
 For each data object $p$ another data object $q$ is connected to $p$ if $q$ is among the top $k$ closest neighbors of $p$.
 
-![alt](../media/image397.png)
+![](../media/image397.png)
 
 We generate this graph taking in consideration the `k nearest neighbors` of each object.
 
@@ -1339,7 +1346,7 @@ The value of $k$ is used to generate the initial graph and we exploit $k$ becaus
 
 We connect two objects if we have a node among the $k$ nearest neighbors in fact.
 
-![alt](../media/image398.png)
+![](../media/image398.png)
 
 - With $k = 1$ we have a sparse graph.
 
@@ -1355,7 +1362,7 @@ I compute the k nearest neighbors but this __connection__ between $p$ and $q$ is
 
 > The weight of each edge represents the closeness between two samples, that is, an edge will weigh more whether the two data samples are closer to each other. This allow us to generate natural clusters and they are more natural clusters than `DBSCAN`.
 
-### Graph-partitioning algorithm
+#### Graph-partitioning algorithm
 
 - A cluster $C$ is partitioned into subclusters $C_i$ and $C_j$ so as to minimize the sum of the weight of the edges that would be cut should $C$ be bisected into $C_i$ and $C_j$. 
     
@@ -1413,7 +1420,7 @@ $$
     RI(C_i, C_j) \geq T_{RI} \quad \land \quad RC(C_i, C_j) \geq T_{RC}
 $$
 
-### Conclusions
+#### Conclusions
 
 `CHAMELEON` works well because it takes in consideration different density region, but it depends on k and the two thresholds.
 
@@ -1421,13 +1428,13 @@ It also has a complexity $O(n^2)$ (in the worst case) where $n$ is the number of
 
 We can produce clusters with different shapes. It has the power at discovering arbitrarily shaped clusters of high quality, because we take in consideration different density zones.
 
-![alt](../media/image402.png)
+![](../media/image402.png)
 
 They are not modellable form partitioning algorithms because they can just find convex clusters.
 
 It takes in consideration different zones with different densities, but the approach is quite complex.
 
-# Density-based methods
+## Density-based methods
 
 Approaches analyzed so far are based on the concept of distance, `CHAMELEON` too because it computes the k-nearest neighbors.
 
@@ -1435,7 +1442,7 @@ These clustering methods are based on density, such as density-connected points,
 
 We will have different clusters when we met low dense regions, sparse regions.
 
-### Major features:
+#### Major features:
 
 - Discover clusters of arbitrary shape, the reason is because we identify the cluster identifying dense regions connected.
 
@@ -1455,11 +1462,11 @@ We have to give as input our definition of dense regions. This is given by using
 
 If the Eps-neighborhood (neighborhood within radius Eps - NEps) of an object contains at least a minimum number, MinPts, of objects then the object is called core object.
 
-### Examples
+#### Examples
 
 - ex 1
  
-    ![alt](../media/image403.png)
+    ![](../media/image403.png)
 
     Eps = 1 cm, MinPts=3
 
@@ -1476,7 +1483,7 @@ If the Eps-neighborhood (neighborhood within radius Eps - NEps) of an object con
 
 - ex 2 
  
-    ![alt](../media/image404.png)
+    ![](../media/image404.png)
     
     $q$ is directly density-reachable from $m$, because $m$ is a core point and $q$ belongs to the neighborhood of $m$. 
     
@@ -1484,7 +1491,7 @@ If the Eps-neighborhood (neighborhood within radius Eps - NEps) of an object con
 
     An object $p$ is __density-reachable__ from an object $q$, with respect to $Eps$, $MinPts$, if there is a chain of objects $p_1, \dots, p_n$, such that $p_1 = q, p_n = p$ such that $p_i+1$ is directly density-reachable from $p_i$.
 
-    ![alt](../media/image405.png)
+    ![](../media/image405.png)
 
 - ex 3:
     
@@ -1494,7 +1501,7 @@ If the Eps-neighborhood (neighborhood within radius Eps - NEps) of an object con
 
     An object p is __density-connected__ to an object q w.r.t. Eps, MinPts if there is an object o such that both p and q are density-reachable from o (w.r.t. Eps and MinPts).
 
-    ![alt](../media/image406.png)
+    ![](../media/image406.png)
 
 - ex 4:
 
@@ -1504,9 +1511,9 @@ If the Eps-neighborhood (neighborhood within radius Eps - NEps) of an object con
 
     Object q is (indirectly) density-reachable from p because q is directly density reachable from m and m is directly density-reachable from p. However, p is not density reachable from q because q is not a core object. Similarly, r and s are density-reachable from o and o is density- reachable from r. Thus, o, r, and s are all density-connected.
 
-    ![alt](../media/image407.png)
+    ![](../media/image407.png)
 
-## DBSCAN
+### DBSCAN
 
 __Density-Based Spatial Clustering of Applications with Noise__ relies on a density-based notion of cluster: A cluster is defined as a maximal set of density-connected points.
 
@@ -1516,13 +1523,16 @@ The final cluster is just to have clusters of density connected points.
 
 This algorithm is able to discover clusters of arbitrary shape in spatial databases with noise.
 
-![alt](../media/image408.png)
+![](../media/image408.png)
 
 They can determine outliers, objects that do not belong to any cluster.
 
 We have objects classified in
+
 - core objects
+
 - outliers
+
 - border objects (objects that belong to a cluster but aren't core objects).
 
 We have them when they belong to a neighborhood of a core object without being a core object. It determines the border of the cluster we are determining.
@@ -1540,16 +1550,17 @@ The process terminated when no new point can be added to any cluster.
 A subset $C$ in $D$ is a cluster if
 
 - For any two objects $o_1, o_2$ in $C$, $o_1$ and $o_2$ are density-connected,
+
 - There does not exist an object $o_i$ in $C$ and another object $o_j$ in $(D-C)$ such that $o_i$ and $o_j$ are density-connected
 
 The complexity is $O(n^2)$.
 
-### Algoritm
+#### Algoritm
 
 
-![alt](../media/image409.png)
+![](../media/image409.png)
 
-![alt](../media/image410.png)
+![](../media/image410.png)
 
 We have to fix those two parameters because we are proposing our definition of dense region and depending on them, we can identify an object as outlier or not.
 
@@ -1559,9 +1570,9 @@ If `Eps` is smaller, more points will be considered as outliers.
 
 > If it doesn't contain at least MinPts objects we mark it as outlier, but it can become a border object of an object. The fact that we denote it as noise do not mean it is an outlier surely.
 
-### CLARANS vs DBSCAN
+#### CLARANS vs DBSCAN
 
-![alt](../media/image411.png)
+![](../media/image411.png)
 
 Since the shape is spherical, for how this algorithm works we obtain those clusters, the clusters found are not really natural because when we fix the number of clusters, we cannot tell the algorithm that one is big and others small. If we fix 4 we obtain those results because clusters are spherical. The distance fix the shape of the clusters.
 
@@ -1577,13 +1588,13 @@ If we have clusters of different densities, we are not able to find them, becaus
 
 It works very well if clusters have same densities.
 
-### CLUSTER WITH DIFFERENT DENSITIES
+#### CLUSTER WITH DIFFERENT DENSITIES
 
-![alt](../media/image412.png)
+![](../media/image412.png)
 
 When we use `DBSCAN`, if we set minPts and we vary Eps:
 
-![alt](../media/image413.png)
+![](../media/image413.png)
 
 Using large values, we determine clusters characterized by low level of density, we consider very dense small clusters as part of the big cluster.
 
@@ -1593,7 +1604,7 @@ If we have similar densities, it is also difficult to find the exact pair of val
 
 > The algorithm is really sensitive on how we set the parameters.
 
-![alt](../media/image414.png)
+![](../media/image414.png)
 
 In general cases, when we have high-dimensional data, we have no visual feedback, we have to experiment.
 
@@ -1609,17 +1620,17 @@ A cluster is separated later because we are reducing minPts.
 
 We have to try to set them using an heuristic approach or with an input of the internal domain if we have a lot of dimensions.
 
-### heuristic approach to set `Eps` and `minPts`
+#### heuristic approach to set `Eps` and `minPts`
 
 For a given $k$ (that corresponds to minPts) we define a function k-dist, mapping each point to the distance from its k-th nearest neighbor.
 
-![alt](../media/image415.png)
+![](../media/image415.png)
 
 If we set $k = 4$, the k-distance corresponds to the distance between the point we are considering and the fourth nearest neighbor. Lower this distance, higher the probability that the points will belong to a dense region.
 
 We sort the points in descending order of their k-dist values: the graph of this function gives some hints concerning the density distribution.
 
-![alt](../media/image416.png)
+![](../media/image416.png)
 
 If I set the distance of the kth nearest neighbor to `Eps` I obtain that this point is a core point, we have $k$ minPts inside the `Eps` neighborhood.
 
@@ -1645,9 +1656,9 @@ Changing very few Eps we can have completely different results in terms of clust
 
 > We have the problem that the intrinsic cluster structure cannot be characterized by global density parameters. It affects DBSCAN but also all density-based algorithms.
 
-### Alternatives for determine the cluster structures
+#### Alternatives for determine the cluster structures
 
-![alt](../media/image417.png)
+![](../media/image417.png)
 
 - The first alternative we can use is to use a __hierarchical clustering algorithm__, for instance the single-link method.
 
@@ -1681,7 +1692,7 @@ If we set them to identify not dense clusters, all points will belong to the sam
 
 We saw an approach to plot the k-dist on the values,
 
-##  OPTICS: Ordering Points To Identify the Clustering Structure
+###  OPTICS: Ordering Points To Identify the Clustering Structure
 
 It will give us __an idea to work with different regions__ with __different densities__ and allow us to set parameters to investigate this specific zone.
 
@@ -1697,11 +1708,11 @@ We start with this observation: density-based clusters are monotonic with respec
 
 __DBSCAN__: for a constant `MinPts` value, density-based clusters with respect to a higher density are completely contained in density-connected sets obtained with respect to a lower density.
 
-#### Example
+##### Example
 
 $C_1$ and $C_2$ are density-based clusters with respect to $Eps_2 \leq eps_1$ and $C$ is a density-based cluster with respect to $Eps_1$ completely containing the sets $C_1$ and $C_2$.
 
-![alt](../media/image418.png)
+![](../media/image418.png)
 
 $Eps_1 \leq Eps_2$ and that means that when we find $C_1$ and $C_2$ we are imposing the higher density. It tells us that clusters with lower density contains clusters with higher density. $C$ contains $C_1$ and $C_2$.
 
@@ -1715,7 +1726,7 @@ Instead, it stores the order in which the objects are processed and the informat
 
 We don't obtain at the end a partition but an ordering.
 
-### Definitions
+#### Definitions
 
 - __Core-distance of an object p__ is the smallest `Eps` value that makes $p$ a core object. If $p$ is not a core object, the core-distance is undefined.
 
@@ -1725,9 +1736,9 @@ We don't obtain at the end a partition but an ordering.
 
 > If $p$ is not a core object, the reachability-distance is undefined.
 
-#### Example
+##### Example
 
-![alt](../media/image419.png)
+![](../media/image419.png)
 
 Here, the core distance of $p$ is the distance for which we include in the neighborhood the minPts that we need for the execution of DBSCAN.
 
@@ -1753,7 +1764,7 @@ The objects contained in `OrderSeeds` are sorted by their reachability-distance 
 
 - The iteration continues until the input is fully consumed and `OrderSeeds` is empty. 
 
-### Conclusions
+#### Conclusions
 
 At the end of the execution of `OPTICS`, we have the list of objects in the order in which the objects themselves are processed. 
 
@@ -1763,7 +1774,7 @@ Complexity: in the worst case, $O(n^2)$, where $n$ is the number of objects to b
 
 We have an ordered list, and we have an order of the points and we can plot the reachability distance. The Eps we see there is the Eps we use in `OPTICS` and limits the number of points we have to consider.
 
-![alt](../media/image420.png)
+![](../media/image420.png)
 
 After the execution of `OPTICS` I have this profile:
 
@@ -1773,7 +1784,7 @@ After the execution of `OPTICS` I have this profile:
 
 - The valley corresponds to the number of points really close to each other, because characterized by having the smallest reachability distance respect to all other points.
 
-### Usage
+#### Usage
 
 This plot can be useful to select `Eps` and `minPts` for `DBSCAN` or other density-based algorithms.
 
@@ -1783,11 +1794,11 @@ This profile tells us what the reachability distance is. If we fix $\varepsilon^
 
 The reachability distance for points in the valley are lower than the threshold $\varepsilon^{'}$.
 
-#### Examples of usage
+##### Examples of usage
 
 - ex 1
 
-    ![alt](../media/image421.png)
+    ![](../media/image421.png)
 
     `OPTICS` produces the type of plot for that dataset. The deepest valley corresponds to very dense regions in our dataset.
 
@@ -1795,14 +1806,14 @@ The reachability distance for points in the valley are lower than the threshold 
 
 - ex 2
     
-    ![alt](../media/image422.png)
+    ![](../media/image422.png)
 
     By analyzing the graph, we can understand if we have natural clusters in the dataset and their level of density.
 
     In very dense region like the cluster on the top, the valley is really deep. In the bottom we have not very dense cluster, we have a valley with the bottom level higher than other valleys.
 
 
-### Example
+#### Example
 
 On a 2 dimensional database with 16 points, starting with:
 
@@ -1812,7 +1823,7 @@ $$)
 
 |<!--  -->|<!--  -->|
 |-|-|
-|![alt](../media/image425.png)|![alt](../media/image426.png)|
+|![](../media/image425.png)|![](../media/image426.png)|
 
 1. OPTICS tells us to select one object randomly, let's select `A`.
 
@@ -1820,17 +1831,17 @@ $$)
     
     |<!--  -->|<!--  -->|
     |-|-|
-    |![alt](../media/image427.png)|![alt](../media/image428.png)|
+    |![](../media/image427.png)|![](../media/image428.png)|
 
-    ![alt](../media/image429.png)
+    ![](../media/image429.png)
 
 2. Now we consider `B`, and for `B` in its core distance we just have `C` with reachability distance $40$.
 
     |<!--  -->|<!--  -->|
     |-|-|
-    |![alt](../media/image430.png)|![alt](../media/image431.png)|
+    |![](../media/image430.png)|![](../media/image431.png)|
 
-    ![alt](../media/image432.png)
+    ![](../media/image432.png)
 
     We include `I` because we just select the points with the minimum reachability distance respect to the current object, `B`, and we just choose `I`.
 
@@ -1838,9 +1849,9 @@ $$)
    
     |<!--  -->|<!--  -->|
     |-|-|
-    |![alt](../media/image433.png)|![alt](../media/image434.png)|
+    |![](../media/image433.png)|![](../media/image434.png)|
 
-    ![alt](../media/image435.png)
+    ![](../media/image435.png)
 
     When we consider as current object `I` we add in the seed-list these objects.
 
@@ -1848,29 +1859,29 @@ $$)
 
     |<!-- -->|<!-- -->|
     |-|-|
-    |![alt](../media/image436.png)|![alt](../media/image437.png)|
+    |![](../media/image436.png)|![](../media/image437.png)|
 
-    ![alt](../media/image438.png)
+    ![](../media/image438.png)
 
 5. We then select L.
 
-    ![alt](../media/image439.png)
+    ![](../media/image439.png)
 
 6. At the end we have this situation:
 
-    ![alt](../media/image440.png)
+    ![](../media/image440.png)
 
-### Conclusion
+#### Conclusion
 
 If we analyze this profile, we can realize that some points are in a valley.
 
-![alt](../media/image441.png)
+![](../media/image441.png)
 
 If we cut choosing $Eps=44$ we obtain two clusters.
 
 If we choose it higher we obtain just one cluster.
 
-## DENCLUE: Using Statistical Density Functions
+### DENCLUE: Using Statistical Density Functions
 
 This is another density-based algorithm quite different from the others.
 
@@ -1882,7 +1893,7 @@ Each observed object is treated as an indicator of high-probability density in t
 
 If we have this dataset:
 
-![alt](../media/image442.png)
+![](../media/image442.png)
 
 `DENCLUE` propose to assign to each object a function, typically a gaussian one, with center of the gaussian corresponding to the point.
 
@@ -1892,13 +1903,15 @@ In far points we use the gaussian profile, while in dense regions the sum of the
 
 |<!--  -->|<!--  -->|
 |-|-|
-|![alt](../media/image443.png)|![alt](../media/image444.png)|
+|![](../media/image443.png)|![](../media/image444.png)|
 
 We have to decide:
+
 - how to cut hills to determine clusters, we need to set a parameter.
+
 - how much the gaussian function is wide.
 
-### Example
+#### Example
 
 Let $<x_1, \dots, x_n$ be an independent and identically distributed sample of a random variable $f$. The kernel density approximation of the probability density function is:
 
@@ -1922,8 +1935,8 @@ $h$ is the standard deviation and $x_i$ is the point we are considering where we
 
 These are two examples of kernel functions:
 
-![alt](../media/image448.png)
-![alt](../media/image449.png)
+![](../media/image448.png)
+![](../media/image449.png)
 
 If we use squares, hills are not smoothing but dolomites,
 
@@ -1943,7 +1956,7 @@ Objects are assigned to clusters through density attractors using a step-wise hi
 
 If we consider a profile, we can realize that we have to perform an hill-climbing.
 
-### Algorithm
+#### Algorithm
 
 - Until there exist samples in the data set,
 
@@ -1983,7 +1996,7 @@ We select $x$ and we consider if around we have other points, if we have them we
 
 Using these heuristics, all points which are located close to the path from $x$ to its density-attractor can be classified without applying the hill-climbing procedure to them.
 
-### Outliers
+#### Outliers
 
 DANCLUE is also able to determine outliers.
 
@@ -1995,11 +2008,11 @@ $$
 
 Probably single points will be considered outliers because the value of $f$ may be lower than $\xi$.
 
-### Example 
+#### Example 
 
 Density attractors in a one-dimensional space
 
-![alt](../media/image458.png)
+![](../media/image458.png)
 
 When we sum we have these kinds of profile. We have some hills.
 
@@ -2011,18 +2024,19 @@ An arbitrary-shape cluster (with respect to two constants h and $\xi$) for the s
 $$
     \forall x \in C \ \exists \ x^* \in X \ | \ \hat{f}(x^*) \geq \xi
     
-    \\ \ \\
+$$
 
+$$
     \forall x_1^*, x_2^* \in X \ \exists \text{ a path } P \in F^d \text{ from } x_1^* \text{ to } x_2^* \text{ with }  \hat{f}(p) \geq \xi \ \forall p \in P  
 $$
 
 We pickup two attractors and follow $f$ in such a value we have always the value of $f$ higher than $\xi$.
 
-### Parameters
+#### Parameters
 
 We have $h$ and $\xi$ as parameters: 
 
-![alt](../media/image462.png)
+![](../media/image462.png)
 
 - $h$ is the standar deviation of the gaussian function and depending on it the gaussian will be wide or narrow.
 
@@ -2041,7 +2055,7 @@ We have a strong dependence in the two parameters in any case.
 
 > Fixing these two values we determine the number of clusters we obtain and the possible outliers.
 
-### Major features
+#### Major features
 
 - Solid mathematical foundation
 
@@ -2059,13 +2073,13 @@ But needs an accurate choice of the parameters h and $\xi$.
 
 - $\xi$ describes whether a density-attractor is significant, allowing a reduction of the number of density-attractors and helping to improve how the parameters should be chosen to obtain good results
 
-### How to find the parameters
+#### How to find the parameters
 
 To determine the value of $h$ we consider different $h$ and determine the largest interval between hmax and hmin where the number of density attractors $m(h)$ remains constant.
 
 We use increasing value of $h$ and we select $h$ that is in the interval where the number of density attractors remain constant. This is the suggested choice for $h$.
 
-![alt](../media/image463.png)
+![](../media/image463.png)
 
 Suggested choice for $\xi$: if the database is noise free, all density attractors of $D$ are significant and $\xi$ should be chosen in
 
@@ -2077,7 +2091,7 @@ If the database has noise as attractors we identify single objects.
 
 We have a possible optimization to speed-up the execution.
 
-### DENCLUE implementation
+#### DENCLUE implementation
 
 Two steps:
 
@@ -2091,7 +2105,7 @@ Two steps:
 
     - The hypercubes are numbered depending on their relative position from a given origin. The keys of the populated cubes can be efficiently stored in a randomized search-tree or a B+ tree.
 
-    ![alt](../media/image465.png)
+    ![](../media/image465.png)
 
     Instead of considering all hypercubes we focus on the ones in which we have objects.
 
@@ -2109,11 +2123,11 @@ Two steps:
 
     With this implementation the computational time in terms of CPU is lower than the one of standard DENCLUE and DBSCAN.
 
-    ![alt](../media/image466.png)
+    ![](../media/image466.png)
 
     It is almost constant with the size of the database. We can find clusters of different shapes in a reasonable time.
 
-### Attention
+#### Attention
 
 - All the density based clustering methods are not fully effective when clustering high dimensional data, for the curse of dimensionality and objects appear far to each other.
 
@@ -2123,7 +2137,7 @@ Two steps:
 
 - We have to set parameters and if we choose in a bad way we are in trouble, we have a lot of differences with small changes. This is true independently on the density-based method. But we don't have to choose the number of clusters we want to obtain, even if the pairs of parameters implicitly choose this number.
 
-# Grid-Based Clustering Method
+## Grid-Based Clustering Method
 
 These methods use multi-resolution grid data structure.
 
@@ -2135,13 +2149,13 @@ We will analyze:
 
 - `CLIQUE`: which is both grid-based and subspace clustering
 
-## STING
+### STING
 
 The spatial area is divided into rectangular cells.
 
 There are several levels of cells corresponding to different levels of resolution.
 
-![alt](../media/image467.png)
+![](../media/image467.png)
 
 Each cell at a high level is partitioned into a number of smaller cells in the next lower level.
 
@@ -2157,11 +2171,11 @@ Parameters include:
 
 Use a top-down approach to answer spatial data queries. We have an hierarchical structure with higher level with all information corresponding to the lower level.
 
-![alt](../media/image468.png)
+![](../media/image468.png)
 
 Statistical information regarding the attributes in each grid cell, for each layer are pre-computed and stored beforehand.
 
-### Idea
+#### Idea
 
 The statistical parameters for the cells in the lowest layer is computed directly from the values that are present in the table, when data are loaded into the database.
 
@@ -2170,6 +2184,7 @@ The statistical parameters for the cells in all the other levels are computed fr
 Query types:
 
 - SQL like language used to describe queries
+
 - Two types of common queries found: one is to find region specifying certain constraints and other take in a region and return some attribute of the region
 
 We use a top-down approach to answer spatial data queries starting from a pre-selected layer-typically with a small number of cells.
@@ -2208,7 +2223,7 @@ WHERE density IN (100, ∞)
 
 We can apply the query exploiting the previous approach that allow us to consider only cells relevant to each level.
 
-![alt](../media/image470.png)
+![](../media/image470.png)
 
 At the beginning we isolate some area, then we redefine are at the second level and then at the third level.
 
@@ -2216,7 +2231,7 @@ From a region we explore the subsequent level and so on.
 
 At the end it's like we determined a cluster putting together cells close to each other, and so it's considered a clustering method.
 
-### Advantages
+#### Advantages
 
 - Query-independent, easy to parallelize, incremental update
 
@@ -2224,17 +2239,17 @@ At the end it's like we determined a cluster putting together cells close to eac
 
 - Query processing time $O(g)$, where $g$ is the number of grid cells at the lowest level
 
-### Disadvantages
+#### Disadvantages
 
 - All the cluster boundaries are either horizontal or vertical, and no diagonal boundary is detected, because we build our hierarchy in this way
 
-### Considerations
+#### Considerations
 
 The regions returned by `STING` are an approximation of the result by `DBSCAN`. As the granularity approaches zero, the regions returned by `STING` approach the result of `DBSCAN`
 
-![alt](../media/image471.png)
+![](../media/image471.png)
 
-## CLIQUE (Clustering In QUEst)
+### CLIQUE (Clustering In QUEst)
 
 `CLIQUE` automatically identify subspaces of a high dimensional data space that allow better clustering than original space. 
 
@@ -2248,17 +2263,17 @@ Then it partitions an m-dimensional data space into non-overlapping rectangular 
 
 A unit is dense if the fraction of total data points contained in the unit exceeds the input model parameter.
 
-### Idea
+#### Idea
 
 We generate a number of cells and consider they're dense computing the number of data points we have inside the unit.
 
-![alt](../media/image472.png)
+![](../media/image472.png)
 
 The parameter we have here is present and allow us to determine density.
 
 A cluster is a maximal set of connected dense units within a subspace.
 
-![alt](../media/image473.png)
+![](../media/image473.png)
 
 We look for connection between dense units and generate clusters considering the maximum set of connected dense units.
 
@@ -2274,7 +2289,7 @@ Partition the data space and find the number of points that lie inside each cell
 
 - Generate minimal description for the clusters. We determine maximal regions that cover a cluster of connected dense units for each cluster.In this way we determine the minimal cover for each cluster.
 
-### Clustering steps
+#### Clustering steps
 
 
 1. Step 
@@ -2305,12 +2320,12 @@ Partition the data space and find the number of points that lie inside each cell
 
     The greedy method terminates when all dense cells are covered.
 
-### Example
+#### Example
 
 
 The CLIQUE algorithm is used to cluster a set of records that have three attributes: salary, vacation, and age. 
 
-![alt](../media/image474.png)
+![](../media/image474.png)
 
 __steps__:
 
@@ -2324,17 +2339,17 @@ __steps__:
     |-|-|
     |the salary-age plane and finds all the 2-dimensional rectangular units that are dense.|It also finds the dense 2-dimensional units for the vacation-age plane.|
 
-    ![alt](../media/image475.png)
+    ![](../media/image475.png)
 
 - The next step is to find the dense units in the salary-vacation plane
 
 - Now, we perform an intersection of the candidate search space with the extension of the dense units of the salary-vacation plane, in order to get all the 3-d dense units
 
-    ![alt](../media/image476.png)
+    ![](../media/image476.png)
 
 After finding the dense units, it is very easy to find clusters
 
-### Strength
+#### Strength
 
 - automatically finds subspaces of the highest dimensionality such that high density clusters exist in those subspaces
 
@@ -2342,19 +2357,19 @@ After finding the dense units, it is very easy to find clusters
 
 - scales linearly with the size of input and has good scalability as the number of dimensions in the data increases. The reason is that we work using a grid and it scales good when the number of dimensions increase.
 
-### Weakness
+#### Weakness
 
 - Obtaining a meaningful clustering is dependent on proper tuning of the grid size and the density threshold. It also depends on the size, the granularity we use in the grid, if we use small intervals we have precise clusters but we need more time
 
 - The accuracy of the clustering result may be degraded at the expense of simplicity of the method
 
-### Conclusions
+#### Conclusions
 
 The main advantage is the computational effort, typically we execute in reasonable time, but this is a trade-off between precision and speed. If we are interested in a curse clustering we can use a curse grid, intervals quite large, but we have curse boundaries.
 
 In many applications we may not be interested in precise clusters.
 
-# Evaluation of Clustering
+## Evaluation of Clustering
 
 We can evaluate our clustering result focusing on:
 
@@ -2366,7 +2381,7 @@ We can evaluate our clustering result focusing on:
 
 Here we don't have the ground-truth so it's hard to introduce metrics.
 
-## Determining the number of clusters
+### Determining the number of clusters
 
 Determining the number of clusters is important, we need to set them before executing the algorithm.
 
@@ -2374,7 +2389,7 @@ We don't know how many natural clusters we have in the dataset typically, so we 
 
 If we consider the cost function of `k-means` we can't exploit the cost function to determine $k$, because the minimum of the cost function is $0$ when we have $k = $ number of points.
 
-### Elbow method
+#### Elbow method
 
 We can use the __Elbow method__ which says that increasing the number of clusters can help to reduce the sum of within-cluster variance of each cluster. The marginal effect of reducing the sum of within-cluster variances may drop if too many clusters are formed, because splitting a cohesive cluster into two gives only a small reduction.
 
@@ -2388,11 +2403,11 @@ We use the turning point in the curve of sum of within cluster variance with res
 
 I plot the cost function with the increasing of $k$ and I determine the biggest variation for which we have the turning point that give us the optimal value of $k$.
 
-![alt](../media/image477.png)
+![](../media/image477.png)
 
 This method can work if I have separated clusters, if I don't have separated and well-identifiable clusters the cost function decreases and I can't identify the turning point, I don't have natural clusters.
 
-#### Steps
+##### Steps
 
 given a number $k > 0$
 
@@ -2404,19 +2419,19 @@ given a number $k > 0$
 
 - Choose $k$ as the first or most significant turning point of the curve.
 
-### Cross-validation method
+#### Cross-validation method
 
 It divides a given data set into $m$ parts and use $m - 1$ parts to obtain a clustering model.
 
 We then use the remaining part to test the quality of the clustering.
 
-#### Example
+##### Example
 
 - For each point in the test set, we find the closest centroid, and use the sum of squared distance between all points in the test set and the closest centroids to measure how well the model fits the test set.
 
 - For any $k > 0$, repeat it $m$ times, compare the overall quality measure different $k$'s, and find the number of clusters that fits the data the best.
 
-## Measuring Clustering Quality
+### Measuring Clustering Quality
 
 This is not easy because we don't have the ground-truth, and also with a lot of dimensions it's not possible to do it graphically.
 
@@ -2436,7 +2451,7 @@ We have two types of methods we can use: extrinsic vs. intrinsic.
 
     Ex. Silhouette coefficient
 
-### Extrinsic Methods
+#### Extrinsic Methods
 
 Let's consider a clustering quality measure $Q(C, Cg)$, for a clustering $C$ given the ground truth $Cg$. 
 
@@ -2451,7 +2466,7 @@ $Q$ is good if it satisfies the following 4 essential criteria:
 - __Small cluster preservation__: splitting a small category into pieces is more harmful than splitting a large category into pieces.
 
 
-#### Bcubed precision and recall 
+##### Bcubed precision and recall 
 
 It is an extrinsic method that evaluates the precision and recall for every object in a clustering on a given data set according to ground truth. The precision of an object indicates how many other objects in the same cluster belong to the same category as the object. 
 
@@ -2459,24 +2474,24 @@ Ideally we want clusters containing only objects belonging to the same class. Th
 
 They're defined because we would like to have each cluster corresponding to one class, this is the ideal situation.
 
-![alt](../media/image478.png)
-![alt](../media/image479.png)
+![](../media/image478.png)
+![](../media/image479.png)
 
 $L$ identify the class of $o_i$. If the two objects belong to the same class and cluster the correctness is equal to $1$.
 
 
-![alt](../media/image480.png)
-![alt](../media/image481.png)
+![](../media/image480.png)
+![](../media/image481.png)
 
 If we put in the same cluster all objects belonging to the same class our precision and recall will assume the highest value, being close to 1. 
 
 The algorithm with highest precision and recall is considered as the best. 
 
-### Intrinsic Methods
+#### Intrinsic Methods
 
 Intrinsic methods evaluate a clustering by examining how well the clusters are separated and how compact the clusters are, we exploit the definition of good clusters; we have no other possibility.
 
-#### Silhouette coefficient
+##### Silhouette coefficient
 
 For each object $o$ in $D$, we compute $a(o)$ as the average distance between $o$ and all the other objects in the cluster to which $o$ belongs to.
 
@@ -2502,7 +2517,7 @@ $$
 
 The value of the silhouette coefficient is between $-1$ and $1$. The smaller the value of $a(o)$, the more compact the cluster.
 
-#### Conclusions
+##### Conclusions
 
 - When $s(o)$ approaches $1$, the cluster containing $o$ is compact and $o$ is far away from other clusters, which is the preferable case. 
 
@@ -2524,6 +2539,6 @@ This coefficient was defined for partitioning clustering and works very well if 
 
 In the situation below it doesn't work very well, these clusters are closer than the average distance we have in the cluster.
 
-![alt](../media/image485.png)
+![](../media/image485.png)
 
 It cannot be applied for measuring the quality of density-based algorithms.

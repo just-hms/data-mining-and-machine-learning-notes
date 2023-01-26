@@ -61,7 +61,7 @@ The classification time is fundamental, a user want to have answers in a very sh
 
 It's preferable to spend shorter time in the second phase rather than the first, in which engineers set parameters.
 
-## Difference Between Classification and Clustering
+### Difference Between Classification and Clustering
 
 - __Supervised learning__ (classification)
 
@@ -77,7 +77,7 @@ The class labels of training data is unknown.
 
 - We also have semi-supervised learning in which we approach characteristic of both approaches.
 
-## Preliminary Step: Preprocessing
+### Preliminary Step: Preprocessing
 
 Before making use of classification, we need to __prepare data__.
 
@@ -114,7 +114,7 @@ Before making use of classification, we need to __prepare data__.
 
 > We need to discretize the variables in a way that allow us to improve as much as possible our classification performance.
 
-### Discretization Technique
+#### Discretization Technique
 
 For discretization we can use the __Fayyad and Irani approach__ (1992).
 
@@ -136,7 +136,7 @@ This potential cut point is in the middle of two points belonging to two differe
 
 Let BA be the set of all candidate boundary points for attribute A.
 
-#### __Entropy for the best cutpoint__
+##### __Entropy for the best cutpoint__
 
 The algorithm exploits the entropy as quality measure to find the best boundary cutpoint.
 
@@ -196,7 +196,7 @@ Each value in each sub-partition will be replaced with a specific label.
 
 We try to find best intervals thinking about what we want to reach at the end, it is a supervised approach.
 
-# Comparing Classification Methods
+## Comparing Classification Methods
 
 - Accuracy: to understand how many records are being classified correctly.
 
@@ -216,7 +216,7 @@ We try to find best intervals thinking about what we want to reach at the end, i
 
 We will analyze in detail accuracy and interpretability.
 
-## Decision Tree
+### Decision Tree
 
 The decision tree: learning of decision trees from class-labeled training tuples
 
@@ -236,7 +236,7 @@ How decision tree are used for classification? Given a tuple, the attribute valu
 
 against the decision tree.
 
-### Decision Tree Classifier Advantages
+#### Decision Tree Classifier Advantages
 
 - No domain knowledge, we don't need to know about the specific application
 
@@ -246,7 +246,7 @@ against the decision tree.
 
 - Representation intuitive and easy to assimilate
 
-### How does Decision Tree Work?
+#### How does Decision Tree Work?
 
 We need to understand why we use a specific attribute on the root and some of the others after.
 
@@ -286,7 +286,7 @@ Suppose that the class label attribute has m distinct values defining m distinct
 
 - Select the attribute with the highest information gain. To define it we need to define the probability (pi) that an arbitrary tuple in D belongs to class Ci, estimated by \|Ci, D\|/\| D \|
 
-#### __Info Gain__
+##### __Info Gain__
 
 The info gain is based on the computation of the information entropy.
 
@@ -337,7 +337,7 @@ We need to test all attributes and we choose the attribute with the highest leve
 
 If Gain(A) = Info(D) we are in the best situation.
 
-#### __Example of Info Gain with Decision Tree__
+##### __Example of Info Gain with Decision Tree__
 
 Let's suppose to have a db of 14 samples and we want to understand if the customer will buy or not the computer.
 
@@ -405,7 +405,7 @@ We will follow the decision tree following the values of the attributes.
 
 If we don't have remaining attributes but more classes, we will transform the subset in a leaf associating it the majority class.
 
-### Decision Tree Algorithm
+#### Decision Tree Algorithm
 
 This is the scheme to learn the decision tree:
 
@@ -421,7 +421,7 @@ There is also the possibility to apply binary splitting, independently on the va
 
 We can change the splitting criterio, we may have multiple splits, but this is a generic approach.
 
-#### __Computing Information-Gain for Continuous-Valued Attributes__
+##### __Computing Information-Gain for Continuous-Valued Attributes__
 
 We have to use categorical attributes but in many cases we have numerical attributes.
 
@@ -481,7 +481,7 @@ GainRatio(income) = 0.029/1.557 = 0.019
 
 <ins>The attribute with the maximum gain ratio is selected as the splitting attribute.</ins>
 
-### Gini Index
+#### Gini Index
 
 Another metric we can use is the __gini index__.
 
@@ -543,7 +543,7 @@ We select the combination with the lowest gini index.
 
 The Gini index may need other tools, e.g., clustering, to get the possible split values.
 
-## Comparing Attribute Selection Measures
+### Comparing Attribute Selection Measures
 
 The three measures, in general, return good results but
 
@@ -565,7 +565,7 @@ Most give good results; none is significantly superior to others. All measures 
 
 Most of times we generate the decision tree, and we work to reduce the overfitting and reducing the size also for interpretability.
 
-# Overfitting and Tree Pruning
+## Overfitting and Tree Pruning
 
 We have the problem of overfitting/overtraining that appears when we have too many branches, some may reflect anomalies due to noise or outliers.
 
@@ -613,7 +613,7 @@ We define:
 
 - Generalization errors: error on test set (eTS), we use an unused unlabeled dataset.
 
-### Estimating the Error
+#### Estimating the Error
 
 We can also have some methods for __estimating generalization errors__.
 
@@ -655,7 +655,7 @@ We select the smaller model with accuracy comparable to the bigger models.
 
 __This rule is called Occam's Razor.__
 
-## Overfitting Prevention
+### Overfitting Prevention
 
 We have two approaches to reduce overfitting, both about pruning the decision tree.
 
@@ -699,7 +699,7 @@ If we prune in A5 we replace it with a leaf with the majority class.
 
 We must understand when we can stop in the postpruning phase. We must balance the classification error and the complexity. Increasing the complexity, we typically increase the classification error.
 
-### Reduced Error Pruning
+#### Reduced Error Pruning
 
 We can use __Reduced Error Pruning (REP)__ where we use pruning set to estimate accuracy of sub-trees and accuracy of individual nodes.
 
@@ -713,7 +713,7 @@ __Repeat:__ prune at node with the largest gain until only negative gain nodes r
 
 We have a "Bottom/up restriction": T can only be pruned if it does not contain a sub-tree with lower error than T. To perform this approach, we must have a pruning set.
 
-#### __Example:__
+##### __Example:__
 
 ![alt](../media/image239.png)
 
@@ -751,7 +751,7 @@ If we prune the majority class is c2 but it corresponds to have 3 misclassificat
 
 This approach works because we use a pruning set, if we use the training set it doesn't work.
 
-### Cost Complexity Method and Postpruning
+#### Cost Complexity Method and Postpruning
 
 Another approach, used in CART, without the pruning set is to __balance the resubstitution error and the complexity__ of the tree.
 
@@ -801,7 +801,7 @@ The use of multivariate splits (splits based on a combination of attributes) can
 
 Indeed rule-based classifier can be constructed by extracting IF-THEN rules from a decision tree.
 
-# Enhancements to Decision Tree and Challanges
+## Enhancements to Decision Tree and Challanges
 
 We have a few problems:
 
@@ -833,7 +833,7 @@ It is also one of the first classifiers.
 
 Note: if the training set does not fit in memory, decision tree construction becomes inefficient due to swapping of the training tuples in and out
 
-## RainForest
+### RainForest
 
 To make scalable the learning process of the decision trees we can use __RainForest__.
 
@@ -855,7 +855,7 @@ We will have all information to compute the info gain, we summarize the informat
 
 We scan the DB but after that we can directly work on it.
 
-## BOAT (Bootstrapped Optimistic Algorithm for Tree Construction)
+### BOAT (Bootstrapped Optimistic Algorithm for Tree Construction)
 
 Another approach is to use statistical technique called bootstrapping to create several smaller samples (subsets), each fits in memory.
 
@@ -867,7 +867,7 @@ Advantages:
 
 - Compute the final splitting criteria in only one scan over the training database. An incremental algorithm: can be used for incremental updates.
 
-# Bayes Classification
+## Bayes Classification
 
 The Bayes classifier is a statistical classifier: performs probabilistic prediction, i.e., predicts class membership probabilities. The foundation is based on Bayes' Theorem.
 
@@ -957,7 +957,7 @@ where μCi and σCi are the mean value and the standard deviation, respectively,
 
 This is true if we can assume that the distribution is gaussian.
 
-#### __Example:__
+##### __Example:__
 
 Let's use the Naive Bayesian Classifier.
 
@@ -1015,7 +1015,7 @@ Therefore, X belongs to class ("buys\_computer = yes") because this class is cha
 
 It's normal to have the low magnitude because we use different products between number less than 1.
 
-## Avoiding the Zero-Probability Problem
+### Avoiding the Zero-Probability Problem
 
 Naïve Bayesian prediction requires each conditional probability be non-zero. Otherwise, the predicted probability will be zero:
 
@@ -1081,7 +1081,7 @@ If we have cancer in family history and the patient is smoker we have a probabil
 
 We can use these networks in several scenarios.
 
-## Training a Bayesian Network
+### Training a Bayesian Network
 
 Let X=(x1,..,xn) be a data tuple described by the variables or attributes Y1, \..., Yn, respectively.
 
@@ -1159,7 +1159,7 @@ The algorithm proceeds as follows:
 
 - Renormalize the weights (all the weights have to be between 0 and 1 being probabilities and ![alt](../media/image259.png) must equal 1 for all i,k.).
 
-# Rule-based Classification
+## Rule-based Classification
 
 We have classifiers based on rules.
 
@@ -1221,7 +1221,7 @@ For example:
 
 We have 5 leaves so we will have 5 rules. If we have only one branch, we will have only one condition in the antecedent.
 
-## Rule Extraction from a Decision Tree: Pruning the Rules
+### Rule Extraction from a Decision Tree: Pruning the Rules
 
 Let's see how we can prune the rule set.
 
@@ -1248,7 +1248,7 @@ They work in a sequential way.
 
 They extract rules directly from training data, using some heuristics.
 
-### Sequential Covering Algorithm
+#### Sequential Covering Algorithm
 
 A typical sequential covering algorithm is __FOIL__.
 
@@ -1400,7 +1400,7 @@ We are working with a pruning set, not using for the training.
 
 If we would work with the training set, we would not have any advantage.
 
-# Classification by Using Frequent Patterns
+## Classification by Using Frequent Patterns
 
 At the end of the execution of the algorithms we saw we had frequent patterns, from which we could extract association rules.
 
@@ -1494,7 +1494,7 @@ They all exploit techniques from rule-based classifiers (FOIL) or frequent patte
 
 There is no best strategy, we have to choose the best for our application.
 
-# Lazy Learners
+## Lazy Learners
 
 Lazy vs. eager learning:
 
@@ -1522,7 +1522,7 @@ Typical approaches are:
 
 - __Case-based reasoning__: uses symbolic representations and knowledge-based inference. We have to understand one case similar to our case.
 
-## K-Nearest Neighbor Algorithm
+### K-Nearest Neighbor Algorithm
 
 All instances correspond to points in the n-D space.
 
@@ -1582,7 +1582,7 @@ Computational efficiency: 1-NN requires O(\|D\|) comparisons.
 
 For reducing complexity, we have to reduce the number of instances in the training set and we have to select them in a correct way.
 
-### Editing Methods
+#### Editing Methods
 
 __Wilson editing__
 
@@ -1662,7 +1662,7 @@ Visualization of the application of editing methods on Complex9\_RN323 dataset:
 
 With Citation and Wilson editing we delete points but not so many. With SC Editing we have just few selected points.
 
-### K-Nearest Neighbours for Prediction
+#### K-Nearest Neighbours for Prediction
 
 k-NN for *real-valued prediction* for a given unknown tuple returns the mean values of the k nearest neighbors.
 
@@ -1676,7 +1676,7 @@ KNN is quite robust to noisy data by averaging k-nearest neighbors, especially w
 
 To overcome it, we can use axes stretch or elimination of the least relevant attributes.
 
-## Case-Based Reasoning (CBR)
+### Case-Based Reasoning (CBR)
 
 Case-based reasoning (CBR) is the process of solving new problems based on the solutions of equal or similar past problems.
 
@@ -1779,7 +1779,7 @@ Indexing based on syntactic similarity measure, and when failure, backtracking, 
 
 It is a lazy learner because we use the training set without creating a model.
 
-# Model Evaluation and Selection
+## Model Evaluation and Selection
 
 How can we measure accuracy? Are there other metrics to consider?
 
@@ -1801,7 +1801,7 @@ __Comparing classifiers:__
 
 A complete information is given by the __confusion matrix__.
 
-## Confusion Matrix
+### Confusion Matrix
 
 We consider a two-class problem but it can be generalized with more classes.
 
@@ -1819,7 +1819,7 @@ Example of Confusion Matrix:
 
 ![alt](../media/image284.png)
 
-### Classifier Evaluation Metrics: Accuracy, Error Rate, Sensitivity and Specificity
+#### Classifier Evaluation Metrics: Accuracy, Error Rate, Sensitivity and Specificity
 
 We can compare classifier in terms of TN or TP, taking in difference the two cases.
 
@@ -1857,7 +1857,7 @@ I should have for 1 in the best case.
 
 Higher their value and better is my classifier.
 
-### Classifier Evaluation Metrics: Precision and Recall, and F-measures
+#### Classifier Evaluation Metrics: Precision and Recall, and F-measures
 
 
 We also have other metrics:
@@ -1937,7 +1937,7 @@ When we evaluate the classifier, we can use accuracy if the dataset is balanced,
 
 We must work with the pairs we saw. If we have different classifiers we use the f-measure.
 
-## Holdout & Cross-Validation Methods
+### Holdout & Cross-Validation Methods
 
 A unique execution of different classifiers cannot allow concluding that one classifier is better than another.
 
@@ -1979,7 +1979,7 @@ Some variations:
 
 ![alt](../media/image291.png)
 
-## Bootstrap
+### Bootstrap
 
 Bootstrap samples the given training tuples uniformly with replacement.
 
@@ -1995,7 +1995,7 @@ We repeat the sampling procedure k times. The overall accuracy of the model is o
 
 ![alt](../media/image292.png)
 
-## Estimating Confidence Intervals
+### Estimating Confidence Intervals
 
 Suppose we have 2 classifiers, M1 and M2, which one is better than the other?
 
@@ -2025,7 +2025,7 @@ We fix some confidence that we want to have in the statistical test and we apply
 
 Obtain confidence limits for our error estimates. For instance "One model is better than the other by a margin of error of 4%."
 
-### Parametric Statistical Test: t-test
+#### Parametric Statistical Test: t-test
 
 Assumptions: the samples (for instance, classification accuracy) are normally distributed within each group (output of each classifier) and the variances of the two populations are not reliably different.
 
@@ -2089,7 +2089,7 @@ Typically, errors have a normal distribution.
 
 There are some tests to verify if the distribution is normal.
 
-### Non Parametric Statistical Tests: Wilcoxon Signed Rank Sum Test
+#### Non Parametric Statistical Tests: Wilcoxon Signed Rank Sum Test
 
 We have another statistical approach without having these assumptions.
 
@@ -2182,7 +2182,7 @@ Only if we can reject the null hypothesis, we conclude that a classifier is bett
 
 Typically, a confidence of 0.05 is used, we have to take care of this value.
 
-### Statistical Significance
+#### Statistical Significance
 
 We applied the statistical tests to the accuracy (just one value).
 
@@ -2202,7 +2202,7 @@ Possible solutions are:
 
 Using this area is another way when we work with imbalanced datasets.
 
-## ROC Curve
+### ROC Curve
 
 The __ROC__ (Receiver Operating Characteristics) curves method is used for visual comparison of classification models.It is originated from signal detection theory.
 
@@ -2264,7 +2264,7 @@ Changing the parameters, we can have the curve we discussed, that is represented
 
 Once did this, we can obtain the convex hull, which is the minimal convex set containing the points of the ROC curve. This hull allows us to make the following consideration.
 
-### Model Selection: Cost of a Classifier
+#### Model Selection: Cost of a Classifier
 
 We can evaluate the cost of a classifier represented by the point (FPR, TPR).
 
@@ -2302,7 +2302,7 @@ We are choosing here:
 
 because the cost of misclassification a positive for a negative is typically higher.
 
-### Comparing Different Classifiers with AUC (case imbalanced datasets)
+#### Comparing Different Classifiers with AUC (case imbalanced datasets)
 
 If we can draw the ROC curve, we can compute the convex hull and determine the best classifier.
 
@@ -2314,7 +2314,7 @@ When we have the cost, we can choose if we prefer FP or FN.
 
 If we are able to determine the cost, we can find the correct balance between FP and FN.
 
-# Techniques to Improve Classification Accuracy: Ensemble Methods
+## Techniques to Improve Classification Accuracy: Ensemble Methods
 
 One idea is to use a combination of models to increase accuracy.
 
@@ -2332,7 +2332,7 @@ Popular ensemble methods are:
 
 - __Ensemble__: combining a set of heterogeneous classifiers 
 
-## Bagging (Bootstrap Aggregation)
+### Bagging (Bootstrap Aggregation)
 
 Analogy: Diagnosis are based on multiple doctors' majority vote
 
@@ -2368,7 +2368,7 @@ Figure (a) shows the decision boundary of a decision tree classifier on the prob
 
 Figure (b) shows the decision boundary of an ensemble of decision tree classifiers on the same problem. We combine different boundaries and we obtain a different form, more adapted.
 
-## Boosting
+### Boosting
 
 Analogy: Consult several doctors, based on a combination of weighted diagnoses; the weight is assigned based on the previous diagnosis accuracy.
 
@@ -2408,7 +2408,7 @@ At the end we have a set of classifiers, each able to focus on specific instance
 
 When we put them together we expect higher performances.
 
-### Adaboost Algorithm
+#### Adaboost Algorithm
 
 Given a set of $d$ class-labeled tuples, $(X_1, y_1), ..., (X_d, y_d)$.
 
@@ -2464,7 +2464,7 @@ Boosting vs Bagging:
 
 ![alt](../media/image325.png)
 
-## Random Forest
+### Random Forest
 
 The idea is to have a large ensemble of decision trees. Each classifier is a decision tree classifier and is generated using a random selection of attributes at each node to determine the split.
 
@@ -2508,7 +2508,7 @@ __Disadvantages:__
 
 - Another disadvantage is that the interpretability of random forest is lower than decision trees. Each decision tree has a rule activated and at the end we just exploit the majority, combining information from different trees.
 
-# Classification of Class-Imbalanced Data Sets
+## Classification of Class-Imbalanced Data Sets
 
 When we work with imbalanced datasets we can't work with accuracy.
 

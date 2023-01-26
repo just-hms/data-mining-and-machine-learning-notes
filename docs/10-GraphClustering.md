@@ -42,7 +42,7 @@ It can be useful for social raccomandations. Do friends post similar content on 
 
 -   Social networks, in which the vertices are individuals or organizations, and the links are interdependencies between the vertices, representing friendship, common interests, or collaborative activities. Customers within a cluster may influence one another regarding purchase decision making.
 
-## Network Introduction
+### Network Introduction
 
 A network is basically a graph where:
 
@@ -58,7 +58,7 @@ How can we build the graph? We have to choose of the proper network representati
 
 The way you assign links will determine the nature of the question you can study.
 
-## How Can We Cluster Network Data?
+### How Can We Cluster Network Data?
 
 - We can apply **standard clustering algorithms by introducing a specific definition of similarity** measures:
 
@@ -73,11 +73,11 @@ The way you assign links will determine the nature of the question you can study
     -   Density-based clustering, for example SCAN
 
 
-# Similarity Measures
+## Similarity Measures
 
 If we are able to define similarity we can exploit clustering algorithms to cluster nodes.
 
-## Geodesic Distance
+### Geodesic Distance
 
 **The Geodesic Distance is the distance given by the shortest path between two vertices in a graph.**
 
@@ -89,7 +89,7 @@ If we are able to define similarity we can exploit clustering algorithms to clus
 
 E.g., eccen(a) = eccen(b) = 2; eccen(c) = eccen(d) = eccen(e) =3
 
-![alt](../media/image585.png)
+![](../media/image585.png)
 
 -   **Radius of graph G**: The minimum eccentricity of all vertices, i.e., the distance between the "most central point" and the "farthest border"
 
@@ -107,7 +107,7 @@ d = max v∈V eccen(v)
 >
 > E.g., Vertices c, d, and e are peripheral vertices
 
-## Similarity in Social Networks Introduction
+### Similarity in Social Networks Introduction
 
 Let us consider the similarity between two vertices in a customer social network.
 
@@ -137,7 +137,7 @@ These meanings associated with the concept of similarity help us introduce a sim
 
 The structural-context similarity can express what we want.
 
-## Similarity Rank Based on Structural Context
+### Similarity Rank Based on Structural Context
 
 **SimRank**: structural-context similarity, and it is based on the similarity of its neighbors.
 
@@ -149,7 +149,7 @@ In a directed graph G = (V,E), we define:
 
 Similarity measured in terms in SimRank between two vertices u and v is defined as:
 
-![alt](../media/image586.png)
+![](../media/image586.png)
 
 where C is a constant between 0 and 1.
 
@@ -165,11 +165,11 @@ How can compute SimRank? Iteratively, compute the previous equation until a fixe
 
 >We start with $s_0(^*,^*)$ where each $s_0(u,v)$ is a lower bound on the actual SimRank score $s(u,v)$:
 
-![alt](../media/image587.png)
+![](../media/image587.png)
 
 >To compute $s_{i+1}(u,v)$ from $s_i(^*,^*)$ we use :
 
-![alt](../media/image588.png)
+![](../media/image588.png)
 
 We iteratively compute and update this, but we have the termination condition when $u = v$.
 
@@ -179,7 +179,7 @@ The values $s_i(^*,^*)$ are non-decreasing as $i$ increases.
 
 **Complexity:** 
 
-![alt](../media/image589.png) where $d_2$ is the average of ![alt](../media/image590.png)
+![](../media/image589.png) where $d_2$ is the average of ![](../media/image590.png)
 
 $K$ is the number of iterations and typically is equal to 5.
 
@@ -203,7 +203,7 @@ At the end of the process we can generate the $G^2$ graph. $G^2$ represents an o
 
 The example represents the Web pages of two professors ProfA and ProfB, their students StudentA and StudentB, and the home page of their university Univ
 
-![alt](../media/image591.png)
+![](../media/image591.png)
 
 University has a link to ProfA which has a link to StudentA and so on.
 
@@ -217,23 +217,23 @@ We exploited similarity based on the structure of the graph, we considered input
 
 Now, we see a similarity definition in which we consider the random walk.
 
-## Similarity Rank Based on Random Walk
+### Similarity Rank Based on Random Walk
 
 Similarity based on random walk: in a strongly connected graph a path exists between every two nodes).
 
 We define the expected distance from u to v:
 
-![alt](../media/image592.png)
+![](../media/image592.png)
 
 The sum is computed over all tours t which start at u and end at v, and do not touch v except at the end.
 
-For a tour ![alt](../media/image593.png) the length l(t) of t is
+For a tour ![](../media/image593.png) the length l(t) of t is
 
 k-1, the number of edges we travel along the tour.
 
 The probability P(t) of travelling t is:
 
-![alt](../media/image594.png)
+![](../media/image594.png)
 
 This is the probbaility to walk along the tour. We make this consideration for each node on the walk.
 
@@ -247,7 +247,7 @@ The EMD is symmetric by definition.
 
 We have two surfers one starting from u and one from v and we measure just the number of steps requires for obtaining the surfers meet each other.
 
-![alt](../media/image595.png)
+![](../media/image595.png)
 
 In the first example, if the two surfers start they will move in parallel.
 
@@ -257,7 +257,7 @@ Each node $(u, v)$ of $V^2$ can be thought of as the present state of a pair of 
 
 A tour in $G^2$ of length $n$ represents a pair of tours in $G$ also having length $n$. Formally, the EMD $m(u, v)$ is simply the expected distance in $G^2$ from $(u, v)$ to any singleton node $(x, x)$ ∈ $V2$ (where $u = v$), since singleton nodes in $G^2$ represent states where both surfers are at the same node. More precisely,
 
-![alt](../media/image596.png)
+![](../media/image596.png)
 
 The sum is taken over all tours $t$ starting from $(u,v)$ which touch a singleton node at the end and only at the end. Unfortunately, $G^2$ may not always be strongly connected (even if $G$ is), and in such cases there may be no tours $t$ for $(u,v)$ in the summation. In this case, $m(u,v) = ∞$. This definition would cause problems in defining distances for nodes from which some tours lead to singleton nodes while others lead to $(u, v)$.
 
@@ -265,7 +265,7 @@ Solution: **Expected-f Meeting distance**
 
 Map all distances to a finite interval: instead of computing expected length $l(t)$ of a tour, we can compute the expected $f(l(t))$, for a nonnegative, monotonic function which is bounded on the domain $[0,∞)$.
 
-![alt](../media/image597.png)
+![](../media/image597.png)
 
 Instead of using directly $l(t)$ we use $C^{l(t)}$ and it solves the problem because close nodes have a lower score (meeting distances of 0 go to 1 and distances of $∞$ go to 0), matching our intuition of similarity. 
 
@@ -277,7 +277,7 @@ $s'(a,b)∈[0,1]$ -\> for all other values of $a,b$ This transformation avoid us
 
 Some examples of expected-f meeting distance with C=0.8.
 
-![alt](../media/image598.png)
+![](../media/image598.png)
 
 It has been proved that the SimRank score, with parameter C, between two nodes is their expected-f meeting distance traveling back-edges, for $f(z) = C^z$.
 
@@ -285,7 +285,7 @@ Structure and expected f-meeting distance have similar results.
 
 In other words, $s(u,v) = s'(u,v)$ for any two vertices $u$ and $v$. That is, **SimRank is based on both structural context and random walk, it implements both intuitions**.
 
-# Clustering in a Graph
+## Clustering in a Graph
 
 How should we conduct **clustering in a graph**?
 
@@ -305,7 +305,7 @@ Minimum cut is good for deriving clusters in graphs, and with it the cut's size 
 
 We have a polynomial time algorithms to compute minimum cuts of graphs (Edmonds-Karp algorithm)
 
-![alt](../media/image600.png)
+![](../media/image600.png)
 
 In this graph we can identify some clusters, but if we apply the minimum cut, that corresponds to find the minimum number of edges to cut.
 
@@ -321,13 +321,13 @@ Specifically, for edges $(d,h)$ and $(e,k)$ that are in the cut set, most of the
 
 We can exploit this information to introduce a better measure: **Sparsity**.
 
-## Sparsest Cut
+### Sparsest Cut
 
 Intuition: choose a cut where, for each vertex u that is involved in an edge in the cut set, most of the edges connecting to u belong to one cluster.
 
 The sparsity of a cut $C = (S,T)$ is defined as:
 
-![alt](../media/image601.png)
+![](../media/image601.png)
 
 **A cut is sparsest if its sparsity is not greater than that of any other cut.**
 
@@ -341,7 +341,7 @@ After execution we can measure the quality of the result.
 
 For $k$ clusters, the modularity of a clustering assesses the quality of the clustering:
 
-![alt](../media/image602.png)
+![](../media/image602.png)
 
 We have the sum of differences of those two. (module = cluster)
 
@@ -377,7 +377,7 @@ Sparsity
 
 -   A similarity matrix from a large sparse graph can also be sparse
 
-## How to Perform the Graph Clustering
+### How to Perform the Graph Clustering
 
 There exist two kinds of methods:
 
@@ -395,7 +395,7 @@ There exist two kinds of methods:
 
 -   Exploit the peculiarities of the graph for performing the clustering process
 
-### SCAN: Density-based clustering of Networks
+#### SCAN: Density-based clustering of Networks
 
 We don't have to fix $k$, it follows the density but we have to define the concept of density with vertices and edges.
 
@@ -409,17 +409,17 @@ Individuals who are **outliers** reside at the margins of society. Hermits, for 
 
 Define $Γ(v)$ as the immediate neighborhood of a vertex (i.e. the set of people that an individual knows ), vertices connected by the edge.
 
-![alt](../media/image603.png)
+![](../media/image603.png)
 
 The desired features tend to be captured by a measure, called **Structural Similarity**:
 
-![alt](../media/image604.png)
+![](../media/image604.png)
 
 Ratio between the cardinality of the intersection of the neighborhood of $v$ and $w$ over the square root of the product of cardinalities.
 
 The neighborhood of $u$:
 
-![alt](../media/image605.png)
+![](../media/image605.png)
 
 We also have u itself.
 
@@ -435,13 +435,13 @@ In the denominator, the neighborhood of the outlier is low, but the neighborhood
 
 In the case of a hub, for example 6 in the figure, we have that the numerator is not very high and the denominator the neighborhood of 6 is quite high.
 
-![alt](../media/image606.png)
+![](../media/image606.png)
 
 SCAN uses a similarity threshold $\varepsilon$ to define the cluster membership.
 
 For a vertex $v ∈ V$, the **ɛ-Neighborhood** of $v$ is defined as:
 
-![alt](../media/image607.png)
+![](../media/image607.png)
 
 set of neighbors such that the structure of similarity is higher or equal to epsilon.
 
@@ -449,7 +449,7 @@ A core vertex is a vertex inside of a cluster.
 
 $v$ is a core vertex if and only if:
 
-![alt](../media/image608.png)
+![](../media/image608.png)
 
 where 𝜇 is a popularity threshold.
 
@@ -463,7 +463,7 @@ The growing process continues until no cluster can be further grown.
 
 Formally, a vertex $w$ can be directly reached from a core $v$ if
 
-![alt](../media/image609.png)
+![](../media/image609.png)
 
 $v$ is core and $w$ belong to the eps-neighborhood of $v$.
 
@@ -471,7 +471,7 @@ Structure reachable: transitive closure of direct structure reachability. A vert
 
 Structure connected: two vertices v and w, which may or may not be cores, are said connected there exists a core u such that v and w can be reached from u.
 
-![alt](../media/image610.png)
+![](../media/image610.png)
 
 We must identify u such that v and w can be reached from u with the structure reachability we identified before.
 
@@ -479,19 +479,19 @@ We must identify u such that v and w can be reached from u with the structure re
 
     **Connectivity:**
 
-    ![alt](../media/image611.png)
+    ![](../media/image611.png)
 
     **Maximality:**
 
-    ![alt](../media/image612.png)
+    ![](../media/image612.png)
 
 Hubs do not belong to any cluster and bridge to many clusters.
 
 Outliers do not belong to any cluster and connect to less clusters.
 
-![alt](../media/image613.png)
+![](../media/image613.png)
 
-![alt](../media/image614.png)
+![](../media/image614.png)
 
 The result is strongly dependent on the parameters we use.
 
@@ -499,11 +499,11 @@ We identify possible outliers and hub, and we distinguish between them if we hav
 
 An example is the following. We want to define clusters, hubs and outliers. We set:
 
-![alt](../media/image615.png)
+![](../media/image615.png)
 
 We can start from any vertex; we start from 13.
 
-![alt](../media/image616.png)
+![](../media/image616.png)
 
 We compute the structure of similarity to identify if it's a core.
 
@@ -525,7 +525,7 @@ We extract another vertex to decide if it's a core, repeating the consideration 
 
 Let's see 8.
 
-![alt](../media/image617.png)
+![](../media/image617.png)
 
 We will repeat the computation with 7,9 and 12.
 
@@ -536,17 +536,17 @@ Considering 9, 8 has 4 vertices in the neighborhood, 9 has 5 and the intersectio
 
 In case of 12, we have 6 elements in its neighborhood, 4 vertices in the neighborhood of 8 and the intersection is composed by 4 elements.
 
-![alt](../media/image618.png)
+![](../media/image618.png)
 
 = 4/sqrt(24) = 0.82.
 
 The same for 7.
 
-![alt](../media/image619.png)
+![](../media/image619.png)
 
 In our case we don't have enough vertices inside the eps-neighborhood.
 
-![alt](../media/image620.png)![alt](../media/image621.png)
+![](../media/image620.png)![](../media/image621.png)
 
 For 12, the structure similarity is quite high.
 
@@ -556,11 +556,11 @@ We try to understand if we can include also other points.
 
 We have to compute if 6 is really a core point to include in our cluster.
 
-![alt](../media/image622.png)
+![](../media/image622.png)
 
 6 is not a core point and cannot be included in the clusters because it acts as a bridge between the two clusters.
 
-![alt](../media/image623.png)
+![](../media/image623.png)
 
 We can continue with 5, and so on.
 
@@ -568,7 +568,7 @@ At the end we will have two clusters, and 13 and 6 non included in the clusters.
 
 But we can elect 6 as hub and 13 as an outlier, because:
 
-![alt](../media/image624.png)
+![](../media/image624.png)
 
 **Running time**
 

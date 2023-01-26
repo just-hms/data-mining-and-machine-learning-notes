@@ -20,7 +20,7 @@ We define:
 
 -   __(relative) support s__: fraction of transactions that contains X (i.e., the probability that a transaction contains X).
 
-    ![alt](../media/image150.png)
+    ![](../media/image150.png)
 
     The 1-itemset (one element) beer appear 3/5, the absolute support of this set is 3. The relative support is 3/5. The absolute support of Beer, Diaper is 3. The relative support is 3/5.
 
@@ -52,8 +52,11 @@ $$
 
 ### Association Rule
 An association rule is an implication of the form X $\Rightarrow$ Y, where
+
 - $X \subset I$
+
 - $Y \subset I$
+
 - $X \cap Y = \emptyset$
 
 The association rule means that there's an high probability that X will imply Y.
@@ -96,7 +99,7 @@ We need to find all the rules X $\Rightarrow$ U with minimum support and confide
 
 Let's come back to the previous example.
 
-![alt](../media/image150.png)
+![](../media/image150.png)
 
 Let __minsup__ = 50%, __minconf__ = 50%
 
@@ -125,7 +128,7 @@ In general, association rule mining can be viewed as a two-step process:
 
 A long itemset contains a combinatorial number of sub-itemsets, e.g., we have 100 itemsets {a1, \..., a100}. The number of sub-itemset is:
 
-![alt](../media/image154.png)
+![](../media/image154.png)
 
 We need to find a solution to show all frequent patterns we can mine to users by summarizing.
 
@@ -233,7 +236,7 @@ It has to be chosen not depending on the complexity.
 
 When we start the method the minsup is fixed.
 
-![alt](../media/image155.png)
+![](../media/image155.png)
 
 We start from our db that may contain some transactions.
 
@@ -298,11 +301,11 @@ With this order we generate the candidate itemset.
 
 The join, $L_{k-1} \bowtie L_{k-1}$, is performed, where members of $L_{k-1} are joinable if their first (k-2) items are in common:
 
-![alt](../media/image158.png)
+![](../media/image158.png)
 
 The resulting itemset formed by the joining is:
 
-![alt](../media/image159.png)
+![](../media/image159.png)
 
 We have the k-2 items of $l_1$ and $l_2$\[k-1\] as the k-th item in the k-itemset.
 
@@ -315,11 +318,11 @@ If we discover that one subset itemset is not frequent we can remove directly th
 
 For example we can suppose the minsup is 2.
 
-![alt](../media/image160.png)
+![](../media/image160.png)
 
 We assume that the items are in lexicographic order, useful for us to check.
 
-![alt](../media/image161.png)
+![](../media/image161.png)
 
 First we check if the 1-itemsets are frequent. We generate $C_2$ candidates, we don't apply directly the join because we don't have any k-1 equal items, we directly apply combinations. We could apply the join but the first part is empty.
 
@@ -327,7 +330,7 @@ We only consider $l_1$\[k-1\] $<$ $l_2$\[k-1\] and combine $l_1$\[k-1\] and $l_2
 
 We check if they're frequent and now we have to generate the candidate 3-itemsets.
 
-![alt](../media/image162.png)
+![](../media/image162.png)
 
 {I1 , I2} and {I1, I3} can be combined, the first element is in common, I2 is lower than I3 and from these two itemsets we generate the 3-itemset {I1, I2, I3}.
 
@@ -339,7 +342,7 @@ If both 2-itemsets are members of L2 we keep them.
 
 Then we have to check if they are frequent.
 
-![alt](../media/image163.png)
+![](../media/image163.png)
 
 $L_1$, $L_2$, $L_3$ are the itemset frequents I can generate.
 
@@ -349,11 +352,11 @@ For the definition of closed itemsets we have to return all them, otherwise we l
 
 ### Summary
 
-![alt](../media/image164.png)
+![](../media/image164.png)
 
-![alt](../media/image165.png)
+![](../media/image165.png)
 
-![alt](../media/image166.png)
+![](../media/image166.png)
 
 The last procedure is the pruning step applied after the generation of the candidate itemset; it allows us to remove itemsets without checking if they're frequent.
 
@@ -407,13 +410,13 @@ Scan 1: partition database and find local frequent patterns
 
 Scan 2: consolidate global frequent patterns
 
-![alt](../media/image168.png)
+![](../media/image168.png)
 
 We divide the DB in n partitions (with empty intersection) and find frequent itemsets in local partitions.
 
 We combine all local frequent itemsets and then find global frequent itemsets.
 
-![alt](../media/image169.png)
+![](../media/image169.png)
 
 The idea is to apply the apriori algorithm in all partition to discover frequent itemsets.
 
@@ -427,7 +430,7 @@ Another approach to increase the efficiency of the algorithm is to use an hash t
 
 When scanning each transaction in the database to generate the frequent 1-itemsets, $L_1$, we can generate all the 2-itemsets $C_k$, for each transaction, hash (i.e., map) them into the different buckets of a hash table structure, and increase the corresponding bucket counts.
 
-![alt](../media/image170.png)
+![](../media/image170.png)
 
 If a bucket count is lower than minsup we can say that all the contents of the bucket are not frequent. This is a way to reduce the 2-itemsets to consider in the next step.
 
@@ -465,9 +468,9 @@ Once all length-2 subsets of BCD are determined frequent, the counting of BCD be
 
 The idea is to anticipate the scanning of the DB for checking if we have 2-itemsets frequent. During the scan of the database we see that A and D are frequent and we also start to scan also the 2-itemset AD.
 
-![alt](../media/image172.png)
+![](../media/image172.png)
 
-<!-- ![alt](../media/image173.png) -->
+<!-- ![](../media/image173.png) -->
 
 -------------------------------------------------------------
 
@@ -531,7 +534,7 @@ __Pass 1__:
 
 We use this order when building the FP-Tree, so common prefixes can be shared.
 
-![alt](../media/image174.png)
+![](../media/image174.png)
 
 __Pass 2__:
 
@@ -555,7 +558,7 @@ When we build FP-Tree the root node is null, just a starting point. The first pa
 
 The second transaction starts with a different item respect to the first transaction, we need to create another path. The dashed line with the arrow is the link that connects nodes with the same item. We cannot use one single node, we use this link to count how many occurencies of the same item we have in the FP-Tree.
 
-![alt](../media/image175.png)
+![](../media/image175.png)
 
 In the third transaction we see that the first item is consistent with the first of the first transaction, we already have a path and we can exploit it.
 
@@ -593,7 +596,7 @@ We first extract prefix path subtress ending in item and then we work directly t
 
 Suppose we have extracted this FP-Tree:
 
-![alt](../media/image176.png)
+![](../media/image176.png)
 
 We start from the item with the lowest frequency and we want to extract all itemsets including e. We extract subtrees with e in the leaves. That is the subtree with prefix 'e'.
 
@@ -607,7 +610,7 @@ If we want to discover all itemsets including e we can focus only on the subtree
 
 E.g. we consider first the prefix path sub-tree for e and it will be used to extract frequent itemsets ending in e, then in de, ce, be and ae, then in cde, bde, cde, etc.
 
-![alt](../media/image177.png)
+![](../media/image177.png)
 
 We use a divide and conquer approach. We start with the tree including e, we focus then on de and so on.
 
@@ -619,7 +622,7 @@ The __Conditional FP-Tree__ is the FP-Tree that would be built if we only consid
 
 Example: FP-Tree conditional on e.
 
-![alt](../media/image178.png)
+![](../media/image178.png)
 
 We consider only transactions in which e appears without seeing that in the tree.To extract a FP-Tree conditional to a specific item consists in extracting the part of FP-Tree corresponding to the transactions in the DB in which the prefix is included.
 
@@ -627,7 +630,7 @@ Let minSup = 2 and extract all frequent itemsets containing e.
 
 We want to obtain the prefix path sub-tree for e:
 
-![alt](../media/image179.png)
+![](../media/image179.png)
 
 We use the overall complete FP-Tree and we analyze paths ending in 'e'.
 
@@ -641,7 +644,7 @@ For each of them (e.g. de), find the prefix paths from the conditional tree for 
 
 Example: e $\rightarrow$ de $\rightarrow$ ade ({d,e}, {a,d,e} are found to be frequent)
 
-![alt](../media/image180.png)
+![](../media/image180.png)
 
 We generate the conditional FP-Tree for de and then for ade. We eliminate c because it cannot generate frequent itemsets with d and e.
 
@@ -649,13 +652,13 @@ We generate conditional FP-Tree only for frequent itemsets.
 
 Example: e $\rightarrow$ ce ({c,e} is found to be frequent)
 
-![alt](../media/image181.png)
+![](../media/image181.png)
 
 We can stop there because we don't have a conditional FP-tree for ce.
 
 Frequent itemsets found (ordered by suffix and order in which they are found):
 
-![alt](../media/image182.png)
+![](../media/image182.png)
 
 ### __Advantages__ of FP-Growth:
 
@@ -675,7 +678,7 @@ Frequent itemsets found (ordered by suffix and order in which they are found):
 
 Let\'s see another example.
 
-![alt](../media/image183.png)
+![](../media/image183.png)
 
 We have a DB of transactions, we generate this FP-tree and in the structure we also have this table with all items in descending order and from the table we have a link to the first node of the tree, which have links to other nodes with the same item.
 
@@ -695,11 +698,11 @@ We have I2 with support 4 because we have 2 paths with support 2.
 
 This is a description of the __algorithm__.
 
-![alt](../media/image184.png)
+![](../media/image184.png)
 
-![alt](../media/image185.png)
+![](../media/image185.png)
 
-![alt](../media/image186.png)
+![](../media/image186.png)
 
 ### __Benefits__ for the FP-Tree Structure:
 
@@ -725,7 +728,7 @@ A study of the FP-growth method performance shows that it is efficient and scala
 
 This is the comparison of performance in large datasets:
 
-![alt](../media/image187.png)
+![](../media/image187.png)
 
 In x we have the value of the support, and when it increases the run time decreases.
 
@@ -771,7 +774,7 @@ If the 2-itemset is frequent, here we don't have to scan the dataset, we have to
 
 At the end we have the set of transaction supporting the itemset.
 
-![alt](../media/image188.png)
+![](../media/image188.png)
 
 When we want to compute the support of {I1, I2} we compute the intersection and discover that it's supported by those transactions.
 
@@ -853,7 +856,7 @@ $$
     lift = \frac{P(A \cup B)}{P(A)P(B)}
 $$
 
-![alt](../media/image192.png)
+![](../media/image192.png)
 
 The two lifts are close to 1, but the second is more far away than the first.
 
@@ -861,7 +864,7 @@ These two values tell us that there's no strong correlation between the 2 becaus
 
 We can also use another metric, the chi-square metric.
 
-![alt](../media/image193.png)
+![](../media/image193.png)
 
 We have a negative correlation because $x^2$ is quite high, negative because we can plot this value and understand that there's a negative correlation.
 
@@ -898,7 +901,7 @@ $$
 
 Let's see an example with a contingency table:
 
-![alt](../media/image198.png)
+![](../media/image198.png)
 
 Let's take the D1 dataset, $x^2$ is high (strong correlation), lift is high (strong correlation) and the 4 metrics have high value (strong correlation, they vary from 0 and 1). But if we see the transactions with mc, we have 10.000 transactions with milk and coffee of 11.000 with milk. There is a strong correlation.
 

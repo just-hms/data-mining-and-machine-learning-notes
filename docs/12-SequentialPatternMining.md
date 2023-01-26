@@ -104,7 +104,7 @@ A sequential pattern is maximal if it is not a subsequence of any other sequenti
 
 Example of sequence:
 
-![alt](../media/image664.png)
+![](../media/image664.png)
 
 In the sequence database we have 5 sequences, we can interpret them in a way that items in pharentesis are items in itemsets.
 
@@ -126,7 +126,7 @@ Consider all sequences arranged in a sequence tree T (referred to as a Lexicogra
 
 -   Recursively, if $n$ is a node in the tree T, then $n$'s children are all nodes $n'$ such that $n \le n'$ and $\forall m \in T: n' \le m$ if n ≤ m. Each sequence in the tree can be extended by adding a 1-sequence to its (sequence-extended sequence) end or adding an itemset to its end (itemset-extended sequence), which is not applicable to the case of web log mining.
 
-![alt](../media/image665.png)
+![](../media/image665.png)
 
 We start with the root, and starting from the lexicographic order of items we can generate all possible lexicographic ordered sequences.
 
@@ -151,7 +151,7 @@ Assume the frequent sequence $S_\beta = < beadc >$ is the only superset of the f
 
 Let's see an example.
 
-![alt](../media/image666.png)
+![](../media/image666.png)
 
 Let's assume that we have this supermarket, and we want to investigate if we have frequent subsequences.
 
@@ -185,7 +185,7 @@ We __sort the database__ using the customer ID as the major key. We do it in res
 
 __Converts the original transaction database into a database of customer sequences__
 
-![alt](../media/image667.png)
+![](../media/image667.png)
 
 We need this form to produce the sequence corresponding to the customer.
 
@@ -202,7 +202,7 @@ __Recall__: each itemset in a large sequence has to be a large itemset
 __Support counting__ measures the fraction of customers purchasing items in the itemset.
 
 
-![alt](../media/image668.png)
+![](../media/image668.png)
 
 Each large itemset is then mapped to a set of __contiguous integers__
 
@@ -210,7 +210,7 @@ Transformation used to compare large itemsets in constant time and reduce the ti
 
 This is a mapping to speed-up the computation.
 
-![alt](../media/image669.png)
+![](../media/image669.png)
 
 We can realize that some itemsets are not frequent in our example database.
 
@@ -234,7 +234,7 @@ Need to repeatedly determine __which of a given set of large sequences are conta
 
 -   Transactions with no litemsets are dropped. (still considered for support counts).
 
-![alt](../media/image670.png)
+![](../media/image670.png)
 
 The original customer sequence is transformed in the costumer sequence in the second column (eliminating not frequent items and transforming), and after mapping on the sequence on the third column.
 
@@ -288,7 +288,7 @@ This is based on the same idea of the one saw in frequent pattern analysis.
 
 We start from the large itemsets determined in previous phases.
 
-![alt](../media/image671.png)
+![](../media/image671.png)
 
 Similiar to apriori algorithm but here we talk about sequences.
 
@@ -312,7 +312,7 @@ The generation of candidates $C_k$ is performed as follows:
 
     {1 3 5 4} $\rightarrow$ can be remove because 3 5 4 is not present
 
-    ![alt](../media/image672.png)
+    ![](../media/image672.png)
 
 We have all possible sequences minable from the customer sequences using the three phases seen before.
 
@@ -368,7 +368,7 @@ __Balances tradeoff__ between:
 
 -   Counting extensions of small candidate sequences 
 
-![alt](../media/image674.png)
+![](../media/image674.png)
 
 $$
     hit_k = \dfrac{|Lk|}{|Ck|}
@@ -382,7 +382,7 @@ We have an high probability that this candidate sequences are frequents, we jump
 
 ### __Forward Phase__
 
-![alt](../media/image675.png)
+![](../media/image675.png)
 
 $L_{K-1}$ known means that we generated and tested the frequent sequences at the level k-1. We use the apriori algorithm, we use directly the frequent sequences.
 
@@ -407,13 +407,13 @@ For all lengths which we skipped:
 
 - Also __delete large sequences__ found in forward phase __which are non-maximal__.
 
-![alt](../media/image676.png)
+![](../media/image676.png)
 
 We perform the increment for the candidates remained after the deletion phase.
 
 We are interested in maximum sequences, so we delete all subsequences.
 
-![alt](../media/image677.png)
+![](../media/image677.png)
 
 In the forward phase we generated all candidate sequences, sometimes using frequent sequences and sometimes using candidate ones.
 
@@ -425,7 +425,7 @@ We generate $C_3$ using $L_2$ and then we generate candidate 4 sequences using $
 
 We start the backward phase.
 
-![alt](../media/image678.png)
+![](../media/image678.png)
 
 We start from the maximum-sequence <1 2 3 4> and delete all subsequences contained in it. We are sure they are not maximal.
 
@@ -464,27 +464,27 @@ We use the __intermediate phase__ to generate them.
 
 For example, assume that we count $L_3$ and $L_6$, and $L_9$ turns out to be empty in the forward phase, so we have to stop there. We generate $C_7$ and $C_8$ (intermediate phase), and then count $C_8$ followed by $C_7$ after deleting non-maximal sequences (backward phase). This process is then repeated for $C_4$ and $C_5$.
 
-![alt](../media/image679.png)
+![](../media/image679.png)
 
 We don't generate all candidates but just jump.
 
 For each customer sequence we count the support.
 
-![alt](../media/image680.png)
+![](../media/image680.png)
 
 We generate sequence sand verify if they are frequent.
 
-![alt](../media/image681.png)
+![](../media/image681.png)
 
 We start from the last $k$ and generate $C_k$ after decreasing $k$ from $L_{k-1}$ if exists, otherwise from $C_{k-1} and then we apply the backward phase.
 
 The generation from $L_k$ and Lstep for the $C_{k+step}$, we have:
 
-![alt](../media/image682.png)
+![](../media/image682.png)
 
 If we have these sequences:
 
-![alt](../media/image683.png)
+![](../media/image683.png)
 
 We compute the end and the start for each sequence.
 
@@ -504,7 +504,7 @@ We generate the k+step candidate sequences in this way.
 
 ### Execution of AprioriDynamicSome
 
-![alt](../media/image684.png)
+![](../media/image684.png)
 
 In the __forward phase__ we directly generate $C_4$ starting from $L_2$ with step = 2. We check if they're frequent then. We start from $L_4$ to generate $C_6$ which is empty.
 
@@ -518,7 +518,7 @@ We use some datasets to evaluate performance.
 
 We consider performances in terms of computational time, not in terms of result because they give the same maximum-sequences.
 
-![alt](../media/image685.png)
+![](../media/image685.png)
 
 We plot what happens in terms of time using different minsup.
 
@@ -526,7 +526,7 @@ _DynamicSome_ generates too many candidates, therefore we cannot manage a big pr
 
 _AprioriSome_ does a little better than _AprioriAll_, it avoids counting many non-maximal sequences, but the difference is not relevant.
 
-![alt](../media/image686.png)
+![](../media/image686.png)
 
 Advantage of _AprioriSome_ is reduced for 2 reasons:
 
@@ -536,7 +536,7 @@ Advantage of _AprioriSome_ is reduced for 2 reasons:
 
 This is what happens with the relative time:
 
-![alt](../media/image687.png)
+![](../media/image687.png)
 
 We have stability using the number of transaction per customers.
 
@@ -572,7 +572,7 @@ We find frequent items from database and produce the list of frequent items in s
 
 All sequential patterns can be divided into several subsets __without overlap__.
 
-![alt](../media/image689.png)
+![](../media/image689.png)
 
 We produce the f_list and sort the list in descending order and project the sequence database.
 
@@ -614,7 +614,7 @@ Since a transaction is projected to only one projected database at the database 
 
 ### __Example of Database Projection__
 
-![alt](../media/image690.png)
+![](../media/image690.png)
 
 In parallel projection we scan the sequence database and produce the projection along $f,e,d,a$ just scanning the database. When we project along $e$ we consider all sequences where $e$ is present and not $f$, in $d$ where $d$ is present and $e$ and $f$ are not.
 
@@ -644,7 +644,7 @@ We scan $f$-projected db once and find sequential pattern containing {$f, b$}, b
 
 Then we count multiple $b$'s, we perform one more scan finds sequential patterns containing two $b$'s and one $f$.
 
-![alt](../media/image691.png)
+![](../media/image691.png)
 
 The only two sequences containing $f$ will be in the $f$-projected database.
 
@@ -704,7 +704,7 @@ This matrix is produced scanning the projection we have, so the first sequence \
 
 If we have this SDB:
 
-![alt](../media/image692.png)
+![](../media/image692.png)
 
 bcdaef in columns and rows that are our items and they're sorted in decreasing order with respect to the frequence. It is a symmetric matrix.
 
@@ -736,7 +736,7 @@ We can directly analyze if they are frequent.
 
 For each counter, if the value in the counter is no less than min\_sup, output the corresponding sequential pattern.
 
-![alt](../media/image693.png)
+![](../media/image693.png)
 
 We can generate all frequent 2-sequences based on the minsup we fixed.
 
@@ -754,13 +754,13 @@ We can consider the repetition of $j$ and we have to analyze the possibility to 
 
 We have to remember that the information on the diagonal is the number of sequences in which we have repetition of the item we are considering.
 
-![alt](../media/image694.png)
+![](../media/image694.png)
 
 __i+__ means that we could have sequence \<ij\> but we can also have the repetition of i, we can have \<iij\> or \<iji\>.
 
 If $F[j,j] \ge min\_sup$ succeds we have to generate __j+__ for the same reason.
 
-![alt](../media/image695.png)
+![](../media/image695.png)
 
 We have sequence \<bf\> in two sequences in the sequence database, we have \<fb\> in two sequences in the sequence database and \<bf\> as itemset in two sequences in the sequence database.
 
@@ -794,7 +794,7 @@ For row $j$
 
 -   If there is a choice between sequence or set, __sequence is preferred__
 
-![alt](../media/image696.png)
+![](../media/image696.png)
 
 If we consider \<(ce)\>we have two, so it is frequent as itemset.
 
@@ -815,7 +815,7 @@ At the end we have this table:
 |c|\<bc\>:4, \<cb\>:3|{b<sup>+</sup>c}|None|
 |b|\<bb\>:4|\<bb<sup>+</sup>\>|None|
 
-![alt](../media/image698.png)
+![](../media/image698.png)
 
 We have the length-2 sequential patterns, annotations on repeated items and annotations on projected databases.
 
@@ -837,7 +837,7 @@ In fact, we reduce the candidate sequences to test.
 
 We use some datasets and some comparison algorithms.
 
-![alt](../media/image699.png)
+![](../media/image699.png)
 
 The _FreeSpan_ with annotations is really faster and decreasing minsup the run-time is almost constant.
 

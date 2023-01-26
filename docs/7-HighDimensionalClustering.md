@@ -30,7 +30,7 @@ Two major __kinds of methods__ to deal with high-dimensional clustering:
 
 - _Dimensionality reduction approaches_: Construct a much lower dimensional space and search for clusters there (may construct new dimensions by combining some dimensions in the original data). We have to create them in a reasonable way.
 
-# The curse of dimensionality
+## The curse of dimensionality
 
 Data in only one dimension is relatively packed. Adding a dimension "stretch" the points across that dimension, making them further apart. Adding more dimensions will make the points further apart---high dimensional data is extremely sparse.
 
@@ -38,32 +38,32 @@ Distance measure becomes meaningless due to equi-distance.
 
 |<!--  -->|<!--  -->|
 |-|-|
-|![alt](../media/image487.png)|![alt](../media/image488.png)|
+|![](../media/image487.png)|![](../media/image488.png)|
 
-## Subspace Clustering
+### Subspace Clustering
 
 Clusters may exist only in some subspaces. Subspace-clustering consists in finding clusters in all the subspaces. Some dimensions can act as noise, but we may have some projection of subspaces in which we identify natural clusters.
 
 In 3 dimensions it's not easy to identify clusters:
 
-![alt](../media/image489.png)
+![](../media/image489.png)
 
 If I project data objects along dimensions:
 
-![alt](../media/image490.png)
+![](../media/image490.png)
 
 We have that projecting on dimension b two clusters are merged.
 
 If we project along two dimensions, we can isolate some clusters, in the first case red and green, in the second violet and blue, and so on. When we have an high number of dimensions we shouldn't try to discover clusters with the original space but it's more suited to consider subspaces. We have subspace search methods that search various subspaces to find clusters.
 
-# Subspace Clustering Methods
+## Subspace Clustering Methods
 They can be Bottom-up approaches or Top-down approaches. An approach is correlation-based clustering methods (E.g., PCA based approaches). Another approach are Bi-clustering methods, they perform subspace selection and clustering concurrently. We have two types of approaches:
 
 - _Optimization-based methods_
 
 - _Enumeration methods_
 
-## Subspace Search Methods
+### Subspace Search Methods
 
 Search various subspaces to find clusters:
 
@@ -81,16 +81,16 @@ Search various subspaces to find clusters:
     
     Ex. PROCLUS: a k-medoid-like method
 
-## Correlation-Based Methods
+### Correlation-Based Methods
 
 Subspace search method can be __similarity based on distance or density__. Correlation-based method are based on __advanced correlation models__.
 
 Ex. PCA based approach: We apply PCA (for Principal Component Analysis) to derive a set of new, uncorrelated dimensions, then mine clusters in the new space or its subspaces. We can do it using eigenvectors associated with high eigenvalues.
 
-## Bi-Clustering Methods
+### Bi-Clustering Methods
 __Bi-clustering__ approaches cluster both objects and attributes simultaneously (we treat objects and attributes in symmetric way). We have clusters of attributes and clusters of objects.
 
-![alt](../media/image491.png)
+![](../media/image491.png)
 
 We want to obtain a cluster of objects in a cluster of attributes. At the end we will have clusters of objects described by a subset of attributes.
 
@@ -104,7 +104,7 @@ Four requirements:
 
 - An attribute may be involved in multiple clusters, or is not involved in any cluster at all
 
-### Types of Bi-clusters
+#### Types of Bi-clusters
 
 We have to define the type of bi-cluster when we apply it.
 
@@ -198,7 +198,7 @@ We have 4 types of bi-clusters patterns (ideal cases):
     
     The tendency is always the same, if the differences are both positive/negative the product will be positive.
 
-# Bi-Clustering Methods
+## Bi-Clustering Methods
 
 These are ideal definitions of bi-clusters, but real-world data is noisy. We try to find approximate bi-clusters.
 
@@ -218,7 +218,7 @@ We have two types of Methods: _Optimization-based methods_ vs. _enumeration meth
 
     Ex. $\delta$-pCluster Algorithm.
 
-## Bi-Clustering for Micro-Array Data Analysis
+### Bi-Clustering for Micro-Array Data Analysis
 
 Let's consider the three objects in the left characterized by three features. Left figure: Micro-array "raw" data shows 3 genes and their values in a multi-D space: It's difficult to find their patterns. I conclude that I don't have any pattern. The reason is that we have some attributes acting as noise.
 
@@ -226,13 +226,13 @@ If we focus on some attributes and consider their subspace (second plot), we fin
 
 If I analyze my objects in the overall space I cannot realize it but focusing on a subspace I realize a pattern for the three objects. In the third subspace I'm considering f,d,a,g,i and we can discover I have a bi-cluster with coherent evolution on rows, for each object we have the same tendency in the attributes of the bi-cluster.
 
-![alt](../media/image497.png)
+![](../media/image497.png)
 
-### $\delta$-Bi-Cluster
+#### $\delta$-Bi-Cluster
 
 We work using an optimization method.
 
-![alt](../media/image498.png)
+![](../media/image498.png)
 
 If we are in the case of coherent values, H tends to be very small.
 
@@ -246,7 +246,7 @@ $$
 
 When we increase the size of $I$ and the size of $J$ we want to obtain on average a bi-cluster with this H value, lower than or equal to delta. This delta is a tolerance that each bi-cluster we generate on average.
 
-### The $\delta$-Cluster Algorithm
+#### The $\delta$-Cluster Algorithm
 
 Maximal $\delta$-bi-cluster is a $\delta$-bi-cluster $I \times J$ such that there does not exist another $\delta$-bi-cluster $I^{'} \times J^{'}$ which contains $I \times J$.
 
@@ -256,7 +256,7 @@ Two phase computation: _deletion phase_ and _additional phase_.
 
     Start from the whole matrix, iteratively remove rows and columns while the mean squared residue of the matrix is over $\delta$. At each iteration, for each row/column, compute the mean squared residue: 
     
-    ![alt](../media/image499.png)
+    ![](../media/image499.png)
 
 	and we remove the row or column of the largest mean squared residue, it is the residual that impact more on the computation.
 
@@ -267,13 +267,13 @@ Two phase computation: _deletion phase_ and _additional phase_.
     We can have different clusters of objects in different subspaces, so we need to apply this approach multiple times, but if we execute the approach without changing anything we find the same cluster.
     This technique allows us to find a number of bi-clusters. That approach doesn't guarantee to find the local optimum.
 
-### $\delta$-pCluster
+#### $\delta$-pCluster
 
 It consists in enumerating all bi-clusters ($\delta$-pClusters). Since a submatrix $I \times J$ is a bi-cluster with (perfect) coherent values if $e_{i_1 j_1} − e_{i_2 j_1} = e_{i_1 j_2} − e_{i_2 j_2}$.
 
 For any 2 x 2 submatrix of $I \times J$, define _p-score_:
 
-![alt](../media/image500.png)
+![](../media/image500.png)
 
 It's the difference between the pairs between two rows in the first column and the pairs between two rows in the second column. When we have perfect coherent values this p-score is equal to 0.
 
@@ -292,7 +292,7 @@ If $I \times J$ is not a submatrix of another $\delta$- pClusters then $I \times
 
 We are determining bi-clusters with approximatively coherent values, approximate for the tollerance we have.
 
-## Dimensionality-Reduction Methods
+### Dimensionality-Reduction Methods
 
 Another approach we have tries to reduce the dimensions. We construct a new space of the original space and try to identify clusters in the new space.
 
@@ -300,7 +300,7 @@ Dimensionality reduction: __In some situations, it is more effective to construc
 
 Ex. To cluster the points in the figure, any subspace of the original one, X and Y, cannot help, since all the three clusters will be projected into the overlapping areas in X and Y axes.
 
-![alt](../media/image501.png)
+![](../media/image501.png)
 
 If we construct a new dimension as the dashed one, if we project along this new dimension we can identify the cluster very easily, the three clusters become apparent when the points projected into the new dimension.
 
@@ -310,7 +310,7 @@ We have different __dimensionality reduction methods__:
 
 - _Spectral clustering_: Combining feature extraction and clustering (i.e., use the spectrum of the similarity matrix of the data to perform dimensionality reduction for clustering in fewer dimensions)
 
-### Spectral Clustering(The Ng-Jordan-Weiss (`NJW`) Algorithm)
+#### Spectral Clustering(The Ng-Jordan-Weiss (`NJW`) Algorithm)
 
 We generate the affinity matrix that takes in consideration the affinity between objects.
 
@@ -344,37 +344,37 @@ The we find the $k$ leading eigenvectors of $A$ and we project the original data
 
 A vector $v$ is an eigenvector of matrix $A$ if $Av = \lambda v$, where $\lambda$ is the corresponding eigen-value  Using the k leading eigenvectors, project the original data into the new space defined by the k leading eigenvectors, and run a clustering algorithm, such as k-means, to find k clusters on the transformed space formed by the k-leading eigenvectors.Assign the original data points to clusters according to how the transformed points are assigned in the clusters obtained.
 
-![alt](../media/image505.png)
+![](../media/image505.png)
 
 We reduce the dimensions, apply the clustering in the new space and project back to cluster the original data.
 
-### Example
+#### Example
 
 An example of application: 200 data in each half moon.
 
-![alt](../media/image506.png)
+![](../media/image506.png)
 
 - If I apply the classical k-means we don't obtain this type of clusters.
 
     The similarity is:
 
-    ![alt](../media/image507.png)
+    ![](../media/image507.png)
 
     K = 2
 
 - Spectral embedding given by the first two eigenvectors:
 
-    ![alt](../media/image508.png)
+    ![](../media/image508.png)
 
 - We can determine clusters in this way.
 
     Partition obtained by NJW:
 
-    ![alt](../media/image509.png)
+    ![](../media/image509.png)
 
     There are examples where Spectral Clustering result is really different from the optimal one.
 
-    ![alt](../media/image510.png)
+    ![](../media/image510.png)
 
 - The solution given by NJW with three classes, its normalized cut is 0.16.
 
