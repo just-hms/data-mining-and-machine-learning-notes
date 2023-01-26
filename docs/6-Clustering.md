@@ -293,7 +293,6 @@ The centroid is defined as the mean value of the points within the cluster.
 #### pseudocode
 
 ```py
-
 def kmeans(data, k):
     
     # initialize k centroids randomly from data points
@@ -456,7 +455,6 @@ $$
 $$
 
 $$
-
     S > 0 \implies \text{no replacement} 
 $$
 
@@ -483,7 +481,6 @@ Partitioning Around Medoids (PAM) approach has this pseudo-code:
 #### Current PAM pseudocde
 
 ```py
-
 def PAM(data, k):
 
     medoids = randomly_initialize_medoids(data, k)
@@ -757,7 +754,8 @@ A clustering of the data objects is obtained by cutting the dendogram at the des
 
 If we cut the dendogram at level 2 the partition we obtain:
 
-```py   
+```py
+   
 clusters = [
     [a, b],
     [c],

@@ -208,7 +208,6 @@ It consists in smooth a sorted data value by consulting its neighborhood.
 We have to first sort data eand partition into (equal-frequency) bins, intervals with the same number of values, then one can smooth by bin means, smooth by bin median, smooth by bin boundaries, etc.
 
 ```py
-
 Sorted_data_for_price = [4,8,15,21,21,24,25,28,34]
 
 ## Partition into (equal frequency) bins:
@@ -695,10 +694,10 @@ Given $N$ data vectors from $f$-dimensions, find $k\leq f$ orthogonal vectors (p
 We start from these data vectors, in the row we present the dimension and in the column we represents the samples. We subtract the mean values features by features, because we want to compute the covariance matrix from our dataset.
 
 
-1. Calculate adjusted_data_set by removing the mean from each feature
+1. Calculate `adjusted_data_set` by removing the mean from each feature
 
     ```py
-    # A := adjusted_data_set 
+    # A := adjusted_data_set
     for f in data.features:
         A[f] = data_set[f] - np.mean(data_set[f])
     ```
@@ -946,9 +945,7 @@ Because it's possible to use 1.75 bit on average
 > We must select the shorting encoding for high probably symbols.
 
 $$
-
     \text{Average\_number\_of\_bits\_per\_symbol} = \frac{1}{8} \cdot 3 + \frac{1}{8} \cdot 3 + \frac{1}{4} \cdot 2 + \frac{1}{2} \cdot 1 = 1.75
-
 $$
 
 ### Information entropy

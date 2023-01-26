@@ -32,16 +32,19 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism.css" integrity="sha256-jf6kOo6UQszq3sNgQ0z/3u/IYGjd9MnxN8N0TkTIEc=" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js" integrity="sha256-8Z8V2JjKxFQcx5e5M5vWKjkvzwE5nkUjYjYxD8pWfE4=" crossorigin="anonymous"></script>
+
 </head>
 <body>
-    <div class="prose !container w-full px-4 mx-auto">
+    <div class="prose prose-sm prose-img:rounded-xl prose-img:max-h-48 prose-img:max-w-xs !container w-full px-4 mx-auto">
 
         $for(include-before)$
             $include-before$
         $endfor$
-            
+        
         $if(title)$
-            <header id="title-block-header my-6">
+            <header id="title-block-header" class="!my-36">
                 <h1 class="title">$title$</h1>
                 $if(subtitle)$
                     <p class="subtitle">$subtitle$</p>
@@ -58,7 +61,7 @@
         $endif$
     
         $if(toc)$
-            <nav class="my-6" id="$idprefix$TOC" role="doc-toc">
+            <nav class="!mb-36" id="$idprefix$TOC" role="doc-toc">
                 $if(toc-title)$
                     <h2 id="$idprefix$toc-title">$toc-title$</h2>
                 $endif$
@@ -66,7 +69,9 @@
             </nav>
         $endif$
         
-        $body$
+        <div class="prose-h1:mt-36">
+            $body$
+        </div>
         
         $for(include-after)$
             $include-after$
@@ -75,6 +80,5 @@
 
     <!-- mine -->
     <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/startup.js" integrity="sha512-TVq6RFk599KMqPh7Ri0yEAxHbJ0dcxSSPgvMuzQUg0wu4z+X7z2PsibMbbzAq/AHloHdxMW0FdvKv9k4s8niuA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
 </body>
 </html>

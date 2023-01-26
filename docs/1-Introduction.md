@@ -103,4 +103,3 @@ We can change the algorithm or we can try to reduce the number of dimensions, in
 ## Major issues in data mining
 
 The major issues in data mining are mining methodology, efficiency and scalability, diversity of data types, user interaction and impacts on society.
-

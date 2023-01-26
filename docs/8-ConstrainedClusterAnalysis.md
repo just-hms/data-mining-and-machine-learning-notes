@@ -42,6 +42,7 @@ E.g., specify the min number of objects in a cluster, the max diameter of a clus
 -   $\delta-constraint$ (Minimum separation):
     
     For any two clusters $S_i$, $S_j$, $∀i, j$ for each two instances $s_p \in S_i$, $s_q \in S_j$, $∀p, q:$ 
+    
     $$
         D(sp,sq) \ge \delta
     $$

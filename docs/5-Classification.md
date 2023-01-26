@@ -2558,7 +2558,7 @@ Synthetic samples are generated in the following way:
 
 - Multiply this difference by a random number between 0 and 1, and add it to the feature vector under consideration.
 
-- ‎This causes the selection of a random point along the line segment between two specific features. This approach effectively forces the decision region of the minority class to become more general.
+- This causes the selection of a random point along the line segment between two specific features. This approach effectively forces the decision region of the minority class to become more general.
 
 ![alt](../media/image328.png)
 
