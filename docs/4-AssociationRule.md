@@ -486,9 +486,9 @@ Apriori uses a generate-and-test approach $\rightarrow$ generates candidate item
 
 Generation of candidate itemsets is expensive (in both space and time)
 
-If there are 104 frequent 1-itemsets, the Apriori algorithm will need to generate more than 107 candidate 2-itemsets and it also has to check them all.
+If there are $10^4$ frequent 1-itemsets, the Apriori algorithm will need to generate more than $10^7$ candidate 2-itemsets and it also has to check them all.
 
-To discover a frequent pattern of size 100, it has to generate at least 2100 -1 candidates in total.
+To discover a frequent pattern of size 100, it has to generate at least $2^{100} -1$ candidates in total.
 
 We need to avoid to generate this large amount of candidate itemsets.
 
