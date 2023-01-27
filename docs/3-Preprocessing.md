@@ -74,7 +74,7 @@ We replace each point in the signal with the average of $m$ adjacent points, whe
 ex:
 
 $$
-    S_j = \frac{Y_{j-1}+Y_{j}Y_{j+1}}{3}
+    S_j = \frac{Y_{j-1}+Y_{j}+Y_{j+1}}{3}
 $$
 
 We can use another value and the value of the width affects the result. If I consider a very high width, we have a big smooth but the signal becomes flatter, we may change the information in the signal even if we eliminate the noise.
