@@ -74,7 +74,7 @@ We replace each point in the signal with the average of $m$ adjacent points, whe
 ex:
 
 $$
-    S_j = \frac{Y_{j-1}+Y_{j}Y_{j+1}}{3}
+    S_j = \frac{Y_{j-1}+Y_{j}+Y_{j+1}}{3}
 $$
 
 We can use another value and the value of the width affects the result. If I consider a very high width, we have a big smooth but the signal becomes flatter, we may change the information in the signal even if we eliminate the noise.
@@ -91,7 +91,7 @@ We can use another value and the value of the width affects the result. If I con
 
 - if the underlying function is a constant, or is changing linearly with time (increasing or decreasing), then no bias is introduced into the result. A bias is introduced, however, if the underlying function has a nonzero second derivative. At a local maximum, for example, moving window averaging always reduces the function value.
 
-### Savitzky-Golay Smoothing Filter
+#### Savitzky-Golay Smoothing Filter
 
 That is a generalization of the rectangular filter. Instead of using a constant as we made with the rectangular filter we use coefficients.
 
@@ -199,7 +199,7 @@ For peak-type signals, the critical factor is the *smoothing ratio*, the ratio b
 
 4. Smoothing the signal will seriously underestimate the parameters errors predicted by propagation-of-error calculations and the bootstrap method.
 
-#### Binning
+### Binning
 
 Another way to handle noisy data is to use another technique which is __binning__.
 
