@@ -610,7 +610,7 @@ $$
 ### Minkowski distance
 
 $$
-    d(i,j) = \sqrt[h]{(x_{i1}-x_{j1})^h + \dots (x_{iN}-x_{jN})^h}
+    d(i,j) = \sqrt[h]{|x_{i1}-x_{j1}|^h + \dots |x_{iN}-x_{jN}|^h}
 $$
 
 Properties:
@@ -619,7 +619,7 @@ Properties:
 
 - $d(i,j) = d(j,i)$ (Simmetry)
 
-- $d(i,j) \geq d(i, k) + d(k, j)$ (Triangle Inequality)
+- $d(i,j) \leq d(i, k) + d(k, j)$ (Triangle Inequality)
 
 A distance that satisfies these properties is a metric from a mathematical point of view.
 
