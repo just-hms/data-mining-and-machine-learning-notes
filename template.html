@@ -9,14 +9,15 @@
     $endfor$
 
     $if(date-meta)$
-    <meta name="dcterms.date" content="$date-meta$" />
+        <meta name="dcterms.date" content="$date-meta$" />
     $endif$
 
     $if(keywords)$
-    <meta name="keywords" content="$for(keywords)$$keywords$$sep$, $endfor$" />
+        <meta name="keywords" content="$for(keywords)$$keywords$$sep$, $endfor$" />
     $endif$
 
     <title>$if(title-prefix)$$title-prefix$ - $endif$$pagetitle$</title>
+    
     $for(css)$
         <link rel="stylesheet" href="$css$" />
     $endfor$

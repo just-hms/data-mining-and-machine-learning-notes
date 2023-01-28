@@ -913,7 +913,7 @@ Let's take the D1 dataset, $x^2$ is high (strong correlation), lift is high (str
 
 In $D_2$ we don't change mc, $\overline{m}c$ , $m\overline{c}$ but we change $\overline{mc}$, transactions in which milk and coffee do not appear.
 
-$x^2$ tells us they are independent; life tells us that they are independent but those values tell us we have a strong correlation.
+$x^2$ tells us they are independent; lift tells us that they are independent but those values tell us we have a strong correlation.
 
 The problem is in $\overline{mc}$, null-transactions as they are called, they affect $x^2$ and lift because they are metrics that are known as null-variant while the others are null-invariant, independently of null transactions the result is the same.
 

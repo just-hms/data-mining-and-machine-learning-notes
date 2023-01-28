@@ -14,4 +14,10 @@ for file in $files; do
 done
 
 # convert to html
-pandoc --toc --standalone -f markdown -t html build/bundle.md -o build/bundle.html --verbose --template=./template.html --metadata title="Data mining and Machine Learning" --mathjax --number-sections --toc-depth=3 --lua-filter=adjust_number_depth.lua
+pandoc \
+    --toc --standalone --verbose --mathjax \
+    -f markdown -t html build/bundle.md \
+    -o build/bundle.html --template=./template.html \
+    --metadata title="Data mining and Machine Learning" \
+    --number-sections --toc-depth=3 \
+    # --lua-filter=adjust_number_depth.lua
