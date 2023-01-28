@@ -19,4 +19,4 @@ pandoc \
     -o build/bundle.html --template=./template.html \
     --metadata title="Data mining and Machine Learning" \
     --number-sections --toc-depth=3 \
-    # --lua-filter=adjust_number_depth.lua
+    --lua-filter=adjust_number_depth.lua
