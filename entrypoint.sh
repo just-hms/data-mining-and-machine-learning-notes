@@ -3,7 +3,7 @@
 mkdir build -p
 
 # create un bundle.md
-files=$(ls docs/[0-9]-* ; ls docs/[0-9][0-9]-*)
+files=$(ls test/[0-9]-* ; ls test/[0-9][0-9]-*)
 
 echo "" > build/bundle.md
 
