@@ -10,18 +10,26 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      
+      - name: Checkout code
+        uses: actions/checkout@v2
+   
+      - name: Install pandoc
+        run: sudo apt-get install -y pandoc
 
-      - uses: actions/checkout@v2
+      - name: Convert to html
+        run: sh entrypoint.sh
 
-      - run: sh entrypoint.sh
-
-      - uses: fifsky/html-to-pdf-action@master
+      - name: Convert to pdf
+        uses: fifsky/html-to-pdf-action@master
         with:
           htmlFile: ./build/bundle.html
           outputFile: ./build/bundle.pdf
           pdfOptions: '{"format": "A4", "margin": {"top": "10mm", "left": "10mm", "right": "10mm", "bottom": "10mm"}}'
-      
-      - uses: actions/upload-artifact@v1
+        
+      - name: Convert to pdf
+        uses: actions/upload-artifact@v1
         with:
           name: docs
           path: pdfs
+
