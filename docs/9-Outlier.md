@@ -338,12 +338,12 @@ The test checks for outliers by looking for the maximum of the absolute differen
 
     a)  Order the data points from smallest to largest.
 
-    b)  Find the mean ($\overline{Y}$) and standard deviation (s) of the data set.
+    b)  Find the mean ($\bar{Y}$) and standard deviation (s) of the data set.
 
     c\)  Calculate the G test statistic using one of the following equations: The Grubbs' test statistic for a two-tailed test is:
 
     $$
-        G = \dfrac{\max\limits_{i=1,...,N}{\left|Y_i-\overline{Y}\right|}}{s}
+        G = \dfrac{\max\limits_{i=1,...,N}{\left|Y_i-\bar{Y}\right|}}{s}
     $$
 
     We determine the maximum and with it we just consider the following table.
@@ -444,7 +444,7 @@ We transform in uncorrelated distances so that the euclidian distance makes sens
 Let ō be the mean vector for a multivariate data set. The Mahalanobis distance for an object o to ō is defined as
 
 $$
-    MDist^2(o,\overline{o}) = (o-\overline{o})^TS^{-1}(o-\overline{o})
+    MDist^2(o,\bar{o}) = (o-\bar{o})^TS^{-1}(o-\bar{o})
 $$
 
 where $S$ is the __covariance matrix__.
@@ -456,9 +456,9 @@ If the variables are strongly correlated, then the covariance will be high and t
 The multivariate outlier detection problem is transformed as follows.
 
 1. Calculate the mean vector from the multivariate data set.
-2. For each object $o$, calculate $MDist(o,\overline{o})$, the Mahalanobis distance from $o$ to $\overline{o}$.
-3. Detect outliers  in the transformed univariate data set, {$MDist(o, \overline{o})|o \in D$}.
-4. if $MDist(o,\overline{o})$ is determined to be an outlier, then $o$ is regarded as an outlier as well.
+2. For each object $o$, calculate $MDist(o,\bar{o})$, the Mahalanobis distance from $o$ to $\bar{o}$.
+3. Detect outliers  in the transformed univariate data set, {$MDist(o, \bar{o})|o \in D$}.
+4. if $MDist(o,\bar{o})$ is determined to be an outlier, then $o$ is regarded as an outlier as well.
 
 
 The distance involves mean vector of all objects.
@@ -492,10 +492,10 @@ $$
 where $o_i$ and $E_i$ are the observed value, and the expected value of the ith variable and $n$ is the number of variables. Using the average values as estimates of the expectation, we have
 
 $$
-    X^2 = \sum_{i=1}^n{\dfrac{(X_i-\overline{X_i})^2}{\overline{X_i}}}
+    X^2 = \sum_{i=1}^n{\dfrac{(X_i-\bar{X_i})^2}{\bar{X_i}}}
 $$
 
-According to the __central limit theorem__, when the number of variables is large enough (i.e., greater than 30), $\chi^2$ as the sum of squared differences between the observed and the expected values of those variables has approximately a normal distribution. Since we are interested in detecting significantly large $\chi^2$ values for intrusion detection, we need to set only the upper control limit $\overline{\chi}^2 + 3S_{X^2}$, that is, if the computed $\chi^2$ for an observation is greater than $\overline{\chi}^2 + 3S_{X^2}$ we signal an anomaly, where $X^2$ is the mean. We transform again the multivariate problem to a univariate problem. The expected value is the mean one in the formula, so it's similar to the Mahalaobis distance.
+According to the __central limit theorem__, when the number of variables is large enough (i.e., greater than 30), $\chi^2$ as the sum of squared differences between the observed and the expected values of those variables has approximately a normal distribution. Since we are interested in detecting significantly large $\chi^2$ values for intrusion detection, we need to set only the upper control limit $\bar{\chi}^2 + 3S_{X^2}$, that is, if the computed $\chi^2$ for an observation is greater than $\bar{\chi}^2 + 3S_{X^2}$ we signal an anomaly, where $X^2$ is the mean. We transform again the multivariate problem to a univariate problem. The expected value is the mean one in the formula, so it's similar to the Mahalaobis distance.
 
 ### __Non-parametric methods__
 
