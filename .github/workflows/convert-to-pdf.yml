@@ -12,7 +12,7 @@ jobs:
     steps:
       
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
    
       - name: Install pandoc
         run: sudo apt-get install -y pandoc
@@ -27,9 +27,9 @@ jobs:
           outputFile: ./build/bundle.pdf
           pdfOptions: '{"format": "A4", "margin": {"top": "10mm", "left": "10mm", "right": "10mm", "bottom": "10mm"}}'
         
-      - name: Convert to pdf
-        uses: actions/upload-artifact@v1
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
         with:
-          name: docs
-          path: pdfs
+          name: dml-ml-notes.pdf
+          path: ./build/bundle.pdf
 

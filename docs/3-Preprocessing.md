@@ -754,7 +754,7 @@ We start from these data vectors, in the row we present the dimension and in the
 the dimensions of $F$ are less than the original dataset, to recover $A$ from $F$
 
 $$
-    (E^T)F = (E^T)^{-1}E^TA
+    (E^T)^{-1}F = (E^T)^{-1}E^TA
 $$
 
 $$
@@ -764,6 +764,8 @@ $$
 $$
     EF = A
 $$
+
+> $E$ is orthogonal therefore $E^{-1} = E^T$
 
 > In the PCA we use the distribution of data, therefore the PCA is unsupervised.
 
