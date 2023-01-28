@@ -709,14 +709,15 @@ different computers. Each part is called a shard.
     - __Mapper__ – Generating group-dependent transactions: Each mapper instance is fed with a shard of DB generated in Step 1. Before it processes transactions in the shard one by one, it reads the G-list. 
 
         With the mapper algorithm, it outputs one or more key-value pairs, where each key is a group-id and its corresponding value is a generated group-dependent transaction.
-    ![](../media/image765.png)
+        
+        ![](../media/image765.png)
 
     - __Reducer__ – FP-Growth on group-dependent shards: When all mapper instances have finished their work, for each group-id, the MapReduce infrastructure automatically groups all corresponding group-dependent transactions into a shard of group-dependent transactions. 
 
         Each reducer instance is assigned to process one or more group-dependent shard one by one. For each shard, the reducer instance builds a local FP-tree and growth its conditional FP-trees recursively. During the recursive process, it may output discovered patterns.
 
-    ![](../media/image766.png)
+        ![](../media/image766.png)
 
 5. __Aggregating__
 
-![](../media/image767.png)
+    ![](../media/image767.png)
