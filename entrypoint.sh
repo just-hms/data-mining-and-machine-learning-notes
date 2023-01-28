@@ -19,8 +19,5 @@ pandoc \
     -o build/bundle.html --template=./template.html \
     --metadata title="Data mining and Machine Learning" \
     --number-sections --toc-depth=3 \
-    # --lua-filter=adjust_number_depth.lua
-
-## test
-pandoc --standalone --self-contained -s build/bundle.html -o build/bundle.pdf
+    --lua-filter=adjust_number_depth.lua
 

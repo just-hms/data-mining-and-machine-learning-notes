@@ -1,6 +1,10 @@
 name: Docs to PDF
 
-on: push
+on:
+  push:
+    branches:
+      - main  # Set a branch name to trigger deployment
+  pull_request:
 
 jobs:
   converttopdf:
@@ -9,11 +13,19 @@ jobs:
 
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    permissions:
+      contents: write
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+
 
     steps:
       
       - name: Checkout code
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+
    
       - name: Install pandoc
         run: sudo apt-get install -y pandoc
@@ -21,16 +33,9 @@ jobs:
       - name: Convert to html
         run: sh entrypoint.sh
 
-      - name: Convert to pdf
-        uses: fifsky/html-to-pdf-action@master
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          htmlFile: ./build/bundle.html
-          outputFile: ./build/bundle.pdf
-          pdfOptions: '{"format": "A4", "margin": {"top": "10mm", "left": "10mm", "right": "10mm", "bottom": "10mm"}, "landscape": true, "printBackground": true}'
-        
-      - name: Upload artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: dml-ml-notes.pdf
-          path: ./build/bundle.pdf
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
 
