@@ -3,7 +3,7 @@
 mkdir build -p
 
 # create un bundle.md
-files=$(ls test/[0-9]-* ; ls test/[0-9][0-9]-*)
+files=$(ls docs/[0-9]-* ; ls docs/[0-9][0-9]-*)
 
 echo "" > build/bundle.md
 
@@ -19,4 +19,8 @@ pandoc \
     -o build/bundle.html --template=./template.html \
     --metadata title="Data mining and Machine Learning" \
     --number-sections --toc-depth=3 \
-    --lua-filter=adjust_number_depth.lua
+    # --lua-filter=adjust_number_depth.lua
+
+## test
+pandoc --standalone --self-contained -s build/bundle.html -o build/bundle.pdf
+

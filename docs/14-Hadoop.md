@@ -686,16 +686,15 @@ We use map/reduce tasks in several steps.
 ![](../media/image763.png)
 
 #### __Parrallel Counting__
+
 1. __Sharding__:
 
     Dividing DB into successive parts and storing the parts on P 
 different computers. Each part is called a shard.
+
 2. __Parallel Counting__:
     
-    Doing a MapReduce pass to count the support values of all items 
-that appear in DB. Each mapper inputs one shard of DB. This step 
-implicitly discovers the items’ vocabulary I, which is usually 
-unknown for a huge DB. 
+    Doing a MapReduce pass to count the support values of all items that appear in DB. Each mapper inputs one shard of DB. This step implicitly discovers the items’ vocabulary I, which is usually unknown for a huge DB. 
 
     The result is stored in F-list.
 
@@ -704,16 +703,20 @@ unknown for a huge DB.
 3. __Grouping Items__:
 
     Dividing all the |I| items on F-list into Q groups. The list of groups is called group list (G-list), where each group is given a unique group-id (gid). As F-list and G-list are both small and the time complexity is $O(|I|)$, this step can complete on a single computer in few seconds.
+
 4. __Parallel FP-Growth__:
 
     - __Mapper__ – Generating group-dependent transactions: Each mapper instance is fed with a shard of DB generated in Step 1. Before it processes transactions in the shard one by one, it reads the G-list. 
-    
+
         With the mapper algorithm, it outputs one or more key-value pairs, where each key is a group-id and its corresponding value is a generated group-dependent transaction.
     ![](../media/image765.png)
+
     - __Reducer__ – FP-Growth on group-dependent shards: When all mapper instances have finished their work, for each group-id, the MapReduce infrastructure automatically groups all corresponding group-dependent transactions into a shard of group-dependent transactions. 
-    
+
         Each reducer instance is assigned to process one or more group-dependent shard one by one. For each shard, the reducer instance builds a local FP-tree and growth its conditional FP-trees recursively. During the recursive process, it may output discovered patterns.
+
     ![](../media/image766.png)
 
 5. __Aggregating__
+
 ![](../media/image767.png)
