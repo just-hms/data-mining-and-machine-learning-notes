@@ -947,7 +947,7 @@ Because it's possible to use 1.75 bit on average
 > We must select the shorting encoding for high probably symbols.
 
 $$
-    \text{Average\_number\_of\_bits\_per\_symbol} = \frac{1}{8} \cdot 3 + \frac{1}{8} \cdot 3 + \frac{1}{4} \cdot 2 + \frac{1}{2} \cdot 1 = 1.75
+    \text{Average_number_of_bits_per_symbol} = \frac{1}{8} \cdot 3 + \frac{1}{8} \cdot 3 + \frac{1}{4} \cdot 2 + \frac{1}{2} \cdot 1 = 1.75
 $$
 
 ### Information entropy
@@ -962,7 +962,7 @@ $$
 
 - For example 
 
-    the entropy of the distribution we just examined, $<1\frac{1}{8},\frac{1}{8}, \frac{1}{4}, \frac{1}{2}>$, is 1.75 (bits)
+    the entropy of the distribution we just examined, $<\frac{1}{8},\frac{1}{8}, \frac{1}{4}, \frac{1}{2}>$, is 1.75 (bits)
 
     If all symbols have the same probability to be transmitted, the number of bits we must use in average is 2, our initial solution.
 
@@ -987,6 +987,7 @@ $$
 We can consider the creation of new attributes (features) that can capture the important information in a data set more effectively than the original ones.
 
 There are three general methodologies:
+
 - __Attribute extraction__ that can be domain-specific. Feature selection can be automated, thing that can't be done with feature extraction.
 
 - __Mapping data to new space__ (see: data reduction), for example with Fourier transformation, wavelet transformation, manifold approaches (not covered).
