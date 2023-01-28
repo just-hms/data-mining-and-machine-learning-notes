@@ -911,11 +911,11 @@ Let's see an example with a contingency table:
 
 Let's take the D1 dataset, $x^2$ is high (strong correlation), lift is high (strong correlation) and the 4 metrics have high value (strong correlation, they vary from 0 and 1). But if we see the transactions with mc, we have 10.000 transactions with milk and coffee of 11.000 with milk. There is a strong correlation.
 
-In $D_2$ we don't change mc, $\overline{m}c$ , $m\overline{c}$ but we change $\overline{mc}$, transactions in which milk and coffee do not appear.
+In $D_2$ we don't change mc, $\bar{m}c$ , $m\bar{c}$ but we change $\bar{mc}$, transactions in which milk and coffee do not appear.
 
 $x^2$ tells us they are independent; life tells us that they are independent but those values tell us we have a strong correlation.
 
-The problem is in $\overline{mc}$, null-transactions as they are called, they affect $x^2$ and lift because they are metrics that are known as null-variant while the others are null-invariant, independently of null transactions the result is the same.
+The problem is in $\bar{mc}$, null-transactions as they are called, they affect $x^2$ and lift because they are metrics that are known as null-variant while the others are null-invariant, independently of null transactions the result is the same.
 
 Looking at Kulczynski, in the definition we are computing P(B|A) which is the probability of transaction in which we have AB divided by the total number of transactions of A, plus P(B!A) which is the probability of transaction in which we have AB divided by the total number of transactions of B. If you consider this probability, the total number of transactions, n, is expressed in the numerator and denominator so you can cancel it. This is the reason why the average is not affected on the total number of transactions but only on the transactions in which we have A, in which we have B and in which we have A and B together.
 
@@ -961,7 +961,7 @@ If IR is high, the reliability of the metrics cannot be guaranteed.
 
 If IR is low and Kulc. indicates 0.5 we really have an intermediate situation, while if IR is high, we cannot really have a reliable conclusion. The IR brings us to not make reliable conclusions.
 
-|Data|$mc$|$\overline{m}c$|$m\overline{c}$|$\overline{mc}$|$All\_conf$|$Max\_conf$|$Kulc$|$cosine$|$IR$|
+|Data|$mc$|$\bar{m}c$|$m\bar{c}$|$\bar{mc}$|$All\_conf$|$Max\_conf$|$Kulc$|$cosine$|$IR$|
 |-|-|-|-|-|-|-|-|-|-|
 |$D_1$|10.000|1.000|1.000|100.000|0.91|0.91|0.91|0.91|0.0|
 |$D_2$|10.000|1.000|1.000|100|0.91|0.91|0.91|0.91|0.0|
