@@ -578,12 +578,12 @@ $X_A$: the attribute with the highest attribute evaluation value after seeing $n
 
 $X_B$: the attribute with the second highest split evaluation function value after seeing n examples.
 
-Given a desired $\delta$: if $\Delta\overline{G} = \overline{G}(X_A) - \overline{G}(X_B) > \varepsilon$, with $\varepsilon = \sqrt{\dfrac{R^2ln1/\delta}{2n}}$
+Given a desired $\delta$: if $\Delta\bar{G} = \bar{G}(X_A) - \bar{G}(X_B) > \varepsilon$, with $\varepsilon = \sqrt{\dfrac{R^2ln1/\delta}{2n}}$
 
 
 and R=lnc, where c is the number of classes, after seeing n examples at a node,
 
-the Hoeffding bound guarantees the true $\Delta G \ge \Delta \overline{G} - \varepsilon > 0$ with probability $1-\delta$
+the Hoeffding bound guarantees the true $\Delta G \ge \Delta \bar{G} - \varepsilon > 0$ with probability $1-\delta$
 
 This node can be split using $X_A$ and the succeeding examples will be passed to the new leaves
 
@@ -634,7 +634,7 @@ __Pre pruning__: consider a "null" attribute that consists of not splitting the 
 At each node, check for the condition:
 
 $$
-    \large{\Delta \overline{G} = \overline{G}(X_A) - \overline{G}(X_B) > \varepsilon}
+    \large{\Delta \bar{G} = \bar{G}(X_A) - \bar{G}(X_B) > \varepsilon}
 $$
 
 If condition is satisfied, __create child nodes based on the test at the node__
