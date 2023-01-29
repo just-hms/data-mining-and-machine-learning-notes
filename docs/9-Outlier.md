@@ -419,7 +419,7 @@ It weights more some dimensions respect to other.
 
 Equally weighted. The two following tables show the 'area' and 'price' of the same objects. Only the units of the variables change. Nevertheless, the distances between any two rows are different just changing units.
 
-The problem can be overcome by scaling the variables, by computing the $z\textnormal{-}score = \dfrac{x - mean}{\sigma}$ or making it vary within a specific range (for instance, between 0 and 1).
+The problem can be overcome by scaling the variables, by computing the $z\text{-}score = \dfrac{x - mean}{\sigma}$ or making it vary within a specific range (for instance, between 0 and 1).
 
 In this way the distance we compute is the same for the two columns.
 
