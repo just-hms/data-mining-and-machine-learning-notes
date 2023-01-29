@@ -129,7 +129,17 @@ In general, association rule mining can be viewed as a two-step process:
 A long itemset contains a combinatorial number of sub-itemsets, e.g., we have 100 itemsets $\{a_1, ..., a_{100}\}$. The number of sub-itemset is:
 
 $$
-    \left( \dfrac[0pt]{100}{1} \right) + \left( \dfrac[0pt]{100}{2} \right) + ... + \left( \dfrac[0pt]{100}{100} \right) = 2^{100} - 1 \approx 1.27 \times 10^{30} \hspace{1cm} \left( \dfrac[0pt]{n}{k} \right) = \dfrac{n!}{k!(n-k)!}
+    \left(\begin{array}{c}
+        100 \\
+        1
+    \end{array}\right)
+ + \left(\begin{array}{c}
+        100 \\
+        2
+    \end{array}\right) + ... + \left(\begin{array}{c}
+        100 \\
+        100
+    \end{array}\right) = 2^{100} - 1 \approx 1.27 \times 10^{30} \hspace{1cm} \left( \dfrac[0pt]{n}{k} \right) = \dfrac{n!}{k!(n-k)!}
 $$
 
 We need to find a solution to show all frequent patterns we can mine to users by summarizing.

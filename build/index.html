@@ -2452,7 +2452,17 @@
             </ul>
             <p>A long itemset contains a combinatorial number of sub-itemsets, e.g., we have 100 itemsets <span class="math inline">\(\{a_1, ..., a_{100}\}\)</span>. The number of sub-itemset is:</p>
             <p><span class="math display">\[
-                \left( \dfrac[0pt]{100}{1} \right) + \left( \dfrac[0pt]{100}{2} \right) + ... + \left( \dfrac[0pt]{100}{100} \right) = 2^{100} - 1 \approx 1.27 \times 10^{30} \hspace{1cm} \left( \dfrac[0pt]{n}{k} \right) = \dfrac{n!}{k!(n-k)!}
+                \left(\begin{array}{c}
+                    100 \\
+                    1
+                \end{array}\right)
+             + \left(\begin{array}{c}
+                    100 \\
+                    2
+                \end{array}\right) + ... + \left(\begin{array}{c}
+                    100 \\
+                    100
+                \end{array}\right) = 2^{100} - 1 \approx 1.27 \times 10^{30} \hspace{1cm} \left( \dfrac[0pt]{n}{k} \right) = \dfrac{n!}{k!(n-k)!}
             \]</span></p>
             <p>We need to find a solution to show all frequent patterns we can mine to users by summarizing.</p>
             <p>The way to summarize the frequent patterns is showing a subset of frequent pattern we mined.</p>
@@ -7558,7 +7568,7 @@
             <p>It weights more some dimensions respect to other.</p>
             <p><img src="../media/image541.png" /></p>
             <p>Equally weighted. The two following tables show the ‘area’ and ‘price’ of the same objects. Only the units of the variables change. Nevertheless, the distances between any two rows are different just changing units.</p>
-            <p>The problem can be overcome by scaling the variables, by computing the <span class="math inline">\(z\textnormal{-}score = \dfrac{x - mean}{\sigma}\)</span> or making it vary within a specific range (for instance, between 0 and 1).</p>
+            <p>The problem can be overcome by scaling the variables, by computing the <span class="math inline">\(z\text{-}score = \dfrac{x - mean}{\sigma}\)</span> or making it vary within a specific range (for instance, between 0 and 1).</p>
             <p>In this way the distance we compute is the same for the two columns.</p>
             <p><strong>Independent of each other</strong>. The Euclidean distance between a point and the center of the points (distribution) can give little or misleading information about how close a point really is to the cluster.</p>
             <p><img src="../media/image542.png" /></p>
@@ -9467,7 +9477,7 @@
             <p>MUDI-stream is <strong>not suitable for high dimensional data</strong>, which makes the processing time longer, because of the grid structure (we would have an high number of cells).</p>
             <p>Clustering quality of MuDi-Stream <strong>strongly depends on input parameters density threshold</strong>, decay rate for damped window model and grid granularity.</p>
             <p>These parameters require an expert knowledge about the data.</p>
-            <p>The windows is present because we have a decrease of the weight of the instances in the cells and that’s why we can periodically remove low weighted grids and <span class="math inline">\(cmc\textnormal{s}\)</span>.</p>
+            <p>The windows is present because we have a decrease of the weight of the instances in the cells and that’s why we can periodically remove low weighted grids and <span class="math inline">\(cmc\text{s}\)</span>.</p>
             <h4 class="unnumbered" data-number="" id="complexity-analysis-1"><strong>Complexity Analysis</strong></h4>
             <p>Complexity of this linear search on core mini-clusters for each new data instance is <span class="math inline">\(O(c)\)</span> where <span class="math inline">\(c\)</span> is the number of core mini clusters</p>
             <p>Let <span class="math inline">\(G\)</span> be total density grids for all dimensions, which is exponential to the number of dimensions. Space complexity of the grid is <span class="math inline">\(O(log G)\)</span> because the scattered grid are pruned during the execution.</p>
