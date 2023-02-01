@@ -5026,7 +5026,7 @@
             <li><p>This approach, as we can see, is really sensitive to the initialization phase. We have the risk to fall in a local minimum instead of a maximum.</p></li>
             <li><p>These clusters are clusters with spherical shape. The reason is that in k-means we assess the similarity between each point and the center of the cluster using the euclidian distance.</p></li>
             </ul>
-            <h5 class="unnumbered" data-number="" id="strengths">Strengths</h5>
+            <h4 class="unnumbered" data-number="" id="strengths">Strengths</h4>
             <ul>
             <li><p><strong>Efficient</strong>: <span class="math inline">\(O(tkn)\)</span> where</p>
             <ul>
@@ -5039,7 +5039,7 @@
             </ul>
             <p>Comment: Often terminates at a local optimal.</p>
             <p>In fact, we can use k-means several times using different initializations and use the result of the execution that achieve the minimum value of the cost function.</p>
-            <h5 class="unnumbered" data-number="" id="weakness">Weakness</h5>
+            <h4 class="unnumbered" data-number="" id="weakness">Weakness</h4>
             <ul>
             <li><p>Applicable only to objects in a <strong>continuous n-dimensional space</strong>.</p>
             <p>This is not because we determine the distance, but because we have to <strong>compute the center of the clusters</strong>, obtained averaging features’ values.</p>
@@ -5252,12 +5252,12 @@
             <h4 class="unnumbered" data-number="" id="strategies-for-joiningdividing-clusters">Strategies for joining/dividing clusters</h4>
             <p><img src="../media/image355.png" /></p>
             <p>In <code>Diana</code> if we realize that we realize that some objects are far away from others, we probably must split.</p>
-            <h5 class="unnumbered" data-number="" id="connectivity-matrix">Connectivity matrix</h5>
+            <h4 class="unnumbered" data-number="" id="connectivity-matrix">Connectivity matrix</h4>
             <p>Hierarchical clustering frequently deals with the matrix of distances (dissimilarities) or similarities between training samples, and not with the matrix of objects.</p>
             <p>It can speed-up the computation. We can compute it from the matrix of objects.</p>
             <p>It is sometimes called connectivity matrix.</p>
             <p>To merge or split subsets of points rather than individual points, the distance between individual points must be generalized to the distance between subsets.</p>
-            <h5 class="unnumbered" data-number="" id="linkage-metrics">Linkage metrics</h5>
+            <h4 class="unnumbered" data-number="" id="linkage-metrics">Linkage metrics</h4>
             <p>I cannot reason on distance between objects, but we have to generalize the concept of distance defining distance between clusters.</p>
             <p>Such derived proximity measure is called a <strong>linkage metric</strong>.</p>
             <p>Linkage metrics are constructed from elements of the connectivity matrix. The type of the linkage metric used significantly affects hierarchical algorithms, since it reflects the concept of closeness and connectivity.</p>
@@ -5267,9 +5267,9 @@
             <blockquote>
             <p>The underlying dissimilarity measure (usually, distance) is computed for every pair of points with one point in the first set and another point in the second set. A specific operation such as minimum (single link), average (average link), or maximum (complete link) is applied to pair-wise dissimilarity measures:</p>
             </blockquote>
-            <p>$$</p>
-            <pre><code>d = \underset{x \in C_i, y \in C_2}{operation}(d(x,y))</code></pre>
-            <p>$$</p>
+            <p><span class="math display">\[  
+                d = \underset{x \in C_i, y \in C_2}{operation}(d(x,y))
+            \]</span></p>
             <ul>
             <li><p><strong>Single</strong> link (nearest neighbor). The distance between two clusters is determined by the distance of the two closest objects (nearest neighbors) in the different clusters.</p>
             <p>This rule will, in a sense, string objects together to form clusters, and the resulting clusters tend to represent long chains.</p>
@@ -5297,12 +5297,12 @@
             <p>A clustering of the data objects is obtained by cutting the dendogram at the desired level, then each connected component forms a cluster</p>
             <p><img src="../media/image361.png" /></p>
             <p>If we cut the dendogram at level 2 the partition we obtain:</p>
-            <div class="sourceCode" id="cb17"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true"></a>   </span>
-            <span id="cb17-2"><a href="#cb17-2" aria-hidden="true"></a>clusters <span class="op">=</span> [</span>
-            <span id="cb17-3"><a href="#cb17-3" aria-hidden="true"></a>    [a, b],</span>
-            <span id="cb17-4"><a href="#cb17-4" aria-hidden="true"></a>    [c],</span>
-            <span id="cb17-5"><a href="#cb17-5" aria-hidden="true"></a>    [d,e],</span>
-            <span id="cb17-6"><a href="#cb17-6" aria-hidden="true"></a>] </span></code></pre></div>
+            <div class="sourceCode" id="cb16"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true"></a>   </span>
+            <span id="cb16-2"><a href="#cb16-2" aria-hidden="true"></a>clusters <span class="op">=</span> [</span>
+            <span id="cb16-3"><a href="#cb16-3" aria-hidden="true"></a>    [a, b],</span>
+            <span id="cb16-4"><a href="#cb16-4" aria-hidden="true"></a>    [c],</span>
+            <span id="cb16-5"><a href="#cb16-5" aria-hidden="true"></a>    [d,e],</span>
+            <span id="cb16-6"><a href="#cb16-6" aria-hidden="true"></a>] </span></code></pre></div>
             <p>It allows us to have this relation from course clusters and fine clusters in the hierarchy.</p>
             <h4 class="unnumbered" data-number="" id="measures-for-distance-between-clusters">Measures for distance between clusters</h4>
             <ul>
@@ -5834,34 +5834,34 @@
             </ul>
             <p>We have to give as input our definition of dense regions. This is given by using two parameters:</p>
             <ul>
-            <li><p><strong>Eps</strong>: Maximum radius of the neighborhood. Given one object we fix a radius that determine the neighborhood we are considering around one object.</p></li>
-            <li><p><strong>MinPts</strong>: Minimum number of points in an Eps-neighborhood of that point.</p></li>
+            <li><p><span class="math inline">\(\varepsilon\)</span> : Maximum radius of the neighborhood. Given one object we fix a radius that determine the neighborhood we are considering around one object.</p></li>
+            <li><p><strong>MinPts</strong>: Minimum number of points in an <span class="math inline">\(\varepsilon\)</span>-neighborhood of that point.</p></li>
             </ul>
             <blockquote>
-            <p>Density is the number of points we have in a volume. By specifying Eps and MinPts we are implying the density.</p>
+            <p>Density is the number of points we have in a volume. By specifying <span class="math inline">\(\varepsilon\)</span> and MinPts we are implying the density.</p>
             </blockquote>
-            <p>If the Eps-neighborhood (neighborhood within radius Eps - NEps) of an object contains at least a minimum number, MinPts, of objects then the object is called core object.</p>
+            <p>If the <span class="math inline">\(\varepsilon\)</span>-neighborhood (neighborhood within radius <span class="math inline">\(\varepsilon\)</span> - NEps) of an object contains at least a minimum number, MinPts, of objects then the object is called core object.</p>
             <h4 class="unnumbered" data-number="" id="examples">Examples</h4>
             <ul>
             <li><p>ex 1</p>
             <p><img src="../media/image403.png" /></p>
-            <p>Eps = 1 cm, MinPts=3</p>
+            <p><span class="math inline">\(\varepsilon\)</span> = 1 cm, MinPts=3</p>
             <p>We have that <span class="math inline">\(m\)</span> and <span class="math inline">\(p\)</span> are core objects, <span class="math inline">\(q\)</span> is not because in the neighborhood we don’t have 3 objects.</p>
-            <p>We define an object p as <strong>directly density-reachable</strong> from an object <span class="math inline">\(1\)</span> (respect to <code>Eps</code>, <code>MinPts</code>) if <span class="math inline">\(p\)</span> belongs to <span class="math inline">\(N_{Eps}(q)\)</span> (Neighborhood of q), <span class="math inline">\(q\)</span> is a core object, that is:</p>
+            <p>We define an object p as <strong>directly density-reachable</strong> from an object <span class="math inline">\(1\)</span> (respect to <span class="math inline">\(\varepsilon\)</span>, <span class="math inline">\(MinPts\)</span>) if <span class="math inline">\(p\)</span> belongs to <span class="math inline">\(N_{\varepsilon}(q)\)</span> (Neighborhood of q), <span class="math inline">\(q\)</span> is a core object, that is:</p>
             <p><span class="math display">\[
-                  N_{Eps}(q)| \geq MinPts
+                  N_{$\varepsilon$}(q)| \geq MinPts
               \]</span></p>
             <p>(cardinality of neighborhood of q is greater or equal than minPts).</p></li>
             <li><p>ex 2</p>
             <p><img src="../media/image404.png" /></p>
             <p><span class="math inline">\(q\)</span> is directly density-reachable from <span class="math inline">\(m\)</span>, because <span class="math inline">\(m\)</span> is a core point and <span class="math inline">\(q\)</span> belongs to the neighborhood of <span class="math inline">\(m\)</span>.</p>
             <p>The viceversa is not true because <span class="math inline">\(q\)</span> is not a core object. <span class="math inline">\(m\)</span> is directly density-reachable from <span class="math inline">\(p\)</span> and vice versa.</p>
-            <p>An object <span class="math inline">\(p\)</span> is <strong>density-reachable</strong> from an object <span class="math inline">\(q\)</span>, with respect to <span class="math inline">\(Eps\)</span>, <span class="math inline">\(MinPts\)</span>, if there is a chain of objects <span class="math inline">\(p_1, \dots, p_n\)</span>, such that <span class="math inline">\(p_1 = q, p_n = p\)</span> such that <span class="math inline">\(p_i+1\)</span> is directly density-reachable from <span class="math inline">\(p_i\)</span>.</p>
+            <p>An object <span class="math inline">\(p\)</span> is <strong>density-reachable</strong> from an object <span class="math inline">\(q\)</span>, with respect to <span class="math inline">\(\varepsilon\)</span>, <span class="math inline">\(MinPts\)</span>, if there is a chain of objects <span class="math inline">\(p_1, \dots, p_n\)</span>, such that <span class="math inline">\(p_1 = q, p_n = p\)</span> such that <span class="math inline">\(p_i+1\)</span> is directly density-reachable from <span class="math inline">\(p_i\)</span>.</p>
             <p><img src="../media/image405.png" /></p></li>
             <li><p>ex 3:</p>
             <p>q is density-reachable from p because q is directly density-reachable from m and m is directly density-reachable from p.</p>
             <p>p is not density-reachable from q because q is not a core object.</p>
-            <p>An object p is <strong>density-connected</strong> to an object q w.r.t. Eps, MinPts if there is an object o such that both p and q are density-reachable from o (w.r.t. Eps and MinPts).</p>
+            <p>An object p is <strong>density-connected</strong> to an object q w.r.t. <span class="math inline">\(\varepsilon\)</span>, MinPts if there is an object o such that both p and q are density-reachable from o (w.r.t. <span class="math inline">\(\varepsilon\)</span> and MinPts).</p>
             <p><img src="../media/image406.png" /></p></li>
             <li><p>ex 4:</p>
             <p>p, q and m are all density-connected, because we have m for which q is density reachable and also p is density reachable.</p>
@@ -5871,7 +5871,7 @@
             </ul>
             <h3 data-number="6.7.1" id="dbscan"><span class="header-section-number">6.7.1</span> DBSCAN</h3>
             <p><strong>Density-Based Spatial Clustering of Applications with Noise</strong> relies on a density-based notion of cluster: A cluster is defined as a maximal set of density-connected points.</p>
-            <p>We determine the cluster once we fix Eps and MinPts using this definition.</p>
+            <p>We determine the cluster once we fix <span class="math inline">\(\varepsilon\)</span> and MinPts using this definition.</p>
             <p>The final cluster is just to have clusters of density connected points.</p>
             <p>This algorithm is able to discover clusters of arbitrary shape in spatial databases with noise.</p>
             <p><img src="../media/image408.png" /></p>
@@ -5883,8 +5883,8 @@
             <li><p>border objects (objects that belong to a cluster but aren’t core objects).</p></li>
             </ul>
             <p>We have them when they belong to a neighborhood of a core object without being a core object. It determines the border of the cluster we are determining.</p>
-            <p>It searches for clusters by checking the <code>Eps-neighborhood</code> of each object in the database.</p>
-            <p>If the <code>Eps-neighborhood</code> of an object <span class="math inline">\(p\)</span> contains more than <span class="math inline">\(MinPts\)</span>, a new cluster with a core object is created.</p>
+            <p>It searches for clusters by checking the <span class="math inline">\(\varepsilon\)</span>-neighborhood of each object in the database.</p>
+            <p>If the <span class="math inline">\(\varepsilon\)</span>-neighborhood of an object <span class="math inline">\(p\)</span> contains more than <span class="math inline">\(MinPts\)</span>, a new cluster with a core object is created.</p>
             <p><code>DBSCAN</code> iteratively directly collects density reachable objects from these core objects: this may involve the merge of a few density-reachable clusters.</p>
             <p>The process terminated when no new point can be added to any cluster.</p>
             <p><code>DBSCAN</code> adopts the closure of density-connectedness to find connected dense regions as clusters. Each closed set is a density-based cluster.</p>
@@ -5898,9 +5898,9 @@
             <p><img src="../media/image409.png" /></p>
             <p><img src="../media/image410.png" /></p>
             <p>We have to fix those two parameters because we are proposing our definition of dense region and depending on them, we can identify an object as outlier or not.</p>
-            <p>If <code>Eps</code> is smaller, more points will be considered as outliers.</p>
+            <p>If <span class="math inline">\(\varepsilon\)</span> is smaller, more points will be considered as outliers.</p>
             <blockquote>
-            <p>The problem is to find the optimal value for <code>Eps</code> and <code>minPts</code>.</p>
+            <p>The problem is to find the optimal value for <span class="math inline">\(\varepsilon\)</span> and <code>minPts</code>.</p>
             </blockquote>
             <blockquote>
             <p>If it doesn’t contain at least MinPts objects we mark it as outlier, but it can become a border object of an object. The fact that we denote it as noise do not mean it is an outlier surely.</p>
@@ -5909,46 +5909,46 @@
             <p><img src="../media/image411.png" /></p>
             <p>Since the shape is spherical, for how this algorithm works we obtain those clusters, the clusters found are not really natural because when we fix the number of clusters, we cannot tell the algorithm that one is big and others small. If we fix 4 we obtain those results because clusters are spherical. The distance fix the shape of the clusters.</p>
             <p>In the third case outliers are also included.</p>
-            <p>With DBSCAN we follow dense regions, and if we fix the right Eps and minPts we can identify correctly these clusters. Here the density is important.</p>
+            <p>With DBSCAN we follow dense regions, and if we fix the right <span class="math inline">\(\varepsilon\)</span> and minPts we can identify correctly these clusters. Here the density is important.</p>
             <p>We are also able to find outliers in the last example.</p>
             <p>It works well here because we have that density of clusters are similar to each other.</p>
-            <p>If we have clusters of different densities, we are not able to find them, because if we set Eps and minPts they may be good for a particular density.</p>
+            <p>If we have clusters of different densities, we are not able to find them, because if we set <span class="math inline">\(\varepsilon\)</span> and minPts they may be good for a particular density.</p>
             <p>It works very well if clusters have same densities.</p>
             <h4 class="unnumbered" data-number="" id="cluster-with-different-densities">CLUSTER WITH DIFFERENT DENSITIES</h4>
             <p><img src="../media/image412.png" /></p>
-            <p>When we use <code>DBSCAN</code>, if we set minPts and we vary Eps:</p>
+            <p>When we use <code>DBSCAN</code>, if we set minPts and we vary <span class="math inline">\(\varepsilon\)</span>:</p>
             <p><img src="../media/image413.png" /></p>
             <p>Using large values, we determine clusters characterized by low level of density, we consider very dense small clusters as part of the big cluster.</p>
-            <p>If Eps is small we are able to identify dense clusters but in clusters with sparse densities we have all outliers now.</p>
+            <p>If <span class="math inline">\(\varepsilon\)</span> is small we are able to identify dense clusters but in clusters with sparse densities we have all outliers now.</p>
             <p>If we have similar densities, it is also difficult to find the exact pair of values.</p>
             <blockquote>
             <p>The algorithm is really sensitive on how we set the parameters.</p>
             </blockquote>
             <p><img src="../media/image414.png" /></p>
             <p>In general cases, when we have high-dimensional data, we have no visual feedback, we have to experiment.</p>
-            <p>Using Eps=0.5 and Eps=0.4 we have a big difference.</p>
-            <p>By decreasing Eps of 0.1 we have that big clusters, characterized by not very dense regions, allow us to find a lot of clusters instead of just one.</p>
+            <p>Using <span class="math inline">\(\varepsilon\)</span>=0.5 and <span class="math inline">\(\varepsilon\)</span>=0.4 we have a big difference.</p>
+            <p>By decreasing <span class="math inline">\(\varepsilon\)</span> of 0.1 we have that big clusters, characterized by not very dense regions, allow us to find a lot of clusters instead of just one.</p>
             <p>In the second example we have just one cluster but depending on the value of parameters we can have different situations.</p>
             <p>In the first case we determine one cluster because the connection between the two square is considered as dense region and the points there are considered density connected.</p>
             <p>A cluster is separated later because we are reducing minPts.</p>
             <p>We have to try to set them using an heuristic approach or with an input of the internal domain if we have a lot of dimensions.</p>
-            <h4 class="unnumbered" data-number="" id="heuristic-approach-to-set-eps-and-minpts">heuristic approach to set <code>Eps</code> and <code>minPts</code></h4>
+            <h4 class="unnumbered" data-number="" id="heuristic-approach-to-set-varepsilon-and-minpts">heuristic approach to set <span class="math inline">\(\varepsilon\)</span> and <code>minPts</code></h4>
             <p>For a given <span class="math inline">\(k\)</span> (that corresponds to minPts) we define a function k-dist, mapping each point to the distance from its k-th nearest neighbor.</p>
             <p><img src="../media/image415.png" /></p>
             <p>If we set <span class="math inline">\(k = 4\)</span>, the k-distance corresponds to the distance between the point we are considering and the fourth nearest neighbor. Lower this distance, higher the probability that the points will belong to a dense region.</p>
             <p>We sort the points in descending order of their k-dist values: the graph of this function gives some hints concerning the density distribution.</p>
             <p><img src="../media/image416.png" /></p>
-            <p>If I set the distance of the kth nearest neighbor to <code>Eps</code> I obtain that this point is a core point, we have <span class="math inline">\(k\)</span> minPts inside the <code>Eps</code> neighborhood.</p>
+            <p>If I set the distance of the kth nearest neighbor to <span class="math inline">\(\varepsilon\)</span> I obtain that this point is a core point, we have <span class="math inline">\(k\)</span> minPts inside the <span class="math inline">\(\varepsilon\)</span> neighborhood.</p>
             <p>The points in the top have a high 4-dist, which means that they have the 4th nearest neighbors quite far and they’re probably not in a dense region.</p>
             <p>Outliers, in fact, probably have a large k-dist.</p>
             <p>We have also a large number of points belonging to dense regions (the k-nearest neighbors are quite close).</p>
-            <p>If we choose an arbitrary point p, set the parameter Eps to k-dist(p) and set the parameter MinPts to k, all points with an equal or smaller k-dist value will be core points.</p>
+            <p>If we choose an arbitrary point p, set the parameter <span class="math inline">\(\varepsilon\)</span> to k-dist(p) and set the parameter MinPts to k, all points with an equal or smaller k-dist value will be core points.</p>
             <p>If we choose the value indicated by the arrow and we are sure all points in the right will be core points, while other in the left can be outliers or borders.</p>
             <p>If we set k-dist to that point all points in the right will be core point.</p>
-            <p>If we choose a certain Eps, we will have few outliers in the left, not all of them.</p>
+            <p>If we choose a certain <span class="math inline">\(\varepsilon\)</span>, we will have few outliers in the left, not all of them.</p>
             <p>The threshold point is the first point in the first “valley” of the sorted k-dist graph.</p>
-            <p>This is heuristic but it is a way to set Eps and minPts.</p>
-            <p>Changing very few Eps we can have completely different results in terms of clusters.</p>
+            <p>This is heuristic but it is a way to set <span class="math inline">\(\varepsilon\)</span> and minPts.</p>
+            <p>Changing very few <span class="math inline">\(\varepsilon\)</span> we can have completely different results in terms of clusters.</p>
             <blockquote>
             <p>We have the problem that the intrinsic cluster structure cannot be characterized by global density parameters. It affects DBSCAN but also all density-based algorithms.</p>
             </blockquote>
@@ -5984,17 +5984,17 @@
             <p>The result can be represented graphically or using visualization techniques.</p>
             <p>We start with this observation: density-based clusters are monotonic with respect to the neighborhood threshold.</p>
             <p><strong>DBSCAN</strong>: for a constant <code>MinPts</code> value, density-based clusters with respect to a higher density are completely contained in density-connected sets obtained with respect to a lower density.</p>
-            <h5 class="unnumbered" data-number="" id="example-8">Example</h5>
+            <h4 class="unnumbered" data-number="" id="example-8">Example</h4>
             <p><span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span> are density-based clusters with respect to <span class="math inline">\(Eps_2 \leq eps_1\)</span> and <span class="math inline">\(C\)</span> is a density-based cluster with respect to <span class="math inline">\(Eps_1\)</span> completely containing the sets <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span>.</p>
             <p><img src="../media/image418.png" /></p>
             <p><span class="math inline">\(Eps_1 \leq Eps_2\)</span> and that means that when we find <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span> we are imposing the higher density. It tells us that clusters with lower density contains clusters with higher density. <span class="math inline">\(C\)</span> contains <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span>.</p>
-            <p>The idea for <code>OPTICS</code> is to process a set of distance parameter values at the same time. In practice, to use <code>DBSCAN</code> for an infinite number of distance parameters <span class="math inline">\(Eps_i\)</span> which are smaller than a “generating distance <span class="math inline">\(Eps\)</span>”.</p>
+            <p>The idea for <code>OPTICS</code> is to process a set of distance parameter values at the same time. In practice, to use <code>DBSCAN</code> for an infinite number of distance parameters <span class="math inline">\(Eps_i\)</span> which are smaller than a “generating distance <span class="math inline">\(\varepsilon\)</span>”.</p>
             <p>Unlike <code>DBSCAN</code>, <code>OPTICS</code> does not assign cluster memberships.</p>
             <p>Instead, it stores the order in which the objects are processed and the information which would be used by an extended <code>DBSCAN</code> algorithm to assign cluster memberships. This information consists of only two values for each object: - the core-distance - a reachability-distance.</p>
             <p>We don’t obtain at the end a partition but an ordering.</p>
             <h4 class="unnumbered" data-number="" id="definitions-1">Definitions</h4>
             <ul>
-            <li><p><strong>Core-distance of an object p</strong> is the smallest <code>Eps</code> value that makes <span class="math inline">\(p\)</span> a core object. If <span class="math inline">\(p\)</span> is not a core object, the core-distance is undefined.</p></li>
+            <li><p><strong>Core-distance of an object p</strong> is the smallest <span class="math inline">\(\varepsilon\)</span> value that makes <span class="math inline">\(p\)</span> a core object. If <span class="math inline">\(p\)</span> is not a core object, the core-distance is undefined.</p></li>
             <li><p><strong>Reachability-distance of an object q from p</strong> is the minimum radius value that makes <span class="math inline">\(q\)</span> directly density-reachable from <span class="math inline">\(p\)</span>.</p></li>
             </ul>
             <blockquote>
@@ -6003,7 +6003,7 @@
             <blockquote>
             <p>If <span class="math inline">\(p\)</span> is not a core object, the reachability-distance is undefined.</p>
             </blockquote>
-            <h5 class="unnumbered" data-number="" id="example-9">Example</h5>
+            <h4 class="unnumbered" data-number="" id="example-9">Example</h4>
             <p><img src="../media/image419.png" /></p>
             <p>Here, the core distance of <span class="math inline">\(p\)</span> is the distance for which we include in the neighborhood the minPts that we need for the execution of DBSCAN.</p>
             <ul>
@@ -6013,21 +6013,21 @@
             <p>We use the second definition for the ordering.</p>
             <p>To construct the different partitions simultaneously, the objects have to be processed in a specific order:</p>
             <ul>
-            <li><p><code>OPTICS</code> begins with an arbitrary object from the input database as the current object, <span class="math inline">\(p\)</span>. It retrieves the <span class="math inline">\(Eps-neighborhood\)</span> of <span class="math inline">\(p\)</span>, determines the core-distance, and sets the reachability-distance to undefined.</p></li>
+            <li><p><code>OPTICS</code> begins with an arbitrary object from the input database as the current object, <span class="math inline">\(p\)</span>. It retrieves the <span class="math inline">\(\varepsilon\)</span>-neighborhood of <span class="math inline">\(p\)</span>, determines the core-distance, and sets the reachability-distance to undefined.</p></li>
             <li><p>If <span class="math inline">\(p\)</span> is not a core object, <code>OPTICS</code> simply moves on to the next object in the <code>OrderSeeds</code> list.</p></li>
-            <li><p>If <span class="math inline">\(p\)</span> is a core object, then for each object <span class="math inline">\(q\)</span> in the <code>Eps-neighborhood</code> of <span class="math inline">\(p\)</span>, <code>OPTICS</code> updates its reachability-distance from <span class="math inline">\(p\)</span> and inserts <span class="math inline">\(q\)</span> into <code>OrderSeeds</code> if q has not yet been processed.</p></li>
+            <li><p>If <span class="math inline">\(p\)</span> is a core object, then for each object <span class="math inline">\(q\)</span> in the <span class="math inline">\(\varepsilon\)</span>-neighborhood of <span class="math inline">\(p\)</span>, <code>OPTICS</code> updates its reachability-distance from <span class="math inline">\(p\)</span> and inserts <span class="math inline">\(q\)</span> into <code>OrderSeeds</code> if q has not yet been processed.</p></li>
             </ul>
-            <p>his <code>Eps-neighborhood</code> is not the <code>Eps</code> we use in the <code>DBSCAN</code>, but it’s just the larger distance that leads the search for points from the <code>OPTICS</code>.</p>
+            <p>his <span class="math inline">\(\varepsilon\)</span>-neighborhood is not the <span class="math inline">\(\varepsilon\)</span> we use in the <code>DBSCAN</code>, but it’s just the larger distance that leads the search for points from the <code>OPTICS</code>.</p>
             <p>The objects contained in <code>OrderSeeds</code> are sorted by their reachability-distance to the closest core object from which they have been directly density reachable. In each step of the WHILE- loop, an object currentObject having the smallest reachability-distance in the seed-list is selected by the method <code>OrderSeeds:next()</code>.</p>
             <ul>
-            <li><p>The Eps-neighborhood of this object and its core-distance are determined. Then, the object is simply written to the file OrderedFile with its core distance and its current reachability- distance.</p></li>
+            <li><p>The <span class="math inline">\(\varepsilon\)</span>-neighborhood of this object and its core-distance are determined. Then, the object is simply written to the file OrderedFile with its core distance and its current reachability- distance.</p></li>
             <li><p>The iteration continues until the input is fully consumed and <code>OrderSeeds</code> is empty.</p></li>
             </ul>
             <h4 class="unnumbered" data-number="" id="conclusions-3">Conclusions</h4>
             <p>At the end of the execution of <code>OPTICS</code>, we have the list of objects in the order in which the objects themselves are processed.</p>
             <p>We have an ordering based on the reachability distance. These objects are processed considering the smallest reachability distance from the point we are considering and the next point.</p>
             <p>Complexity: in the worst case, <span class="math inline">\(O(n^2)\)</span>, where <span class="math inline">\(n\)</span> is the number of objects to be clustered.</p>
-            <p>We have an ordered list, and we have an order of the points and we can plot the reachability distance. The Eps we see there is the Eps we use in <code>OPTICS</code> and limits the number of points we have to consider.</p>
+            <p>We have an ordered list, and we have an order of the points and we can plot the reachability distance. The <span class="math inline">\(\varepsilon\)</span> we see there is the <span class="math inline">\(\varepsilon\)</span> we use in <code>OPTICS</code> and limits the number of points we have to consider.</p>
             <p><img src="../media/image420.png" /></p>
             <p>After the execution of <code>OPTICS</code> I have this profile:</p>
             <ul>
@@ -6036,16 +6036,16 @@
             <li><p>The valley corresponds to the number of points really close to each other, because characterized by having the smallest reachability distance respect to all other points.</p></li>
             </ul>
             <h4 class="unnumbered" data-number="" id="usage-2">Usage</h4>
-            <p>This plot can be useful to select <code>Eps</code> and <code>minPts</code> for <code>DBSCAN</code> or other density-based algorithms.</p>
+            <p>This plot can be useful to select <span class="math inline">\(\varepsilon\)</span> and <code>minPts</code> for <code>DBSCAN</code> or other density-based algorithms.</p>
             <p>Here <code>minPts</code> is fixed, when we defined the reachability distance, we start from the definition of core distance and to do that we have to fix <code>minPts</code>.</p>
             <p>This profile tells us what the reachability distance is. If we fix <span class="math inline">\(\varepsilon^{&#39;}\)</span> and use it for the <code>DBSCAN</code> we can see that with this, we can identify the clusters corresponding to valleys.</p>
             <p>The reachability distance for points in the valley are lower than the threshold <span class="math inline">\(\varepsilon^{&#39;}\)</span>.</p>
-            <h5 class="unnumbered" data-number="" id="examples-of-usage">Examples of usage</h5>
+            <h4 class="unnumbered" data-number="" id="examples-of-usage">Examples of usage</h4>
             <ul>
             <li><p>ex 1</p>
             <p><img src="../media/image421.png" /></p>
             <p><code>OPTICS</code> produces the type of plot for that dataset. The deepest valley corresponds to very dense regions in our dataset.</p>
-            <p>With that plot we can also decide different values for Eps and minPts depending on specific parts of the space.</p></li>
+            <p>With that plot we can also decide different values for <span class="math inline">\(\varepsilon\)</span> and minPts depending on specific parts of the space.</p></li>
             <li><p>ex 2</p>
             <p><img src="../media/image422.png" /></p>
             <p>By analyzing the graph, we can understand if we have natural clusters in the dataset and their level of density.</p>
@@ -6146,11 +6146,11 @@
             <h4 class="unnumbered" data-number="" id="conclusion">Conclusion</h4>
             <p>If we analyze this profile, we can realize that some points are in a valley.</p>
             <p><img src="../media/image441.png" /></p>
-            <p>If we cut choosing <span class="math inline">\(Eps=44\)</span> we obtain two clusters.</p>
+            <p>If we cut choosing <span class="math inline">\(\varepsilon=44\)</span> we obtain two clusters.</p>
             <p>If we choose it higher we obtain just one cluster.</p>
             <h3 data-number="6.7.3" id="denclue-using-statistical-density-functions"><span class="header-section-number">6.7.3</span> DENCLUE: Using Statistical Density Functions</h3>
             <p>This is another density-based algorithm quite different from the others.</p>
-            <p>The problem of DBSCAN and OPTICS is that <strong>density</strong> is calculated by <strong>counting the number of objects</strong> in a neighborhood defined by <code>Eps</code>. Such density estimates can be highly sensitive to the radius value used.</p>
+            <p>The problem of DBSCAN and OPTICS is that <strong>density</strong> is calculated by <strong>counting the number of objects</strong> in a neighborhood defined by <span class="math inline">\(\varepsilon\)</span>. Such density estimates can be highly sensitive to the radius value used.</p>
             <p>A clustering method based on a set of density distribution functions is the solution provided by DENCLUE.</p>
             <p>Each observed object is treated as an indicator of high-probability density in the surrounding region. The probability density at a point depends on the distances from this point to the observed objects.</p>
             <p>If we have this dataset:</p>
@@ -6362,15 +6362,15 @@
             <p>Otherwise, the data that fall into the relevant cells are retrieved and further processed until they meet the requirement of the query.</p>
             <p>We speed-up the query processing so that we can concentrate on the data relevant to the specific query. This corresponds to have clusters inside specific grids.</p>
             <p>A typical query is the following:</p>
-            <div class="sourceCode" id="cb18"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true"></a><span class="co">-- Select the maximal regions that have at least 100 houses per unit area and at least 70% of the house prices are abobe $400k and with total area at least 100 units with 90% confidence</span></span>
-            <span id="cb18-2"><a href="#cb18-2" aria-hidden="true"></a></span>
-            <span id="cb18-3"><a href="#cb18-3" aria-hidden="true"></a><span class="kw">SELECT</span> region</span>
-            <span id="cb18-4"><a href="#cb18-4" aria-hidden="true"></a><span class="kw">FROM</span> house<span class="op">-</span>map</span>
-            <span id="cb18-5"><a href="#cb18-5" aria-hidden="true"></a><span class="kw">WHERE</span> density <span class="kw">IN</span> (<span class="dv">100</span>, ∞)</span>
-            <span id="cb18-6"><a href="#cb18-6" aria-hidden="true"></a>    <span class="kw">AND</span> price <span class="kw">RANGE</span> (<span class="dv">400000</span>, ∞)</span>
-            <span id="cb18-7"><a href="#cb18-7" aria-hidden="true"></a>        <span class="kw">WITH</span> <span class="kw">percent</span> (<span class="fl">0.7</span>,<span class="dv">1</span>)</span>
-            <span id="cb18-8"><a href="#cb18-8" aria-hidden="true"></a>    <span class="kw">AND</span> area (<span class="dv">100</span>, ∞)</span>
-            <span id="cb18-9"><a href="#cb18-9" aria-hidden="true"></a>    <span class="kw">AND</span> <span class="kw">WITH</span> confidence <span class="op">=</span> <span class="fl">0.9</span></span></code></pre></div>
+            <div class="sourceCode" id="cb17"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true"></a><span class="co">-- Select the maximal regions that have at least 100 houses per unit area and at least 70% of the house prices are abobe $400k and with total area at least 100 units with 90% confidence</span></span>
+            <span id="cb17-2"><a href="#cb17-2" aria-hidden="true"></a></span>
+            <span id="cb17-3"><a href="#cb17-3" aria-hidden="true"></a><span class="kw">SELECT</span> region</span>
+            <span id="cb17-4"><a href="#cb17-4" aria-hidden="true"></a><span class="kw">FROM</span> house<span class="op">-</span>map</span>
+            <span id="cb17-5"><a href="#cb17-5" aria-hidden="true"></a><span class="kw">WHERE</span> density <span class="kw">IN</span> (<span class="dv">100</span>, ∞)</span>
+            <span id="cb17-6"><a href="#cb17-6" aria-hidden="true"></a>    <span class="kw">AND</span> price <span class="kw">RANGE</span> (<span class="dv">400000</span>, ∞)</span>
+            <span id="cb17-7"><a href="#cb17-7" aria-hidden="true"></a>        <span class="kw">WITH</span> <span class="kw">percent</span> (<span class="fl">0.7</span>,<span class="dv">1</span>)</span>
+            <span id="cb17-8"><a href="#cb17-8" aria-hidden="true"></a>    <span class="kw">AND</span> area (<span class="dv">100</span>, ∞)</span>
+            <span id="cb17-9"><a href="#cb17-9" aria-hidden="true"></a>    <span class="kw">AND</span> <span class="kw">WITH</span> confidence <span class="op">=</span> <span class="fl">0.9</span></span></code></pre></div>
             <p>We can apply the query exploiting the previous approach that allow us to consider only cells relevant to each level.</p>
             <p><img src="../media/image470.png" /></p>
             <p>At the beginning we isolate some area, then we redefine are at the second level and then at the third level.</p>
@@ -7705,7 +7705,7 @@
             <p>Is point relatively far away from its neighbors?</p>
             <p>Let <span class="math inline">\(N_k(x_i)\)</span> be the k-nearest neighbors of <span class="math inline">\(x_i\)</span>. Let <span class="math inline">\(D_k(x_i)\)</span> be the average distance to k-nearest neighbors</p>
             <p><span class="math display">\[
-                \large{D_k(x_i) = \dfrac{1}{k}\sum_{j \in N_k(x_i)}{\|x_i - x_j\|}}
+                \large{D_k(x_i) = \frac{1}{k}\sum_{j \in N_k(x_i)}{\|x_i - x_j\|}}
             \]</span></p>
             <p>We compute the distance between the point and points in its neighborhood, and compute the average.</p>
             <p>Outlierness is the ratio of <span class="math inline">\(D_k(x_i)\)</span> to average <span class="math inline">\(D_k(x_i)\)</span> for its neighbors <span class="math inline">\(j\)</span>:</p>

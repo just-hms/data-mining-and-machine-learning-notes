@@ -653,7 +653,7 @@ Let $D_k(x_i)$ be the average distance to k-nearest neighbors
 
 
 $$
-    \large{D_k(x_i) = \dfrac{1}{k}\sum_{j \in N_k(x_i)}{\|x_i - x_j\|}}
+    \large{D_k(x_i) = \frac{1}{k}\sum_{j \in N_k(x_i)}{\|x_i - x_j\|}}
 $$
 
 
