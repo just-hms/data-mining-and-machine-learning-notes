@@ -330,7 +330,7 @@ def kmeans(data, k):
 
 - These clusters are clusters with spherical shape. The reason is that in k-means we assess the similarity between each point and the center of the cluster using the euclidian distance.
 
-##### Strengths
+#### Strengths
 
 - __Efficient__: $O(tkn)$ where
  
@@ -348,7 +348,7 @@ Comment: Often terminates at a local optimal.
 
 In fact, we can use k-means several times using different initializations and use the result of the execution that achieve the minimum value of the cost function.
 
-##### Weakness
+#### Weakness
 
 - Applicable only to objects in a __continuous n-dimensional space__. 
 
@@ -675,7 +675,7 @@ In some applications we can exploit the relation between a cluster and its desce
 
 In `Diana` if we realize that we realize that some objects are far away from others, we probably must split.
 
-##### Connectivity matrix
+#### Connectivity matrix
 
 Hierarchical clustering frequently deals with the matrix of distances (dissimilarities) or similarities between training samples, and not with the matrix of objects.
 
@@ -686,7 +686,7 @@ It is sometimes called connectivity matrix.
 To merge or split subsets of points rather than individual points, the distance between individual points must be generalized to the distance between subsets.
 
 
-##### Linkage metrics
+#### Linkage metrics
 
 I cannot reason on distance between objects, but we have to generalize the concept of distance defining distance between clusters.
 
@@ -703,7 +703,6 @@ We exploit the dissimilarity matrix to compute them.
 > The underlying dissimilarity measure (usually, distance) is computed for every pair of points with one point in the first set and another point in the second set. A specific operation such as minimum (single link), average (average link), or maximum (complete link) is applied to pair-wise dissimilarity measures:
 
 $$  
-    
     d = \underset{x \in C_i, y \in C_2}{operation}(d(x,y))
 $$
 
@@ -1452,13 +1451,13 @@ We will have different clusters when we met low dense regions, sparse regions.
 
 We have to give as input our definition of dense regions. This is given by using two parameters:
 
-- __Eps__: Maximum radius of the neighborhood. Given one object we fix a radius that determine the neighborhood we are considering around one object.
+- $\varepsilon$ : Maximum radius of the neighborhood. Given one object we fix a radius that determine the neighborhood we are considering around one object.
 
-- __MinPts__: Minimum number of points in an Eps-neighborhood of that point.
+- __MinPts__: Minimum number of points in an $\varepsilon$-neighborhood of that point.
 
-> Density is the number of points we have in a volume. By specifying Eps and MinPts we are implying the density.
+> Density is the number of points we have in a volume. By specifying $\varepsilon$ and MinPts we are implying the density.
 
-If the Eps-neighborhood (neighborhood within radius Eps - NEps) of an object contains at least a minimum number, MinPts, of objects then the object is called core object.
+If the $\varepsilon$-neighborhood (neighborhood within radius $\varepsilon$ - NEps) of an object contains at least a minimum number, MinPts, of objects then the object is called core object.
 
 #### Examples
 
@@ -1466,14 +1465,14 @@ If the Eps-neighborhood (neighborhood within radius Eps - NEps) of an object con
  
     ![](../media/image403.png)
 
-    Eps = 1 cm, MinPts=3
+    $\varepsilon$ = 1 cm, MinPts=3
 
     We have that $m$ and $p$ are core objects, $q$ is not because in the neighborhood we don't have 3 objects.
 
-    We define an object p as __directly density-reachable__ from an object $1$ (respect to `Eps`, `MinPts`) if $p$ belongs to $N_{Eps}(q)$ (Neighborhood of q), $q$ is a core object, that is:
+    We define an object p as __directly density-reachable__ from an object $1$ (respect to $\varepsilon$, $MinPts$) if $p$ belongs to $N_{\varepsilon}(q)$ (Neighborhood of q), $q$ is a core object, that is:
 
     $$
-        N_{Eps}(q)| \geq MinPts
+        N_{$\varepsilon$}(q)| \geq MinPts
     $$
 
     (cardinality of neighborhood of q is greater or equal than minPts).
@@ -1487,7 +1486,7 @@ If the Eps-neighborhood (neighborhood within radius Eps - NEps) of an object con
     
     The viceversa is not true because $q$ is not a core object. $m$ is directly density-reachable from $p$ and vice versa.
 
-    An object $p$ is __density-reachable__ from an object $q$, with respect to $Eps$, $MinPts$, if there is a chain of objects $p_1, \dots, p_n$, such that $p_1 = q, p_n = p$ such that $p_i+1$ is directly density-reachable from $p_i$.
+    An object $p$ is __density-reachable__ from an object $q$, with respect to $\varepsilon$, $MinPts$, if there is a chain of objects $p_1, \dots, p_n$, such that $p_1 = q, p_n = p$ such that $p_i+1$ is directly density-reachable from $p_i$.
 
     ![](../media/image405.png)
 
@@ -1497,7 +1496,7 @@ If the Eps-neighborhood (neighborhood within radius Eps - NEps) of an object con
 
     p is not density-reachable from q because q is not a core object. 
 
-    An object p is __density-connected__ to an object q w.r.t. Eps, MinPts if there is an object o such that both p and q are density-reachable from o (w.r.t. Eps and MinPts).
+    An object p is __density-connected__ to an object q w.r.t. $\varepsilon$, MinPts if there is an object o such that both p and q are density-reachable from o (w.r.t. $\varepsilon$ and MinPts).
 
     ![](../media/image406.png)
 
@@ -1515,7 +1514,7 @@ If the Eps-neighborhood (neighborhood within radius Eps - NEps) of an object con
 
 __Density-Based Spatial Clustering of Applications with Noise__ relies on a density-based notion of cluster: A cluster is defined as a maximal set of density-connected points.
 
-We determine the cluster once we fix Eps and MinPts using this definition.
+We determine the cluster once we fix $\varepsilon$ and MinPts using this definition.
 
 The final cluster is just to have clusters of density connected points.
 
@@ -1535,9 +1534,9 @@ We have objects classified in
 
 We have them when they belong to a neighborhood of a core object without being a core object. It determines the border of the cluster we are determining.
 
-It searches for clusters by checking the `Eps-neighborhood` of each object in the database.
+It searches for clusters by checking the $\varepsilon$-neighborhood of each object in the database.
 
-If the `Eps-neighborhood` of an object $p$ contains more than $MinPts$, a new cluster with a core object is created.
+If the $\varepsilon$-neighborhood of an object $p$ contains more than $MinPts$, a new cluster with a core object is created.
 
 `DBSCAN` iteratively directly collects density reachable objects from these core objects: this may involve the merge of a few density-reachable clusters.
 
@@ -1562,9 +1561,9 @@ The complexity is $O(n^2)$.
 
 We have to fix those two parameters because we are proposing our definition of dense region and depending on them, we can identify an object as outlier or not.
 
-If `Eps` is smaller, more points will be considered as outliers.
+If $\varepsilon$ is smaller, more points will be considered as outliers.
 
-> The problem is to find the optimal value for `Eps` and `minPts`.
+> The problem is to find the optimal value for $\varepsilon$ and `minPts`.
 
 > If it doesn't contain at least MinPts objects we mark it as outlier, but it can become a border object of an object. The fact that we denote it as noise do not mean it is an outlier surely.
 
@@ -1576,13 +1575,13 @@ Since the shape is spherical, for how this algorithm works we obtain those clust
 
 In the third case outliers are also included.
 
-With DBSCAN we follow dense regions, and if we fix the right Eps and minPts we can identify correctly these clusters. Here the density is important.
+With DBSCAN we follow dense regions, and if we fix the right $\varepsilon$ and minPts we can identify correctly these clusters. Here the density is important.
 
 We are also able to find outliers in the last example.
 
 It works well here because we have that density of clusters are similar to each other.
 
-If we have clusters of different densities, we are not able to find them, because if we set Eps and minPts they may be good for a particular density.
+If we have clusters of different densities, we are not able to find them, because if we set $\varepsilon$ and minPts they may be good for a particular density.
 
 It works very well if clusters have same densities.
 
@@ -1590,13 +1589,13 @@ It works very well if clusters have same densities.
 
 ![](../media/image412.png)
 
-When we use `DBSCAN`, if we set minPts and we vary Eps:
+When we use `DBSCAN`, if we set minPts and we vary $\varepsilon$:
 
 ![](../media/image413.png)
 
 Using large values, we determine clusters characterized by low level of density, we consider very dense small clusters as part of the big cluster.
 
-If Eps is small we are able to identify dense clusters but in clusters with sparse densities we have all outliers now.
+If $\varepsilon$ is small we are able to identify dense clusters but in clusters with sparse densities we have all outliers now.
 
 If we have similar densities, it is also difficult to find the exact pair of values.
 
@@ -1606,9 +1605,9 @@ If we have similar densities, it is also difficult to find the exact pair of val
 
 In general cases, when we have high-dimensional data, we have no visual feedback, we have to experiment.
 
-Using Eps=0.5 and Eps=0.4 we have a big difference.
+Using $\varepsilon$=0.5 and $\varepsilon$=0.4 we have a big difference.
 
-By decreasing Eps of 0.1 we have that big clusters, characterized by not very dense regions, allow us to find a lot of clusters instead of just one.
+By decreasing $\varepsilon$ of 0.1 we have that big clusters, characterized by not very dense regions, allow us to find a lot of clusters instead of just one.
 
 In the second example we have just one cluster but depending on the value of parameters we can have different situations.
 
@@ -1618,7 +1617,7 @@ A cluster is separated later because we are reducing minPts.
 
 We have to try to set them using an heuristic approach or with an input of the internal domain if we have a lot of dimensions.
 
-#### heuristic approach to set `Eps` and `minPts`
+#### heuristic approach to set $\varepsilon$ and `minPts`
 
 For a given $k$ (that corresponds to minPts) we define a function k-dist, mapping each point to the distance from its k-th nearest neighbor.
 
@@ -1630,7 +1629,7 @@ We sort the points in descending order of their k-dist values: the graph of this
 
 ![](../media/image416.png)
 
-If I set the distance of the kth nearest neighbor to `Eps` I obtain that this point is a core point, we have $k$ minPts inside the `Eps` neighborhood.
+If I set the distance of the kth nearest neighbor to $\varepsilon$ I obtain that this point is a core point, we have $k$ minPts inside the $\varepsilon$ neighborhood.
 
 The points in the top have a high 4-dist, which means that they have the 4th nearest neighbors quite far and they're probably not in a dense region.
 
@@ -1638,19 +1637,19 @@ Outliers, in fact, probably have a large k-dist.
 
 We have also a large number of points belonging to dense regions (the k-nearest neighbors are quite close).
 
-If we choose an arbitrary point p, set the parameter Eps to k-dist(p) and set the parameter MinPts to k, all points with an equal or smaller k-dist value will be core points.
+If we choose an arbitrary point p, set the parameter $\varepsilon$ to k-dist(p) and set the parameter MinPts to k, all points with an equal or smaller k-dist value will be core points.
 
 If we choose the value indicated by the arrow and we are sure all points in the right will be core points, while other in the left can be outliers or borders.
 
 If we set k-dist to that point all points in the right will be core point.
 
-If we choose a certain Eps, we will have few outliers in the left, not all of them.
+If we choose a certain $\varepsilon$, we will have few outliers in the left, not all of them.
 
 The threshold point is the first point in the first "valley" of the sorted k-dist graph.
 
-This is heuristic but it is a way to set Eps and minPts.
+This is heuristic but it is a way to set $\varepsilon$ and minPts.
 
-Changing very few Eps we can have completely different results in terms of clusters.
+Changing very few $\varepsilon$ we can have completely different results in terms of clusters.
 
 > We have the problem that the intrinsic cluster structure cannot be characterized by global density parameters. It affects DBSCAN but also all density-based algorithms.
 
@@ -1706,7 +1705,7 @@ We start with this observation: density-based clusters are monotonic with respec
 
 __DBSCAN__: for a constant `MinPts` value, density-based clusters with respect to a higher density are completely contained in density-connected sets obtained with respect to a lower density.
 
-##### Example
+#### Example
 
 $C_1$ and $C_2$ are density-based clusters with respect to $Eps_2 \leq eps_1$ and $C$ is a density-based cluster with respect to $Eps_1$ completely containing the sets $C_1$ and $C_2$.
 
@@ -1714,7 +1713,7 @@ $C_1$ and $C_2$ are density-based clusters with respect to $Eps_2 \leq eps_1$ an
 
 $Eps_1 \leq Eps_2$ and that means that when we find $C_1$ and $C_2$ we are imposing the higher density. It tells us that clusters with lower density contains clusters with higher density. $C$ contains $C_1$ and $C_2$.
 
-The idea for `OPTICS` is to process a set of distance parameter values at the same time. In practice, to use `DBSCAN` for an infinite number of distance parameters $Eps_i$ which are smaller than a "generating distance $Eps$".
+The idea for `OPTICS` is to process a set of distance parameter values at the same time. In practice, to use `DBSCAN` for an infinite number of distance parameters $Eps_i$ which are smaller than a "generating distance $\varepsilon$".
 
 Unlike `DBSCAN`, `OPTICS` does not assign cluster memberships. 
 
@@ -1726,7 +1725,7 @@ We don't obtain at the end a partition but an ordering.
 
 #### Definitions
 
-- __Core-distance of an object p__ is the smallest `Eps` value that makes $p$ a core object. If $p$ is not a core object, the core-distance is undefined.
+- __Core-distance of an object p__ is the smallest $\varepsilon$ value that makes $p$ a core object. If $p$ is not a core object, the core-distance is undefined.
 
 - __Reachability-distance of an object q from p__ is the minimum radius value that makes $q$ directly density-reachable from $p$.
 
@@ -1734,7 +1733,7 @@ We don't obtain at the end a partition but an ordering.
 
 > If $p$ is not a core object, the reachability-distance is undefined.
 
-##### Example
+#### Example
 
 ![](../media/image419.png)
 
@@ -1748,17 +1747,17 @@ We use the second definition for the ordering.
 
 To construct the different partitions simultaneously, the objects have to be processed in a specific order:
 
-- `OPTICS` begins with an arbitrary object from the input database as the current object, $p$. It retrieves the $Eps-neighborhood$ of $p$, determines the core-distance, and sets the reachability-distance to undefined.
+- `OPTICS` begins with an arbitrary object from the input database as the current object, $p$. It retrieves the $\varepsilon$-neighborhood of $p$, determines the core-distance, and sets the reachability-distance to undefined.
 
 - If $p$ is not a core object, `OPTICS` simply moves on to the next object in the `OrderSeeds` list.
 
-- If $p$ is a core object, then for each object $q$ in the `Eps-neighborhood` of $p$, `OPTICS` updates its reachability-distance from $p$ and inserts $q$ into `OrderSeeds` if q has not yet been processed.
+- If $p$ is a core object, then for each object $q$ in the $\varepsilon$-neighborhood of $p$, `OPTICS` updates its reachability-distance from $p$ and inserts $q$ into `OrderSeeds` if q has not yet been processed.
 
-his `Eps-neighborhood` is not the `Eps` we use in the `DBSCAN`, but it's just the larger distance that leads the search for points from the `OPTICS`.
+his $\varepsilon$-neighborhood is not the $\varepsilon$ we use in the `DBSCAN`, but it's just the larger distance that leads the search for points from the `OPTICS`.
 
 The objects contained in `OrderSeeds` are sorted by their reachability-distance to the closest core object from which they have been directly density reachable. In each step of the WHILE- loop, an object currentObject having the smallest reachability-distance in the seed-list is selected by the method `OrderSeeds:next()`.
 
-- The Eps-neighborhood of this object and its core-distance are determined. Then, the object is simply written to the file OrderedFile with its core distance and its current reachability- distance.
+- The $\varepsilon$-neighborhood of this object and its core-distance are determined. Then, the object is simply written to the file OrderedFile with its core distance and its current reachability- distance.
 
 - The iteration continues until the input is fully consumed and `OrderSeeds` is empty. 
 
@@ -1770,7 +1769,7 @@ We have an ordering based on the reachability distance. These objects are proces
 
 Complexity: in the worst case, $O(n^2)$, where $n$ is the number of objects to be clustered.
 
-We have an ordered list, and we have an order of the points and we can plot the reachability distance. The Eps we see there is the Eps we use in `OPTICS` and limits the number of points we have to consider.
+We have an ordered list, and we have an order of the points and we can plot the reachability distance. The $\varepsilon$ we see there is the $\varepsilon$ we use in `OPTICS` and limits the number of points we have to consider.
 
 ![](../media/image420.png)
 
@@ -1784,7 +1783,7 @@ After the execution of `OPTICS` I have this profile:
 
 #### Usage
 
-This plot can be useful to select `Eps` and `minPts` for `DBSCAN` or other density-based algorithms.
+This plot can be useful to select $\varepsilon$ and `minPts` for `DBSCAN` or other density-based algorithms.
 
 Here `minPts` is fixed, when we defined the reachability distance, we start from the definition of core distance and to do that we have to fix `minPts`.
 
@@ -1792,7 +1791,7 @@ This profile tells us what the reachability distance is. If we fix $\varepsilon^
 
 The reachability distance for points in the valley are lower than the threshold $\varepsilon^{'}$.
 
-##### Examples of usage
+#### Examples of usage
 
 - ex 1
 
@@ -1800,7 +1799,7 @@ The reachability distance for points in the valley are lower than the threshold 
 
     `OPTICS` produces the type of plot for that dataset. The deepest valley corresponds to very dense regions in our dataset.
 
-    With that plot we can also decide different values for Eps and minPts depending on specific parts of the space.
+    With that plot we can also decide different values for $\varepsilon$ and minPts depending on specific parts of the space.
 
 - ex 2
     
@@ -1875,7 +1874,7 @@ If we analyze this profile, we can realize that some points are in a valley.
 
 ![](../media/image441.png)
 
-If we cut choosing $Eps=44$ we obtain two clusters.
+If we cut choosing $\varepsilon=44$ we obtain two clusters.
 
 If we choose it higher we obtain just one cluster.
 
@@ -1883,7 +1882,7 @@ If we choose it higher we obtain just one cluster.
 
 This is another density-based algorithm quite different from the others.
 
-The problem of DBSCAN and OPTICS is that __density__ is calculated by __counting the number of objects__ in a neighborhood defined by `Eps`. Such density estimates can be highly sensitive to the radius value used.
+The problem of DBSCAN and OPTICS is that __density__ is calculated by __counting the number of objects__ in a neighborhood defined by $\varepsilon$. Such density estimates can be highly sensitive to the radius value used.
 
 A clustering method based on a set of density distribution functions is the solution provided by DENCLUE.
 
