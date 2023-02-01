@@ -1741,7 +1741,7 @@ Here, the core distance of $p$ is the distance for which we include in the neigh
 
 - The reachability-distance $(p,q_1)$ is $\varepsilon^{'}$, because $q_1$ is lower than the core distance.
 
-- The reachability-distance $(p,q_1)$ is really the distance because the core distance is lower.
+- The reachability-distance $(p,q_2)$ is really the distance because the core distance is lower.
 
 We use the second definition for the ordering.
 
