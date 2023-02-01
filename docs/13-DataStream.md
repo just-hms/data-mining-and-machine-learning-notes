@@ -342,7 +342,7 @@ Clustering quality of MuDi-Stream __strongly depends on input parameters density
 
 These parameters require an expert knowledge about the data.
 
-The windows is present because we have a decrease of the weight of the instances in the cells and that's why we can periodically remove low weighted grids and $cmc\textnormal{s}$.
+The windows is present because we have a decrease of the weight of the instances in the cells and that's why we can periodically remove low weighted grids and $cmc\text{s}$.
 
 #### __Complexity Analysis__
 
