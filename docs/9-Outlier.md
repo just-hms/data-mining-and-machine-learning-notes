@@ -894,8 +894,8 @@ For each object o, __CBLOF__ (Cluster-Based Local Outlier Factor) is defined as:
 $$
     CBLOF(o)\bigg \{
         \begin{array}{rl}
-            |C_i| \cdot \min(distance(o,C_j)) \hspace{1cm} o \in C_i,C_j \in SC\ and\ C_j \in LC\\
-            |C_j| \cdot \min(distance(o,C_j)) \hspace{2.46cm}o \in C_i\ and\ C_i \in LC\\
+            |C_i| \cdot \min(distance(o,C_j)) \hspace{1cm} o \in C_i,C_i \in SC\ and\ C_j \in LC\\
+            |C_j| \cdot distance(o,C_j) \hspace{2.8cm}o \in C_j\ and\ C_j \in LC\\
         \end{array}  
 $$
 
