@@ -3088,12 +3088,8 @@
             <p>Accuracy rate is the percentage of test set samples that are correctly classified by the model (valid if the dataset is not imbalanced). It’s important to know about the distribution of the classes. If we have a strong majority class and a classifier that answers always the majority class, in this way we have a high accuracy but it’s not high. We must be able to understand the ability to discriminate between classes. If the dataset is balanced the accuracy, is a good metric. We need to compare the classifiers in an affidable way.</p>
             <p>Test set is independent of the training set. We need it to measure the accuracy and find the best model to use, we known the label even for the test set.</p>
             <p>We need to see if the classifier can generalize.If the accuracy is acceptable, we can use the model to classify data tuples whose class labels are not known.</p>
-            <figure>
-            <img src="../media/image201.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
-            <figure>
-            <img src="../media/image202.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image201.png" /></p>
+            <p><img src="../media/image202.png" /></p>
             <p>In this example the classifier is a rule, which has the characteristic to be interpretable.</p>
             <p>Explainable AI is important, people want to understand how the system produces the output. People can believe in AI this way. It’s also important for legal aspects, we must understand for a legal point of view if an accident is a choice or a chance.</p>
             <p>Tenured is the class we want to predict. We use a trainset of 6 objects, described by 3 attributes.</p>
@@ -3164,9 +3160,7 @@
             <li>Observation: in the original paper the authors prove that the optimal cut points for the metrics used by them lie always between two examples of different classes in the sequence of sorted values of attribute A.</li>
             </ul>
             <blockquote>
-            <figure>
-            <img src="../media/image203.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image203.png" /></p>
             </blockquote>
             <p>Along this continuous variable we have several values associated to a specific class.</p>
             <p>The optimal cut is in the middle of instances between different classes.</p>
@@ -3178,9 +3172,7 @@
             <p>Let S be the set of examples. Let there be k classes C1, ..., Ck.</p>
             <p>Let P(Ci,S) be the proportion of examples in S that have the class Ci.</p>
             <p>The class entropy of a subset S is defined as:</p>
-            <figure>
-            <img src="../media/image204.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image204.png" /></p>
             <p>P(Ci, S) = Probability of having Ci.</p>
             <p>If in S we have only one class, k = 1, the Entropy is 0.</p>
             <p>For the only class we have the log equals to 0, and for the other the probability is 0.</p>
@@ -3189,9 +3181,7 @@
             <p>We should reach intervals with low value of entropy.</p>
             <p>The idea is to split the continuous variable in such a way that each interval is characterized with low entropy, I’m going forward my optimal solution, where I have intervals in which I have only one class, in that case we talk of pure partitions.</p>
             <p>Let T a cut points in BA. Set S is partitioned in the subsets S1 and S2, where S1 contains the subset of examples in S with A-values not exceeding T and S2 = S- S1. The class information entropy of the partition induced by T, denoted as EP(A, T; S), is defined as:</p>
-            <figure>
-            <img src="../media/image205.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image205.png" /></p>
             <p>The cut point TA for which EP(A, TA; S) is minimal amongst al the candidate cut points is taken as the best cut point</p>
             <p>We look for the cutpoint for which the entropy is minimal among all possible cutpoints.</p>
             <p>This cutpoint is obtained like in the formula.</p>
@@ -3200,12 +3190,8 @@
             <p>The algorithm first partition S, find the optimal cutpoint and then repeat the process in S=S1 and S=S2.</p>
             <p>The we split again until a stopping condition is met.</p>
             <p>The stopping condition is defined as:</p>
-            <figure>
-            <img src="../media/image206.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
-            <figure>
-            <img src="../media/image207.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image206.png" /></p>
+            <p><img src="../media/image207.png" /></p>
             <p>(Not important to remember)</p>
             <p>This approach has the advantage to have a stopping condition, we don’t have to fix anything.</p>
             <p>At the end of the approach, we have intervals that discretize our continuous variable, which become an ordinal variable.</p>
@@ -3233,7 +3219,7 @@
             <li><p>each branch represents an outcome of the test</p></li>
             <li><p>each leaf node (terminal node) holds a class label.</p></li>
             </ul>
-            <p><img src="../media/image208.png" alt="alt" /> <img src="../media/image209.png" alt="alt" /></p>
+            <p><img src="../media/image208.png" /> <img src="../media/image209.png" /></p>
             <p>During the classification phase, depending on the specific value, we follow one of the branches of the built decision tree.</p>
             <p>How decision tree are used for classification? Given a tuple, the attribute values of the tuple are tested</p>
             <p>against the decision tree.</p>
@@ -3274,23 +3260,19 @@
             <p>The info gain is based on the computation of the information entropy.</p>
             <p>Expected <strong>information</strong> (<strong>entropy</strong>) needed to classify a tuple in D:</p>
             <blockquote>
-            <p><img src="../media/image210.png" alt="alt" /><br />
+            <p><img src="../media/image210.png" /><br />
             Observe: pi is the probability of class i in D</p>
             <p>When a probability of a class is 1, info(D) is 0. If the entropy is 0 it means that in D we have only instances belonging to the same class.</p>
             </blockquote>
             <p>This is the plot in a two classes problem of the probability from 0 to 1 of one class, the other is just opposite of course.</p>
-            <figure>
-            <img src="../media/image211.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image211.png" /></p>
             <p>When the probability of one class is 0 the entropy is 0, the same for 1.</p>
             <p>When the probability is 0.5 we have a lot of confusion and the entropy is maximum.</p>
             <p>All the training set at the beginning is in the root. We first compute the entropy of the overall training set, if it is equal 0 all the instances in the training set belongs to just one class and the problem is solved.</p>
             <p>We have to decide the attribute to put in the root, we should choose it in such a way that we go towards pure partitions.</p>
             <p>If we discover that we created only pure partitions we need only this attribute to classify the dataset.</p>
             <p>Suppose that we split D into v partitions {D1, ..., Dv} and we choose the attribute A having v distinct values {a1,...,av}. Information needed (after using A to split D into v partitions) to classify D:</p>
-            <figure>
-            <img src="../media/image212.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image212.png" /></p>
             <p>We compute the entropy of Dj where Dj contains all the tuples in D with value aj for A.</p>
             <p>|Dj| is the cardinality of the set of objects in D with value for A equal to aj.</p>
             <p>We compute the entropy of this instances and we weight each Dj with this probability, comuted as number of object in Dj over number of object in D, probability to have value aj for the attribute A.</p>
@@ -3300,47 +3282,31 @@
             <p>We need to weight it because Info(Dj) can be different than 0, and we can have a pure partition with only 1 instance and all others with a lot of instances.</p>
             <p>If I just adopt the average without weight, the pure partition have only one instance and we get confused.</p>
             <p>We need to test all attributes and we choose the attribute with the highest level of <strong>information gain</strong>:</p>
-            <figure>
-            <img src="../media/image213.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image213.png" /></p>
             <p>If Gain(A) = Info(D) we are in the best situation.</p>
             <h5 class="unnumbered" data-number="" id="example-of-info-gain-with-decision-tree"><strong>Example of Info Gain with Decision Tree</strong></h5>
             <p>Let’s suppose to have a db of 14 samples and we want to understand if the customer will buy or not the computer.</p>
-            <figure>
-            <img src="../media/image214.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image214.png" /></p>
             <p>We need to compute of the overall training set, all the objects inside.</p>
             <p>The probability of having class yes is the number of instances in which we have yes, and the probability is 9/14.</p>
             <p>We compute the entropy of the overall dataset.</p>
-            <figure>
-            <img src="../media/image215.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image215.png" /></p>
             <p>We get a high value of entropy.</p>
             <p>We decide to select one attribute to improve this situation. We must test all 4 attributes to decide which is the best.</p>
             <p>We analyze the attribute age, that can have 3 different values.</p>
             <p>We compute:</p>
-            <figure>
-            <img src="../media/image216.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image216.png" /></p>
             <p>We consider the probability for that value * the information related to the subset identified by value of age = youth.</p>
             <p>We have 3 instances with value age = youth with class no and 2 instances with class yes.</p>
             <p>The info related to the subset identified corresponds to this application of the entropy:</p>
-            <figure>
-            <img src="../media/image217.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image217.png" /></p>
             <p>We apply the same for age = medium and old, and we get the info for this attribute.</p>
             <p>We select the attribute with the highest value of gain:</p>
-            <figure>
-            <img src="../media/image218.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image218.png" /></p>
             <p>Similarly:</p>
-            <figure>
-            <img src="../media/image219.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image219.png" /></p>
             <p>So, we select age as attribute to use in the root.</p>
-            <figure>
-            <img src="../media/image220.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image220.png" /></p>
             <p>Age is the best attribute for the root node.</p>
             <p>It splits the training set in 3 subsets characterized by the three values of age: youth, middle_age, and senior.</p>
             <p>We can’t stop here because if we see the distribution of classes, we don’t have pure partitions, we have more than one class.</p>
@@ -3348,24 +3314,16 @@
             <p>If I discover that value for age, I can conclude that the age is yes.</p>
             <p>We will repeat the process for the others with other attributes, stopping conditions aren’t satisfied.</p>
             <p>We will assume now that D is Dage=youth in the left, we will have a smaller training set.</p>
-            <figure>
-            <img src="../media/image221.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image221.png" /></p>
             <p>We will consider only the remaining attributes.</p>
             <p>We will follow the decision tree following the values of the attributes.</p>
             <p>If we don’t have remaining attributes but more classes, we will transform the subset in a leaf associating it the majority class.</p>
             <h4 class="unnumbered" data-number="" id="decision-tree-algorithm">Decision Tree Algorithm</h4>
             <p>This is the scheme to learn the decision tree:</p>
-            <figure>
-            <img src="../media/image222.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image222.png" /></p>
             <p>We do not use any parameters, just like we see in the inputs.</p>
-            <figure>
-            <img src="../media/image223.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
-            <figure>
-            <img src="../media/image224.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image223.png" /></p>
+            <p><img src="../media/image224.png" /></p>
             <p>There is also the possibility to apply binary splitting, independently on the values of the attribute we just split two subsets, we may join different attributes.</p>
             <p>We can change the splitting criterio, we may have multiple splits, but this is a generic approach.</p>
             <h5 class="unnumbered" data-number="" id="computing-information-gain-for-continuous-valued-attributes"><strong>Computing Information-Gain for Continuous-Valued Attributes</strong></h5>
@@ -3393,7 +3351,7 @@
             <p>The C4.5 algorithm do not use the info gain but uses a <strong>gain ratio</strong> to overcome the problem.</p>
             <p>It adopts a normalization to information gain using a “split information”:</p>
             <ul>
-            <li><img src="../media/image225.png" title="fig:" alt="alt" /></li>
+            <li><img src="../media/image225.png" /></li>
             </ul>
             <p>The value represents the potential information generated by splitting the training data set, D, into v partitions, corresponding to the v outcomes of a test on attribute A.</p>
             <p>The cardinality of Dj will be low in case of few instances, the log2 will be negative and high in module, that’s why we have the minus.</p>
@@ -3401,9 +3359,7 @@
             <p><span class="math inline">\(GainRatio(A) = \frac{Gain(A)}{SplitInfo(A)}\)</span></p>
             <p>Lower the number of instances, higher is the splitInfo and lower is the GainRatio.</p>
             <p>In our specific case:</p>
-            <figure>
-            <img src="../media/image226.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image226.png" /></p>
             <p>GainRatio(income) = 0.029/1.557 = 0.019</p>
             <ins>
             The attribute with the maximum gain ratio is selected as the splitting attribute.
@@ -3411,9 +3367,7 @@
             <h4 class="unnumbered" data-number="" id="gini-index">Gini Index</h4>
             <p>Another metric we can use is the <strong>gini index</strong>.</p>
             <p>If a data set D contains examples from m classes, the Gini index, gini(D), is defined as:</p>
-            <figure>
-            <img src="../media/image227.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image227.png" /></p>
             <p>where pi is the relative frequency of class i in D</p>
             <p>The Gini index considers a binary split for each attribute, and not a multi-way split.</p>
             <p>From one decision node we have only two branches.</p>
@@ -3422,31 +3376,21 @@
             <p>We test all possible combinations and we test the value of the gini index.</p>
             <p>If we have just one class in a dataset D, one probability is 1 and others are 0, and the gini value is 0.</p>
             <p>For a 2-class problem:</p>
-            <figure>
-            <img src="../media/image228.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image228.png" /></p>
             <p>When classes are equally probable, we have the situation with the biggest confusion.</p>
             <p>The trend is similar to the entropy, but the value is different.</p>
             <p>We can also use a misclassification error as index.</p>
             <p>If a dataset D is split on A into two subsets D1 and D2, the gini index giniA(D) is defined as:</p>
-            <figure>
-            <img src="../media/image229.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image229.png" /></p>
             <p>For a discrete attribute, each of the possible binary splits is considered.</p>
             <p>For a continuous attribute, each possible split-point must be considered.</p>
             <p>The Reduction of Impurity is computed similarly:</p>
-            <figure>
-            <img src="../media/image230.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image230.png" /></p>
             <p>The attribute that maximizes the reduction of impurity (or equivalently has the minimum Gini index) is selected as the splitting attribute.</p>
             <p>For example, D has 9 tuples in buys_computer = “yes” and 5 in “no”</p>
-            <figure>
-            <img src="../media/image231.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image231.png" /></p>
             <p>Let’s start with the attribute income and consider each of the possible splitting subsets. Consider the subset {low, medium}. This would result in 10 tuples in D1 and 4 in D2</p>
-            <figure>
-            <img src="../media/image232.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image232.png" /></p>
             <p>The Gini values for splits on the remaining subsets are:</p>
             <p>Gini{low, high} = Gini{medium} 0.458; Gini{medium, high} = Gini{low} = 0.450. Thus, split on the {low, medium} (and {high}) since it has the lowest Gini index.</p>
             <p>We select the combination with the lowest gini index.</p>
@@ -3469,12 +3413,8 @@
             <p>In some specific branches we just classify noise or outliers, we overfit.</p>
             <p>We achieve high accuracy for the training set, but we get poor accuracy for unseen samples.</p>
             <p>The reason is that the decision tree is strongly specialized in the training set and not able to generalize.</p>
-            <figure>
-            <img src="../media/image233.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
-            <figure>
-            <img src="../media/image234.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image233.png" /></p>
+            <p><img src="../media/image234.png" /></p>
             <p>Instead of identifying area characterized by specific classes, we try to isolate single or few points, and this is particularly true when we just go towards the deepness of our tree.</p>
             <p>The last branches are very specialized on the specific instances.</p>
             <p>If we have some point in a red zone but we specialize too much, the noise just determines a decision area in which we associate a wrong class for the area containing the instance.</p>
@@ -3485,9 +3425,7 @@
             <li><p>Compute the accuracy (ATest) of the model by classifying the test set</p></li>
             </ol>
             <p>We expect that the decision tree will perform better in the training set, but if ATest &lt;&lt; ATraining, then we have overtraining.</p>
-            <figure>
-            <img src="../media/image235.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image235.png" /></p>
             <p>Increasing the number of nodes our decision tree get more specialized in the training set and the difference in performance starts to be relevant.</p>
             <p>Our aim at the end is to use the decision tree to generalize.</p>
             <p>We generate a high number of nodes, so we have that the decision area is very small. We isolate the decision area in few instances.</p>
@@ -3518,9 +3456,7 @@
             <p>We use a pruning data set to estimate generalization error.</p>
             <p>We get a part of the training set as a test set. We train by using this part of the training set and we test using the pruning set, we test to understand if we can prune the tree.</p>
             <p>Once we pruned the tree, we assess the performance of the tree on the test set.</p>
-            <figure>
-            <img src="../media/image236.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image236.png" /></p>
             <ins>
             We use that part to test if we can reduce the size of the tree.
             </ins>
@@ -3560,24 +3496,18 @@
             <p>We can use a set of data different from the training data to decide which is the “best pruned tree”. This is why we can use the pruning dataset discussed before.</p>
             </blockquote>
             <p>For example:</p>
-            <figure>
-            <img src="../media/image237.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image237.png" /></p>
             <p>If we prune in A5 we replace it with a leaf with the majority class.</p>
             <p>We must understand when we can stop in the postpruning phase. We must balance the classification error and the complexity. Increasing the complexity, we typically increase the classification error.</p>
             <h4 class="unnumbered" data-number="" id="reduced-error-pruning">Reduced Error Pruning</h4>
             <p>We can use <strong>Reduced Error Pruning (REP)</strong> where we use pruning set to estimate accuracy of sub-trees and accuracy of individual nodes.</p>
-            <figure>
-            <img src="../media/image238.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image238.png" /></p>
             <p>Let T be a sub-tree rooted at node v. The gain from pruning at v can be defined as:</p>
             <p><span class="math inline">\(Gain from pruning = misclassification_T - misclassification_v\)</span></p>
             <p><strong>Repeat:</strong> prune at node with the largest gain until only negative gain nodes remain</p>
             <p>We have a “Bottom/up restriction”: T can only be pruned if it does not contain a sub-tree with lower error than T. To perform this approach, we must have a pruning set.</p>
             <h5 class="unnumbered" data-number="" id="example-2"><strong>Example:</strong></h5>
-            <figure>
-            <img src="../media/image239.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image239.png" /></p>
             <p>We must decide if I maintain the subtree rooted by v2, or prune and replace v2 with a leaf. To decide it we use a pruning set, set not used for learning but part of the training set.</p>
             <p>In V4 we have 2 instances belonging to c1 and 2 in c2 in our pruning set.</p>
             <p>We associate with a leaf the majority class, considering most of the instances we have in the leaves we will prune.</p>
@@ -3609,9 +3539,7 @@
             <p>The idea is to use a decision tree with the minimum number of nodes that allow us to achieve reasonable performance in resubstitution error or cross validation error.</p>
             <p>We just generate several decision trees by pruning the tree and we compute the resubstitution relative cost.</p>
             <p>We order the tree by increasing resubstitution relative cost. Also, in term of number of nodes we have a decreasing order because when we increase the resubstitution cost we increase the number of nodes.</p>
-            <figure>
-            <img src="../media/image240.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image240.png" /></p>
             <p>We just pick up a tree that guarantee us the lowest cross-validation and pickup a tree with a cost very close to the lowest cost we have with cross-validation, that guarantee us to have the minimum number of nodes.</p>
             <p>This is an approach that tries to select a tree with the lowest number of nodes considering the resubstitution error and the cross-validation error.</p>
             <p>Pessimistic pruning is similar to the cost complexity pruning but does not use a pruning set.</p>
@@ -3621,9 +3549,7 @@
             <li><p><strong>Repetition</strong> - where an attribute is repeatedly tested along a given branch; this can happen when we have a continuous variable and we split it in two parts. We test the attribute with a threshold lower than 60 and we have two branches because we have binary splitting. We can also have another part of the tree with the same attribute with another split. We can have the same attribute repeated in another part of the tree.</p></li>
             <li><p><strong>Replication</strong> - duplicate subtrees exist within the tree. We could use the attributes in different part of the tree and this can produce the same subtree.</p></li>
             </ul>
-            <figure>
-            <img src="../media/image241.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image241.png" /></p>
             <p>We can have them because we prune part of the tree.</p>
             <p>Repetition and Replication can impede the accuracy and comprehensibility of a decision tree.</p>
             <p>The use of multivariate splits (splits based on a combination of attributes) can prevent these problems. Another approach is to use a different form of knowledge representation, such as rules, instead of decision trees.</p>
@@ -3661,9 +3587,7 @@
             <p>The method maintains an AVC-set for each attribute at each tree node, describing the training tuples at node.</p>
             <p>Dimension of an AVC-set depends on number of distinct values of A and the number of classes.</p>
             <p>We will have all information to compute the info gain, we summarize the information to do that.</p>
-            <figure>
-            <img src="../media/image242.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image242.png" /></p>
             <p>We scan the DB but after that we can directly work on it.</p>
             <h3 data-number="5.3.2" id="boat-bootstrapped-optimistic-algorithm-for-tree-construction"><span class="header-section-number">5.3.2</span> BOAT (Bootstrapped Optimistic Algorithm for Tree Construction)</h3>
             <p>Another approach is to use statistical technique called bootstrapping to create several smaller samples (subsets), each fits in memory.</p>
@@ -3692,28 +3616,20 @@
             <p>Given that X will buy computer, the prob. that X is 31..40, and medium income.</p>
             <p>Note: P(H), P(X) and P(X|H) can be estimated from the given data.</p>
             <p>P(H|X) can be computed by the <strong>Bayes’ theorem</strong>. Given a training data X:</p>
-            <figure>
-            <img src="../media/image243.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image243.png" /></p>
             <p>Informally, this can be written asposteriori = likelihood x prior/evidence</p>
             <p>It predicts X belongs to Ci if and only if the probability P(Ci|X) is the highest among all the P(Ck|X) for all the k classes. If we have P(H|X) we compute it for each class and in output we give the class corresponding to the highest probability.</p>
             <p>Practical difficulty: requires initial knowledge of many probabilities, significant computational cost</p>
             <p>We go towards Naive Bayesian Classifier to solve this problem.</p>
             <p>Let D be a training set of tuples and their associated class labels, and each tuple is represented by an n- dimensional attribute vector X = (x1, x2, ..., xn). Suppose there are m classes C1, C2, ..., Cm.Classification objective: to determine the class having the highest posterior probability, i.e., the maximal P(Ci|X). This can be derived from Bayes’ theorem:</p>
-            <figure>
-            <img src="../media/image244.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image244.png" /></p>
             <p>Since P(X) is constant for all classes, only:</p>
-            <figure>
-            <img src="../media/image245.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image245.png" /></p>
             <p>needs to be maximized.</p>
             <p>P(Ci) is easy to be estimated by |Ci,D| / |D|.</p>
             <p>The real problem is to compute P(X|Ci), we have to compute it for each possible combination of each value of all attributes.</p>
             <p>We can do it with this assumption: attributes are conditionally independent (i.e., no dependence relation between attributes). In that case:</p>
-            <figure>
-            <img src="../media/image246.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image246.png" /></p>
             <p>This greatly reduces the computation cost. Only counts the class distribution.</p>
             <p>We just compute the probability of each value of each attribute given the class.</p>
             <p>We don’t have any more combination of values.</p>
@@ -3721,20 +3637,14 @@
             <p>This reduces the computational time but we need to have that assumption.</p>
             <p>If Ak is categorical, P(xk|Ci) is the number of tuples in Ci having value xk for Ak divided by |Ci, D| (number of tuples of Ci in D).</p>
             <p>If Ak is continous-valued, P(xk|Ci) is usually computed based on Gaussian distribution with a mean μ and standard deviation σ:</p>
-            <figure>
-            <img src="../media/image247.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image247.png" /></p>
             <p>and:</p>
-            <figure>
-            <img src="../media/image248.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image248.png" /></p>
             <p>where μCi and σCi are the mean value and the standard deviation, respectively, of the values of attribute Ak for training tuples of class Ci.</p>
             <p>This is true if we can assume that the distribution is gaussian.</p>
             <h5 class="unnumbered" data-number="" id="example-3"><strong>Example:</strong></h5>
             <p>Let’s use the Naive Bayesian Classifier.</p>
-            <figure>
-            <img src="../media/image249.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image249.png" /></p>
             <p>Classes:</p>
             <p>C1:buys_computer = ‘yes’</p>
             <p>C2:buys_computer = ‘no’</p>
@@ -3763,9 +3673,7 @@
             <p>It’s normal to have the low magnitude because we use different products between number less than 1.</p>
             <h3 data-number="5.4.1" id="avoiding-the-zero-probability-problem"><span class="header-section-number">5.4.1</span> Avoiding the Zero-Probability Problem</h3>
             <p>Naïve Bayesian prediction requires each conditional probability be non-zero. Otherwise, the predicted probability will be zero:</p>
-            <figure>
-            <img src="../media/image250.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image250.png" /></p>
             <p>Ex. Suppose a dataset with 1000 tuples, income=low (0), income= medium (990), and income = high (10)</p>
             <p>If we just apply this probability, for low we have 0.</p>
             <p>TO avoid it we can use <strong>Laplacian correction</strong> (or Laplacian estimator) that consists in adding 1 to each case.</p>
@@ -3786,9 +3694,7 @@
             <li><p>Dependencies among these cannot be modeled by Naïve Bayesian Classifier If we have dependency in attributes we can’t expect to have high performance.</p></li>
             </ul>
             <p>We can deal with these dependencies using <strong>Bayesian Belief Networks</strong>. They are also known as Bayesian networks, probabilistic networks and they allow the representation of dependencies among subsets of attributes (both discrete- and continuous-valued). They are defined by two components: a directed acyclic graph and a set of conditional probability tables. A directed acyclic graphical model of casual relationship represents dependencies among variables, gives a specification of joint probability distribution.</p>
-            <figure>
-            <img src="../media/image251.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image251.png" /></p>
             <p>Nodes: random variables</p>
             <p>Links: dependency</p>
             <p>X and Y are the parents of Z, and Y is the parent of P</p>
@@ -3796,13 +3702,9 @@
             <p>Has no loops/cycles</p>
             <p>Nodes may correspond to actual attributes given in the data or to “hidden conditional probability tables variables” believed to form a relationship (e.g., in the case of medical data, a hidden variable may indicate a syndrome, representing a number of symptoms that, together, characterize a specific disease).</p>
             <p><strong>CPT</strong>: Conditional Probability Table for variable LungCancer:</p>
-            <figure>
-            <img src="../media/image252.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image252.png" /></p>
             <p>It shows the conditional probability for each possible combination of the values of its parents</p>
-            <figure>
-            <img src="../media/image253.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image253.png" /></p>
             <p>If we have LC, we know that it depends on S and fH and the CPT gives us the probability given possible values for the parents, the probability to have LC or not LC</p>
             <p>If we have cancer in family history and the patient is smoker we have a probability of 0.8, and so on.</p>
             <p>We can use these networks in several scenarios.</p>
@@ -3810,13 +3712,9 @@
             <p>Let X=(x1,..,xn) be a data tuple described by the variables or attributes Y1, ..., Yn, respectively.</p>
             <p>Note that each variable is conditionally independent of its nondescendants in the network graph, given its parents.</p>
             <p>A complete representation of the existing joint probability distribution can be obtained by the following equation:</p>
-            <figure>
-            <img src="../media/image254.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image254.png" /></p>
             <p>Just an example. Suppose that we have five variables A, B, C, D and E.</p>
-            <figure>
-            <img src="../media/image255.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image255.png" /></p>
             <p>If we do not specify the dependencies explicitly, then all the variables are assumed to be dependent on each other.</p>
             <p>It means that:</p>
             <p>p(A,B,C,D,E) = p(A|B,C,D,E)*p(B|C,D,E)*p(C|D,E)*p(D|E)*P(E)</p>
@@ -3843,25 +3741,19 @@
             <p>A gradient descent strategy is used to search for the wijk values that best model the data, based on the assumption that each possible setting of wijk is equally likely.</p>
             <p>It searches for a solution along the negative of the gradient of a criterion function.</p>
             <p>This function is that we maximize the probability assigned by the network to the observed data when the CPT parameters are set to w. We try to maximize this probability:</p>
-            <figure>
-            <img src="../media/image256.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image256.png" /></p>
             <p>This can be done by following the gradient of Pw(D).</p>
             <p>The algorithm proceeds as follows:</p>
             <ul>
             <li>Compute the gradients (for each training tuple Xd)</li>
             </ul>
-            <figure>
-            <img src="../media/image257.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image257.png" /></p>
             <ul>
             <li>Take a small step in the direction of the gradient (where l is the learning rate). If l is very low the climb is slow, if large we climb the ill very fast but we may pass-over the peak so we should rule this learning rate so that we approach the peak fast but without passing the peak itself.</li>
             </ul>
-            <figure>
-            <img src="../media/image258.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image258.png" /></p>
             <ul>
-            <li>Renormalize the weights (all the weights have to be between 0 and 1 being probabilities and <img src="../media/image259.png" alt="alt" /> must equal 1 for all i,k.).</li>
+            <li>Renormalize the weights (all the weights have to be between 0 and 1 being probabilities and <img src="../media/image259.png" /> must equal 1 for all i,k.).</li>
             </ul>
             <h2 data-number="5.5" id="rule-based-classification"><span class="header-section-number">5.5</span> Rule-based Classification</h2>
             <p>We have classifiers based on rules.</p>
@@ -3888,9 +3780,7 @@
             </blockquote>
             <p>How can we mine rules?</p>
             <p>1. Rule extraction from a decision tree</p>
-            <figure>
-            <img src="../media/image260.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image260.png" /></p>
             <p>We can extract rules from a decision tree. We travel each path from the root to the leaves and for each path we generate a rule.</p>
             <ul>
             <li><p>Rules are easier to understand than large trees</p></li>
@@ -3900,9 +3790,7 @@
             </ul>
             <p>Note: one rule per leaf! With decision trees which suffer from repetition and replication, the extracted rule base can be difficult to interpret</p>
             <p>For example:</p>
-            <figure>
-            <img src="../media/image261.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image261.png" /></p>
             <p>We have 5 leaves so we will have 5 rules. If we have only one branch, we will have only one condition in the antecedent.</p>
             <h3 data-number="5.5.1" id="rule-extraction-from-a-decision-tree-pruning-the-rules"><span class="header-section-number">5.5.1</span> Rule Extraction from a Decision Tree: Pruning the Rules</h3>
             <p>Let’s see how we can prune the rule set.</p>
@@ -3935,13 +3823,9 @@
             <p><em>generate a rule</em></p>
             <p><em>remove positive target tuples satisfying this rule</em></p>
             <p>positive means covered by the rule in the same class.</p>
-            <figure>
-            <img src="../media/image262.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image262.png" /></p>
             <p>Formally we have this algorithm:</p>
-            <figure>
-            <img src="../media/image263.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image263.png" /></p>
             <p>We start with an empty rule set and for each class and we repeat the three statements until terminating condition.</p>
             <p>How is possible to learn one rule?</p>
             <p>To generate a rule:</p>
@@ -3951,9 +3835,7 @@
             <p><em>add p to current rule</em></p>
             <p><em>else break</em></p>
             <p>If this metric is higher than a threashold we add b to the current rule.</p>
-            <figure>
-            <img src="../media/image264.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image264.png" /></p>
             <p>We select one attribute with a specific value, this is our condition. If we use just one condition, we cover a number of instances.</p>
             <p>Positive examples are example covered by the rule and belong to the same class we used in the consequent.</p>
             <p>All other examples belonging to other classes are negative examples.</p>
@@ -3970,21 +3852,15 @@
             <p>This rule is always fired and cover all instances.</p>
             <p>Suppose our training set, D, consists of loan application data. Attributes regarding each applicant include their age, income, education level, residence, credit rating, and the term of the loan.</p>
             <p>We start with the rule:</p>
-            <figure>
-            <img src="../media/image265.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image265.png" /></p>
             <p>Then, we consider each possible attribute that may be added to the rule.</p>
             <p>We must use some metric to decide which is the best attribute to add in the rule.</p>
             </blockquote>
-            <figure>
-            <img src="../media/image266.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image266.png" /></p>
             <p>We must choose the metric. The best one should take in consideration accuracy.</p>
             <p>We must select the condition that allow us to achieve the highest accuracy, which is the number of positive examples over all examples covered by the rule.</p>
             <p>But we could have this situation:</p>
-            <figure>
-            <img src="../media/image267.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image267.png" /></p>
             <p>R1 = 95% accuracy</p>
             <p>R2 = 100% accuracy</p>
             <p>R1 in terms of accuracy is lower but R2 has a very small coverage.</p>
@@ -3992,9 +3868,7 @@
             <p>If we have few instances, we also can reach overtraining. If we select rules that cover a limited number of instances, we have the risk to produce a classifier with overtraining.</p>
             <p>We must take in consideration accuracy and coverage.</p>
             <p>We use a rule-quality measure that is <strong>Foil-gain</strong>, that assesses info_gain by extending condition (FOIL = First Order Inductive Learner).</p>
-            <figure>
-            <img src="../media/image268.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image268.png" /></p>
             <p>where <span class="math inline">\(pos\)</span> <span class="math inline">\((pos&#39;)\)</span> and <span class="math inline">\(neg\)</span> <span class="math inline">\((neg&#39;)\)</span> are the numbers of positive and negative tuples covered by current rule R (new rule R’, rule obtained adding one condition).</p>
             <p>We compare the rule we are producing adding one condition at the rule we have before the step.</p>
             <p>We decide if adding or not using this gain.</p>
@@ -4009,7 +3883,7 @@
             <p>Removing a rule, we enlarge the subspace covered by the rule. By convention, this approach, RIPPER, starts with the most recently added conjunct when considering pruning.</p>
             <p>FOIL uses a simple yet effective method:</p>
             <ul>
-            <li><img src="../media/image269.png" title="fig:" alt="alt" /></li>
+            <li><img src="../media/image269.png" /></li>
             </ul>
             <p>If FOIL_Prune is higher for the pruned version of R, prune R.</p>
             <p>Conjuncts are pruned one at a time if this results in an improvement.</p>
@@ -4105,9 +3979,7 @@
             <p>The complexity is linear with the number of instances in the data set, we have O(n*f), where f is the number of attributes.</p>
             <p>The complexity for the sorting algorithm is O(n*logn) for some algorithms.</p>
             <p>If we fix k at the beginning we can speed-up the computation actually.</p>
-            <figure>
-            <img src="../media/image270.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image270.png" /></p>
             <p>The optimal value of k is hard to choose.</p>
             <p>How is possible to determine a good value for k?</p>
             <p>If we select k = 1, we consider the closest point to the unlabeled point.</p>
@@ -4131,65 +4003,47 @@
             <h4 class="unnumbered" data-number="" id="editing-methods">Editing Methods</h4>
             <p><strong>Wilson editing</strong></p>
             <p>Wilson editing cleans interclass overlap regions, thereby leading to smoother boundaries between classes.</p>
-            <figure>
-            <img src="../media/image271.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image271.png" /></p>
             <p>breaking ties randomly if we have the same number of neighbors for each class.</p>
             <p>This corresponds on eliminating an object that it is in a zone in which most neighbors belong to other classes. We must perform this reduction one time.</p>
             <p>We remove objects in zones in where we have objects of other classes and consider them as noise.</p>
-            <figure>
-            <img src="../media/image272.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image272.png" /></p>
             <p>It depends on the value of k, in the first case we use k = 1 so we eliminate also the black one.</p>
             <p>With this approach we remove instances that may cause misclassifications.</p>
             <p><strong>Multi-Edit</strong></p>
             <p>We have to edit in such a way to maintain the performance of our classifier.</p>
             <p>Multi-edit repeatedly applies Wilson editing to N random subsets of the original dataset until no more examples are removed.</p>
-            <figure>
-            <img src="../media/image273.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image273.png" /></p>
             <p>We use one of the subsets for training and others for test and we apply all these combinations.</p>
             <p><strong>Citation Editing</strong></p>
             <p>We exploit an analogy here, which is that if a paper cites another article, the paper is related to that article. Similarly, if a paper is cited by an article, the paper is also related to that article. Thus both the citers and references are considered to be related to a given paper.</p>
-            <figure>
-            <img src="../media/image274.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image274.png" /></p>
             <p>We use KNN for oi but also the citers, that are objects in o which count oi among its KNN. We use Wilson editing exploiting the views of citers and cited.</p>
             <p><strong>Supervised Clustering</strong></p>
             <p>In this approach we exploit clustering, grouping objects related to each other.</p>
             <p>The idea is to use one representative for the cluster, which has to be label, and use it instead of elements in the cluster.</p>
             <p>O is replaced by subset Or which consists of cluster representatives that have been selected by the supervised clustering algorithm.</p>
-            <figure>
-            <img src="../media/image275.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image275.png" /></p>
             <p>We have the objective to preserve accuracy but reducing the number of instances.</p>
             <p>We have to see if these methods reach our aim.</p>
             <p>Let’s compare the different approaches by using a dataset.</p>
             <p>We use two types of datasets.</p>
-            <figure>
-            <img src="../media/image276.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image276.png" /></p>
             <p>In the first column we use the overall training set, in the second Wilson editing, and so on.</p>
             <p>The Wilson, Citation and SC Editing allow us to improve performances.</p>
             <p>The second row give us:</p>
-            <figure>
-            <img src="../media/image277.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image277.png" /></p>
             <p>which is the percentage of the dataset we can reduce.</p>
             <p>SC Editing guarantee us the highest compression rate, in fact we use representatives.</p>
             <p>In the other dataset SC Editing do not guarantee a similar performance but the compression rate is huge. During the classification phase this guarantee us to be very fast.</p>
             <p>We can conclude that the first three can typically increase the accuracy but are not able to reduce a lot the instances, while SC editing summarize a lot the instances but we may have loss in terms of accuracy.</p>
             <p>Visualization of the application of editing methods on Complex9_RN323 dataset:</p>
-            <figure>
-            <img src="../media/image278.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image278.png" /></p>
             <p>With Citation and Wilson editing we delete points but not so many. With SC Editing we have just few selected points.</p>
             <h4 class="unnumbered" data-number="" id="k-nearest-neighbours-for-prediction">K-Nearest Neighbours for Prediction</h4>
             <p>k-NN for <em>real-valued prediction</em> for a given unknown tuple returns the mean values of the k nearest neighbors.</p>
             <p>We can also use distance-weighted nearest neighbor algorithm.In this case it weights the contribution of each of the k neighbors according to their distance to the query xq. We can give greater weight to closer neighbors:</p>
-            <figure>
-            <img src="../media/image279.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image279.png" /></p>
             <p>We weight more the points close to Xq.</p>
             <p>KNN is quite robust to noisy data by averaging k-nearest neighbors, especially when we increment k.We have a curse of dimensionality because we use distance between neighbors, and it could be dominated by irrelevant attributes.</p>
             <p>To overcome it, we can use axes stretch or elimination of the least relevant attributes.</p>
@@ -4213,9 +4067,7 @@
             <p>I increase the possibility to use this solution for other cases.</p>
             <p>Tight coupling between case retrieval, knowledge-based reasoning, and problem solving.</p>
             <p>The CBR cycle consists of 4 sequential steps:</p>
-            <figure>
-            <img src="../media/image280.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image280.png" /></p>
             <p>We receive a new case, we retrieve similar cases, we analyze them, and we reuse the solutions we adopted in those cases, we revise this solution and we test this solution.</p>
             <p>Then we save it for the future.</p>
             <ul>
@@ -4242,9 +4094,7 @@
             <p>We add the case with the solution for new specific cases. Explicit competence models have been developed that enable the selective retention of cases (because of the continuous increase of the case-base).</p>
             <p>This is a lazy learner because we do not generate a model, but we exploit what we have in the learning set.</p>
             <p>Let’s take this example:</p>
-            <figure>
-            <img src="../media/image281.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image281.png" /></p>
             <p>The first thing to do is to understand if we have similar cases to adopt the solution inside those cases. We search similar cases, and we discover that something is present in our case base but it’s not the same problem.</p>
             <p>When two cases are similar? We must establish it.</p>
             <p>The solution may change depending on the model of the car, we must take care of the complexity of this situation.</p>
@@ -4252,9 +4102,7 @@
             <p>We have the front light and not the break light, but we can exploit similar solutions.</p>
             <p>If we apply the change and it works this is the solution we wanted.</p>
             <p>Then we can store the solution in our use-case.</p>
-            <figure>
-            <img src="../media/image282.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image282.png" /></p>
             <p>It’s difficult to compute similarity.</p>
             <p>Challenges with this application are:</p>
             <p>Find a good similarity metric</p>
@@ -4277,17 +4125,13 @@
             <p>A complete information is given by the <strong>confusion matrix</strong>.</p>
             <h3 data-number="5.8.1" id="confusion-matrix"><span class="header-section-number">5.8.1</span> Confusion Matrix</h3>
             <p>We consider a two-class problem but it can be generalized with more classes.</p>
-            <figure>
-            <img src="../media/image283.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image283.png" /></p>
             <p>Given m classes, an entry, <span class="math inline">\(CM_{i,j}\)</span> in a confusion matrix indicates the number of tuples in class i that were labeled by the classifier as class j.</p>
             <p>It may have extra rows/columns to provide totals.</p>
             <p>True positives are instances belonging to class C1 and classified as class C1, and so on.</p>
             <p>The confusion matrix gives us all information to decide if a classifier is working well and give us information about confusion between classes. The best situation is when it is diagonal.</p>
             <p>Example of Confusion Matrix:</p>
-            <figure>
-            <img src="../media/image284.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image284.png" /></p>
             <h4 class="unnumbered" data-number="" id="classifier-evaluation-metrics-accuracy-error-rate-sensitivity-and-specificity">Classifier Evaluation Metrics: Accuracy, Error Rate, Sensitivity and Specificity</h4>
             <p>We can compare classifier in terms of TN or TP, taking in difference the two cases.</p>
             <p>By exploiting it we can define some metrics that summarize the confusion matrix:</p>
@@ -4320,16 +4164,12 @@
             <ul>
             <li><strong>Precision</strong>: exactness - what % of tuples the classifier labeled as positive are actually positive.</li>
             </ul>
-            <figure>
-            <img src="../media/image285.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image285.png" /></p>
             <p>It expresses the precision of the classifier.</p>
             <ul>
             <li><strong>Recall</strong>: completeness - what % of positive tuples the classifier labeled as positive</li>
             </ul>
-            <figure>
-            <img src="../media/image286.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image286.png" /></p>
             <p>Considering all real positive tuples how many are classifies positive.</p>
             <p>We have a perfect precision score of 1.0 when every tuple that the classifier labeled as belonging to class C does indeed belong to class C. However, it does not tell us anything about the number of class C tuples that the classifier mislabeled.</p>
             <p>The precision only is not enough to give us all the information we need.</p>
@@ -4346,21 +4186,15 @@
             <ul>
             <li><strong>F measure</strong> (F1 or F-score): harmonic mean of precision and recall</li>
             </ul>
-            <figure>
-            <img src="../media/image287.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image287.png" /></p>
             <ul>
             <li><strong>Fß</strong>: weighted measure of precision and recall assigns ß times as much weight to recall as to precision:</li>
             </ul>
-            <figure>
-            <img src="../media/image288.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image288.png" /></p>
             <p>Commonly used Fß measures are F2 (weights recall more than precision) and F0.5 (weights precision more than recall).</p>
             <p>Let’s take this example.</p>
             <p>This confusion matrix is given:</p>
-            <figure>
-            <img src="../media/image289.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image289.png" /></p>
             <p>Precision = 90/230 = 39.13%</p>
             <p>Recall = 90/300 = 30.00%</p>
             <p>Let’s suppose we don’t consider that this is an unbalanced dataset, and we just use accuracy, which is (90+9560)/10000 = 96.4%, which gives us a high value.</p>
@@ -4382,9 +4216,7 @@
             </ul>
             <p>We perform random sampling: a variation of holdout.</p>
             <p>We repeat holdout k times, accuracy = avg. of the accuracies obtained.</p>
-            <figure>
-            <img src="../media/image290.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image290.png" /></p>
             <p>For each time we use the left part as training set and the right part as test set.</p>
             <p>Only if distribution are independent I can conclude that one classifier is better than another. If two distributions are equal, classifiers are equal in terms of performance.</p>
             <p><strong>Cross-validation</strong></p>
@@ -4397,9 +4229,7 @@
             <li><p>Leave-one-out: k folds where k = number of tuples, that is, only a sample is left out at a time for the test set. Suitable for small sized data.</p></li>
             <li><p>Stratified cross-validation: folds are stratified so that class dist. in each fold is approx. the same as that in the initial data</p></li>
             </ul>
-            <figure>
-            <img src="../media/image291.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image291.png" /></p>
             <h3 data-number="5.8.3" id="bootstrap"><span class="header-section-number">5.8.3</span> Bootstrap</h3>
             <p>Bootstrap samples the given training tuples uniformly with replacement.</p>
             <p>i.e., each time a tuple is selected, it is equally likely to be selected again and re-added to the training set. It works well with small data sets.</p>
@@ -4407,9 +4237,7 @@
             <p>A data set with d tuples is sampled d times, with replacement, resulting in a training set of d samples. The data tuples that did not make it into the training set end up forming the test set. About 63.2% of the original data end up in the bootstrap, and the remaining 36.8% form the test set (since the probability of not being chosen is <span class="math inline">\((1 - 1/d)^d\)</span> , when d is large results to be ≈ e-1 = 0.368).</p>
             <p>Therefore the method has this name.</p>
             <p>We repeat the sampling procedure k times. The overall accuracy of the model is obtained as:</p>
-            <figure>
-            <img src="../media/image292.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image292.png" /></p>
             <h3 data-number="5.8.4" id="estimating-confidence-intervals"><span class="header-section-number">5.8.4</span> Estimating Confidence Intervals</h3>
             <p>Suppose we have 2 classifiers, M1 and M2, which one is better than the other?</p>
             <p>We use the same dataset and 10-fold cross-validation and use the 10 accuracies to obtain err(M1) and err(M2). These mean error rates are just estimates of error on the true population of future data cases.</p>
@@ -4418,9 +4246,7 @@
             <p>I could have that the distribution of accuracy are completely distinct.</p>
             <p>If we compare the average accuracy, we cannot conclude if one classifier is better than another.</p>
             <p>The average value is different, but distributions are almost overlapping.</p>
-            <figure>
-            <img src="../media/image293.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image293.png" /></p>
             <p>Considering the average values of accuracy is not sufficient.</p>
             <p>We must use a test of statistical significance that allow me to understand if the two distributions are statistically different, if it occurs, we can conclude that the distribution with the higher value of accuracy is better than the other.</p>
             <p>We must be sure that the distribution of accuracy is different.</p>
@@ -4439,13 +4265,9 @@
             <li><p>For the ith round of 10-fold cross-validation, we use the same cross partitioning is used to obtain err(M1)i and err(M2)i. We use the same training and test set at each iteration for both classifiers.</p></li>
             <li><p>We calculate the average over 10 rounds to get err(M1) and err(M2) and then, t-test computes t-statistic with k-1 degrees of freedom:</p></li>
             </ul>
-            <figure>
-            <img src="../media/image294.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image294.png" /></p>
             <p>If two test sets are available we can use non-paired t-test:</p>
-            <figure>
-            <img src="../media/image295.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image295.png" /></p>
             <p>where k1 &amp; k2 are the number of cross-validation samples used for M1 &amp; M2, resp.</p>
             <p>We have to decide if M1 and M2 are significantly different.</p>
             <ul>
@@ -4459,9 +4281,7 @@
             <p>In non-paired version, the number of degrees of freedom used is taken as the minimum number of degrees of the two models.</p>
             <p>In this example we have different rows depending on the degree of freedom. IN our case we have to focus on df = 9 and we look for the confidence value proposed in the first row and corresponding on the confidence value we have we search for the t-value, the threshold.</p>
             <p>If we compute t, and it is t &gt; threshold, we can reject the null hypothesis.</p>
-            <figure>
-            <img src="../media/image296.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image296.png" /></p>
             <p>With the decrease of alpha, the value of t increases, but the decreasing of alpha corresponds to have the higher confidence in the rejection of the hypothesis.</p>
             <p>If we have a low value of alpha we have a high probability of differences for classifiers, I’m decreasing the confidence in rejecting the null hypothesis. If we want to be sure we have to choose a high value of alpha. alpha corresponds to the probability of the null hypothesis.</p>
             <p>If we search for a high value of confidence, the probability of the null hypothesis is very low.</p>
@@ -4496,39 +4316,25 @@
             <li><p>Use tables of critical values for the Wilcoxon signed rank sum test to find the probability of observing a value of W or more extreme. Most tables give both one-sided and two-sided p-values. If not, double the one-sided p-value to obtain the two-sided p-value.</p></li>
             </ol>
             <p>If we assume that the number of observations/pairs is such that n(n+1)/2 is large enough (&gt;20), a normal approximation can be used where the mean value of W and the standard deviation of W:</p>
-            <figure>
-            <img src="../media/image297.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image297.png" /></p>
             <p>Dealing with ties:</p>
-            <p>Observations in the sample may be exactly equal to the median value M (i.e. 0 in the case of paired differences). Ignore such observations and adjust n accordingly. Two or more observations/differences may be equal. If so, average the ranks across the tied observations and reduce the variance by <img src="../media/image298.png" alt="alt" /> for each group of t tied ranks.</p>
+            <p>Observations in the sample may be exactly equal to the median value M (i.e. 0 in the case of paired differences). Ignore such observations and adjust n accordingly. Two or more observations/differences may be equal. If so, average the ranks across the tied observations and reduce the variance by <img src="../media/image298.png" /> for each group of t tied ranks.</p>
             <p>Let’s see an example where we use a 12-fold cross-validation.</p>
-            <figure>
-            <img src="../media/image299.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image299.png" /></p>
             <p>For the two classifiers we have these errors. We compute the differences that can be positive or negative. Then we rank differences without taking in consideration signs, we just store them:</p>
-            <figure>
-            <img src="../media/image300.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image300.png" /></p>
             <p>Calculating W+ and W- gives:</p>
             <p><span class="math inline">\(W^-=1+2+4=7\)</span>, summing ranks of negative differences <span class="math inline">\(W^+=3+5.5+5.5+7+8+9+10+11+12=71\)</span>, summing ranks of positive differences.</p>
             <p>Therefore:</p>
-            <figure>
-            <img src="../media/image301.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image301.png" /></p>
             <p>It is greater than 20, so we can adopt the normal approximation and we must consider:</p>
-            <figure>
-            <img src="../media/image302.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image302.png" /></p>
             <p>Since we can use a normal approximation. We have one group of 2 tied ranks, so we must reduce the variance by (8-2)/48 = 0.125</p>
             <p>We can compute the z-score defined as:</p>
-            <figure>
-            <img src="../media/image303.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image303.png" /></p>
             <p>A z-score is a measure of how many standard deviations below or above the population mean a raw score is.</p>
             <blockquote>
-            <figure>
-            <img src="../media/image304.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image304.png" /></p>
             </blockquote>
             <p>Looking up this score in the z-table*, we get an area of 0.9880, equal to a two-tailed p-value of 0.012. This is a tiny p-value, a strong indication that the medians are significantly different so we can reject the null hypothesis.</p>
             <p>The z-table here is to the right of the mean, so I had to double the actual result I found (.4940).</p>
@@ -4557,9 +4363,7 @@
             <p>Vertical axis represents the true positive rate.</p>
             <p>Horizontal axis rep. the false positive rate.</p>
             <p>The plot also shows a diagonal line.</p>
-            <figure>
-            <img src="../media/image305.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image305.png" /></p>
             <p>We can change parameters of a classifier to have different TPR and FPR:</p>
             <ul>
             <li><p>TPR= TP/P</p></li>
@@ -4572,16 +4376,14 @@
             <p>Let’s assume that we can vary the parameters of classifiers and obtain the M2 curve and M1 curve.</p>
             <p>The area under the ROC curve (AUC) is a measure of the accuracy of the model.</p>
             <p>A larger area means the classifier is closer to the optimal classifier, the (0,1) point.</p>
-            <figure>
-            <img src="../media/image306.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image306.png" /></p>
             <p>If we have only one possible combination of parameters, we can connect the point (FPR,TPR) corresponding to the classifier to point (0,1) and to point (1,1) and compute the area under the curve.</p>
             <p>We pass from having two values for measuring the performance of the two classifiers to have one value, the area under the curve that takes in consideration TPR and FPR.</p>
             <p>Instead of f-measure we can use the area under the curve computed in this way.</p>
             <p>For each fold we can compute TPR, FPR, the area under the curve and we will have a distribution of 10 values and apply statistical tests.</p>
             <p>This is a way to use one value instead of a pair.</p>
             <p>The closer to the diagonal line (i.e., the closer the area is to 0.5), the less accurate is the model.</p>
-            <p><img src="../media/image307.png" alt="alt" /><img src="../media/image308.png" alt="alt" /></p>
+            <p><img src="../media/image307.png" /><img src="../media/image308.png" /></p>
             <p>In this eample we use a classifier based on the probability.</p>
             <p>We classify an instance as a positive instance if the probability is higher than the threshold we have in the column probability, all others are negative.</p>
             <p>If we consider the distribution of the first instances, one is considered positive because probability is higher than 0.9 and all others as negative.</p>
@@ -4593,27 +4395,19 @@
             <p>A positive misclassified for a negative typically has a higher cost tan a negative misclassified for a positive.</p>
             <p>Let’s assume that we can establish a cost for misclassification.</p>
             <p>We can express the cost of the classifier as following.</p>
-            <figure>
-            <img src="../media/image309.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image309.png" /></p>
             <p>P(n) and P(p) are the a-priori probabilities of a negative example and a positive example.</p>
             <p>C(Y,n) (cost to misclassify a negative for a positive) and C(N,p) (cost to misclassify a positive for a negative) are the false positive cost and false negative cost.</p>
             <p>Once fixed the values of P(n), c(Y,n), P(p) and C(N,p), we can obtain a family of parallel lines (called iso-cost lines) with slope:</p>
-            <figure>
-            <img src="../media/image310.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image310.png" /></p>
             <p>We fixed the slope and obtained these lines that allow us to minimize the classification cost, which is the tangent point between the ROC curve and the family of parallel lines.</p>
             <p>Because this classifier is the one closer to the optimal, we have the lowest value of FPR and FNR.</p>
             <p>The points belonging to the same line have the same cost, and the cost decreases as we move to parallel lines closer to the point (0,1), i.e., more north-west.</p>
-            <figure>
-            <img src="../media/image311.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image311.png" /></p>
             <p>Once fixed the cost and the probability this allow us to find the best classifier for the specific application.</p>
             <p>We can change the parameters to obtain different TPR and FPR, in this way we can compute the slope for iso-cost lines, find the tangent and determine the optimal classifier for this specific application.</p>
             <p>We are choosing here:</p>
-            <figure>
-            <img src="../media/image312.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image312.png" /></p>
             <p>because the cost of misclassification a positive for a negative is typically higher.</p>
             <h4 class="unnumbered" data-number="" id="comparing-different-classifiers-with-auc-case-imbalanced-datasets">Comparing Different Classifiers with AUC (case imbalanced datasets)</h4>
             <p>If we can draw the ROC curve, we can compute the convex hull and determine the best classifier.</p>
@@ -4624,9 +4418,7 @@
             <h2 data-number="5.9" id="techniques-to-improve-classification-accuracy-ensemble-methods"><span class="header-section-number">5.9</span> Techniques to Improve Classification Accuracy: Ensemble Methods</h2>
             <p>One idea is to use a combination of models to increase accuracy.</p>
             <p>We combine a series of k learned models <span class="math inline">\(M_1, M_2, ..., M_k\)</span> with the aim of creating an improved model <span class="math inline">\(M^*\)</span>.</p>
-            <figure>
-            <img src="../media/image313.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image313.png" /></p>
             <p>We aggregate their results to improve accuracy.</p>
             <p>Popular ensemble methods are:</p>
             <ul>
@@ -4648,16 +4440,12 @@
             <li><p>The bagged classifier <span class="math inline">\(M^*\)</span> counts the votes and assigns the class with the most votes to <span class="math inline">\(X\)</span></p></li>
             </ul>
             <p>In this way we generate different models, and we change the training set, this is why we expect to improve accuracy.</p>
-            <figure>
-            <img src="../media/image314.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image314.png" /></p>
             <p>It’s possible to use it for the prediction of continuous values by taking the average value of each prediction for a given test tuple.</p>
             <p>Accuracy of bagging is often significantly better than a single classifier derived from <span class="math inline">\(D\)</span>. For noise data: not considerably worse, and typically more robust.</p>
             <p>We typically have a proved improved accuracy in prediction.</p>
             <p>To help illustrate the power of an ensemble, consider a simple two-class problem described by two attributes, <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span>. The problem has a linear decision boundary.</p>
-            <figure>
-            <img src="../media/image315.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image315.png" /></p>
             <p>Figure (a) shows the decision boundary of a decision tree classifier on the problem.</p>
             <p>Figure (b) shows the decision boundary of an ensemble of decision tree classifiers on the same problem. We combine different boundaries and we obtain a different form, more adapted.</p>
             <h3 data-number="5.9.2" id="boosting"><span class="header-section-number">5.9.2</span> Boosting</h3>
@@ -4673,20 +4461,14 @@
             <p>Each classifier has its own weight too.</p>
             <p>Boosting algorithm can be extended for numeric prediction. Comparing with bagging, Boosting tends to have greater accuracy, but it also risks overfitting the model to misclassified data.</p>
             <p>We start to assign the same weights to all instances.</p>
-            <figure>
-            <img src="../media/image316.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image316.png" /></p>
             <p>The approach just generates <span class="math inline">\(k\)</span> classifiers but at each round tuples from <span class="math inline">\(D\)</span> are sampled with replacements to form a training set, but the chance to select a tuple is based on its weight.</p>
             <p>Higher the weight and higher is the probability of selection.</p>
             <p>At the beginning all instances have the same probability, we generate the training set for the first classifier and let’s assume it classifies correctly the instances not circled. We increase the weight for he circled instances because the next classifier must focus on them.</p>
             <p>For the subsequent classifier we will have other instances misclassified and so on.</p>
-            <figure>
-            <img src="../media/image317.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image317.png" /></p>
             <p>At the end we have a set of classifiers, each able to focus on specific instances and specific zones of the space.</p>
-            <figure>
-            <img src="../media/image318.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image318.png" /></p>
             <p>When we put them together we expect higher performances.</p>
             <h4 class="unnumbered" data-number="" id="adaboost-algorithm">Adaboost Algorithm</h4>
             <p>Given a set of <span class="math inline">\(d\)</span> class-labeled tuples, <span class="math inline">\((X_1, y_1), ..., (X_d, y_d)\)</span>.</p>
@@ -4698,15 +4480,13 @@
             <li><p>Each tuple’s chance of being selected is based on its weight</p></li>
             <li><p>A classification model <span class="math inline">\(M_i\)</span> is derived from <span class="math inline">\(D_i\)</span></p></li>
             <li><p>Its error rate is calculated using <span class="math inline">\(D_i\)</span> as a test set</p></li>
-            <li><p>Classifier <span class="math inline">\(M_i\)</span> error rate is the sum of the weights of the misclassified tuples: <img src="../media/image319.png" alt="alt" /></p></li>
+            <li><p>Classifier <span class="math inline">\(M_i\)</span> error rate is the sum of the weights of the misclassified tuples: <img src="../media/image319.png" /></p></li>
             </ul>
             <p>where <span class="math inline">\(err(X_j)\)</span> is the misclassification error of tuple <span class="math inline">\(X_j\)</span>.</p>
             <ul>
             <li>If a tuple <span class="math inline">\((X_j, y_j)\)</span>, is correctly classified, then the weight is updated as follows:</li>
             </ul>
-            <figure>
-            <img src="../media/image320.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image320.png" /></p>
             <p>We decrease the weight of correct classifier’s instances.</p>
             <ul>
             <li><p>Once the weights are updated, the weights for all the tuples (both correctly and incorrectly classified) are normalised so that their sum remains the same it was before. If we normalize and decrease the weight for correctly classified instances it’s like we increase it for misclassified instances.</p></li>
@@ -4716,30 +4496,18 @@
             <p>Boosting assigns a weight to each classifier’s vote, based on how well the classifier performed.</p>
             <p>The lower a classifier’s error rate, the more accurate it is and therefore the higher its weight for voting should be</p>
             <p>The weight of classifier <span class="math inline">\(M_i\)</span>’s vote is:</p>
-            <figure>
-            <img src="../media/image321.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image321.png" /></p>
             <p>For each class <span class="math inline">\(c\)</span> we sum the weights of each classifier that assigned class <span class="math inline">\(c\)</span> to <span class="math inline">\(X\)</span>. The class with the highest sum is the “winner” and is returned as the class prediction for tuple <span class="math inline">\(X\)</span>.</p>
             <p>This is the Adaboost algorithm:</p>
-            <figure>
-            <img src="../media/image322.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
-            <figure>
-            <img src="../media/image323.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
-            <figure>
-            <img src="../media/image324.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image322.png" /></p>
+            <p><img src="../media/image323.png" /></p>
+            <p><img src="../media/image324.png" /></p>
             <p>Boosting vs Bagging:</p>
-            <figure>
-            <img src="../media/image325.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image325.png" /></p>
             <h3 data-number="5.9.3" id="random-forest"><span class="header-section-number">5.9.3</span> Random Forest</h3>
             <p>The idea is to have a large ensemble of decision trees. Each classifier is a decision tree classifier and is generated using a random selection of attributes at each node to determine the split.</p>
             <p>Each tree votes and the most popular class is returned.</p>
-            <figure>
-            <img src="../media/image326.jpeg" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image326.jpeg" /></p>
             <p>If I have a training set and I learn a lot of trees we obtain always the same decision tree. We have to consider another approach to learn decision trees.</p>
             <p><strong>Classical Algorithm:</strong></p>
             <p>Let <span class="math inline">\(N\)</span> and <span class="math inline">\(M\)</span> be the number of training instances and attributes, respectively. Let <span class="math inline">\(m\)</span> be the number of attributes to be used for choosing the decision attribute at any node.</p>
@@ -4782,9 +4550,7 @@
             <p>When we want to rebalance a dataset, we apply it only for the training set. In reality, in fact, we don’t have the test set is available.</p>
             <p><strong>SMOTE: Synthetic Minority Over-sampling Technique</strong></p>
             <p>It is an example of oversampling in which the minority class is over-sampled by creating “synthetic” examples rather than by over-sampling with replacement.</p>
-            <figure>
-            <img src="../media/image327.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image327.png" /></p>
             <p>In the ROC curve we want to have TPR close to 1 and FRP close to 0, with oversampling or under sampling our aim is learn a classifier quite close to the ideal point.</p>
             <p>The minority class is over-sampled by taking each minority class sample and introducing synthetic examples along the line segments joining any/all of the k minority class nearest neighbors.</p>
             <p>We randomly exploit a point along the line.</p>
@@ -4796,9 +4562,7 @@
             <li><p>Multiply this difference by a random number between 0 and 1, and add it to the feature vector under consideration.</p></li>
             <li><p>This causes the selection of a random point along the line segment between two specific features. This approach effectively forces the decision region of the minority class to become more general.</p></li>
             </ul>
-            <figure>
-            <img src="../media/image328.png" alt="" /><figcaption>alt</figcaption>
-            </figure>
+            <p><img src="../media/image328.png" /></p>
             <p>In case of imbalanced dataset, we must rebalance the training set.</p>
             <p>When we apply 10-cross validation, first we select 9 folds and then rebalance this training set, learn the classifier and measure the performance on the remaining.</p>
             <h1 data-number="6" id="cluster-analysis"><span class="header-section-number">6</span> Cluster Analysis</h1>
@@ -7842,8 +7606,8 @@
             <p><span class="math display">\[
                 CBLOF(o)\bigg \{
                     \begin{array}{rl}
-                        |C_i| \cdot \min(distance(o,C_j)) \hspace{1cm} o \in C_i,C_j \in SC\ and\ C_j \in LC\\
-                        |C_j| \cdot \min(distance(o,C_j)) \hspace{2.46cm}o \in C_i\ and\ C_i \in LC\\
+                        |C_i| \cdot \min(distance(o,C_j)) \hspace{1cm} o \in C_i,C_i \in SC\ and\ C_j \in LC\\
+                        |C_j| \cdot distance(o,C_j) \hspace{2.8cm}o \in C_j\ and\ C_j \in LC\\
                     \end{array}  
             \]</span></p>
             <p>For the computation of the distance between the object and the cluster, it is sufficient to adopt the similarity measure used in the clustering algorithm.</p>
